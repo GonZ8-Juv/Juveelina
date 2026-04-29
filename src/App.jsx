@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import hero1 from "./assets/fondo1.jpeg";
 import hero2 from "./assets/fondo2.jpg";
-import hero3 from "./assets/fondo3.AVIF";
+import hero3 from "./assets/fondo3.jpg";
 
 import visa from "./assets/visa.png";
 import master from "./assets/master.png";
