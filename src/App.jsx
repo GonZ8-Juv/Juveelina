@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
-import camis from "./assets/Camisceles.jpeg";
-import buzo from "./assets/Buzoblan.jpeg";
-import remera from "./assets/RGF.jpeg";
 
 import hero1 from "./assets/fondo1.jpeg";
 import hero2 from "./assets/fondo2.jpg";
