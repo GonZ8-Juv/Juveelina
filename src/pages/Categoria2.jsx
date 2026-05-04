@@ -21,9 +21,7 @@ import remeraMarronEscudoEspalda from "../assets/Remeras/RMBE.jpg";
 
 // SWEATERS
 import sweater1 from "../assets/buzo-blanco.jpeg.jpeg";
-import sweater2 from "../assets/buzos/buzo-gris.jpeg.jpeg";
 import sweater3 from "../assets/buzo-negro.jpeg.jpeg";
-import sweater4 from "../assets/buzos/buzo-negro2.jpeg.jpeg";
 
 // ACCESORIOS
 import carteraPrint from "../assets/Carprint.jpeg";
@@ -62,7 +60,6 @@ import mujerEspaldaGris from "../assets/mujer/espaldagris.jpg";
 import mujerEspaldaMarron from "../assets/mujer/espaldamarron.jpg";
 import mujerEspaldaNegro from "../assets/mujer/espaldanegro.jpg";
 import mujerEscudoMarron from "../assets/mujer/marronesc.jpg";
-import mujerSolGris from "../assets/mujer/solgris.jpg";
 import mujerSolGris2 from "../assets/mujer/solgris2.jpg";
 import mujerSolMarron from "../assets/mujer/solmarron.jpg";
 import mujerSolNegro from "../assets/mujer/solnegro2.jpg";
@@ -124,13 +121,13 @@ const productosPorCategoria = {
       nombre: "Sweater oversize",
       color: "Blanco",
       material: "Algodón frizado",
-      imagenes: [sweater1, sweater2],
+      imagenes: [sweater1],
     },
     {
       nombre: "Sweater oversize",
       color: "Negro",
       material: "Algodón frizado",
-      imagenes: [sweater3, sweater4],
+      imagenes: [sweater3],
     },
   ],
 
@@ -180,25 +177,25 @@ const productosPorCategoria = {
   ],
   Peques: [
     {
-      nombre: "Buzo peques",
+      nombre: "Buzo Sol",
       color: "Blanco",
       material: "Algodón frizado",
       imagenes: [pequeBuzoBlanco],
     },
     {
-      nombre: "Buzo peques",
+      nombre: "Buzo Sol",
       color: "Negro",
       material: "Algodón frizado",
       imagenes: [pequeBuzoNegro],
     },
     {
-      nombre: "Camiseta peques",
+      nombre: "Camiseta Sol",
       color: "Celeste",
       material: "Algodón",
       imagenes: [pequeCamisetaCeleste],
     },
     {
-      nombre: "Camiseta peques",
+      nombre: "Camiseta Sol",
       color: "Negro",
       material: "Algodón",
       imagenes: [pequeCamisetaNegra],
@@ -206,49 +203,43 @@ const productosPorCategoria = {
   ],
   Mujeres: [
     {
-      nombre: "Remera Escudo",
+      nombre: "Buzo Escudo",
       color: "Azul",
       material: "Algodón",
       imagenes: [mujerEscudoAzul],
     },
     {
-      nombre: "Remera Escudo",
+      nombre: "Buzo Escudo",
       color: "Gris",
       material: "Algodón",
       imagenes: [mujerEscudoGris, mujerEspaldaGris],
     },
     {
-      nombre: "Remera Escudo",
+      nombre: "Buzo Escudo",
       color: "Blanco",
       material: "Algodón",
       imagenes: [mujerEscudoBlanco],
     },
     {
-      nombre: "Remera Escudo",
+      nombre: "Buzo Escudo",
       color: "Marrón",
       material: "Algodón",
       imagenes: [mujerEscudoMarron, mujerEspaldaMarron],
     },
     {
-      nombre: "Remera Sol",
-      color: "Gris",
-      material: "Algodón",
-      imagenes: [mujerSolGris, mujerEspaldaGris],
-    },
-    {
-      nombre: "Remera Sol",
+      nombre: "Buzo Sol",
       color: "Gris",
       material: "Algodón",
       imagenes: [mujerSolGris2],
     },
     {
-      nombre: "Remera Sol",
+      nombre: "Buzo Sol",
       color: "Marrón",
       material: "Algodón",
       imagenes: [mujerSolMarron, mujerEspaldaMarron],
     },
     {
-      nombre: "Remera Sol",
+      nombre: "Buzo Sol",
       color: "Negro",
       material: "Algodón",
       imagenes: [mujerSolNegro, mujerEspaldaNegro],
@@ -256,61 +247,61 @@ const productosPorCategoria = {
   ],
   Hombres: [
     {
-      nombre: "Remera Sol blanca",
+      nombre: "Buzo Sol",
       color: "Blanco",
       material: "Algodón",
       imagenes: [hombreBlanco1],
     },
     {
-      nombre: "Remera Escudo blanca",
+      nombre: "Buzo Escudo",
       color: "Blanco",
       material: "Algodón",
       imagenes: [hombreBlanco2],
     },
     {
-      nombre: "Remera Sol blanca",
+      nombre: "Buzo Sol",
       color: "Blanco",
       material: "Algodón",
       imagenes: [hombreBlancoNuevo, hombreBlancoEspalda],
     },
     {
-      nombre: "Remera Sol gris",
+      nombre: "Buzo Sol",
       color: "Gris",
       material: "Algodón",
       imagenes: [hombreGris1],
     },
     {
-      nombre: "Remera Escudo gris",
+      nombre: "Buzo Escudo",
       color: "Gris",
       material: "Algodón",
       imagenes: [hombreGris2],
     },
     {
-      nombre: "Remera Sol marrón",
+      nombre: "Buzo Sol",
       color: "Marrón",
       material: "Algodón",
       imagenes: [hombreMarron1, hombreMarronEspalda],
     },
     {
-      nombre: "Remera Sol marrón",
+      nombre: "Buzo Sol",
       color: "Marrón",
       material: "Algodón",
       imagenes: [hombreMarron2],
     },
     {
-      nombre: "Remera Sol negra",
+      nombre: "Buzo Sol",
       color: "Negro",
       material: "Algodón",
       imagenes: [hombreNegro1],
     },
     {
-      nombre: "Remera Escudo negra",
+      nombre: "Buzo Escudo",
       color: "Negro",
       material: "Algodón",
       imagenes: [hombreNegro2],
     },
     {
-      nombre: "Remera Sol negra",
+      nombre: "Buzo Sol",
       color: "Negro",
       material: "Algodón",
       imagenes: [hombreNegroRubio, hombreNegroEspalda],
