@@ -711,3 +711,148 @@ h2 {
     text-align: center;
   }
 }
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .prev,
+  .next {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 16px 20px;
+  }
+
+  .navbar-left {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .navbar-icons {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-left {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero {
+    height: 360px;
+  }
+
+  .hero-content {
+    padding: 16px 28px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .home-featured {
+    margin-top: 12px;
+    gap: 0;
+  }
+
+  .featured-card {
+    height: auto;
+  }
+
+  .featured-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-page {
+    padding: 28px 14px;
+  }
+
+  .category-page h1 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .category-layout {
+    display: block;
+    padding: 0;
+  }
+
+  .category-sidebar {
+    display: none;
+  }
+
+  .category-products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 14px;
+    max-width: none;
+    width: 100%;
+  }
+
+  .category-product {
+    width: 100%;
+    max-width: none;
+  }
+
+  .category-product img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1.25;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .category-product p {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 10px 0 4px;
+  }
+
+  .category-product span {
+    font-size: 13px;
+  }
+}
