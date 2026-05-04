@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
 
-import hero1 from "./assets/fondo1.jpeg";
 import hero2 from "./assets/fondo2.jpg";
 import hero3 from "./assets/fondo3.jpg";
+import hero4 from "./assets/fondo4.jpg";
 
 import visa from "./assets/visa.png";
 import master from "./assets/master.png";
@@ -27,7 +27,7 @@ import Terminos from "./pages/Terminos.jsx";
 
 import "./index.css";
 
-const heroes = [hero1, hero2, hero3];
+const heroes = [hero4, hero2, hero3];
 
 const searchItems = [
   { nombre: "Remeras", detalle: "Colecciones", url: "/colecciones/remeras" },
@@ -52,8 +52,8 @@ const searchItems = [
   { nombre: "Peques", detalle: "Vestimenta", url: "/vestimenta/peques" },
   { nombre: "Buzo Sol peques blanco", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
   { nombre: "Buzo Sol peques negro", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
-  { nombre: "Camiseta Sol peques celeste", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
-  { nombre: "Camiseta Sol peques negra", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
+  { nombre: "Camiseta Escudo peques celeste", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
+  { nombre: "Camiseta Escudo peques negra", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
   { nombre: "Mujeres", detalle: "Vestimenta", url: "/vestimenta/mujeres" },
   { nombre: "Buzo Escudo mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
   { nombre: "Buzo Sol mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },

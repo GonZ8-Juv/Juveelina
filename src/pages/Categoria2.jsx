@@ -189,13 +189,13 @@ const productosPorCategoria = {
       imagenes: [pequeBuzoNegro],
     },
     {
-      nombre: "Camiseta Sol",
+      nombre: "Camiseta Escudo",
       color: "Celeste",
       material: "Algodón",
       imagenes: [pequeCamisetaCeleste],
     },
     {
-      nombre: "Camiseta Sol",
+      nombre: "Camiseta Escudo",
       color: "Negro",
       material: "Algodón",
       imagenes: [pequeCamisetaNegra],
