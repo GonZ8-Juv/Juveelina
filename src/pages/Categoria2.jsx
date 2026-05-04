@@ -151,25 +151,19 @@ const productosPorCategoria = {
 
   Bags: [
     {
-      nombre: "Bag Soles",
-      color: "Natural",
-      material: "Lona",
-      imagenes: [bagSoles],
-    },
-    {
       nombre: "Bag Juveelina",
       color: "Natural",
       material: "Lona",
       imagenes: [bagJuvee],
     },
     {
-      nombre: "Bag Sol",
+      nombre: "Bag Vilaró",
       color: "Natural",
       material: "Lona",
-      imagenes: [bagSol],
+      imagenes: [bagSol, bagSoles],
     },
     {
-      nombre: "Bag Sols",
+      nombre: "Bag SolUY",
       color: "Natural",
       material: "Lona",
       imagenes: [bagSols],
