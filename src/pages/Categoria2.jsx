@@ -1,24 +1,71 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // REMERAS
-import remera1 from "../assets/RGB.jpeg";
-import remera2 from "../assets/RGF.jpeg";
-import remera3 from "../assets/RNF.jpeg";
-import remera4 from "../assets/RNB.jpeg";
-import remera5 from "../assets/RBF.jpeg";
-import remera6 from "../assets/RBB.jpeg";
-import remera7 from "../assets/RMF.jpeg";
-import remera8 from "../assets/RMB.jpeg";
+import remeraGrisSolFrente from "../assets/Remeras/RGF.jpeg";
+import remeraGrisSolEspalda from "../assets/Remeras/RGB.jpeg";
+import remeraNegraSolFrente from "../assets/Remeras/RNF.jpeg";
+import remeraNegraSolEspalda from "../assets/Remeras/RNB.jpeg";
+import remeraBlancaSolFrente from "../assets/Remeras/RBF.jpeg";
+import remeraBlancaSolEspalda from "../assets/Remeras/RBB.jpeg";
+import remeraMarronSolFrente from "../assets/Remeras/RMF.jpeg";
+import remeraMarronSolEspalda from "../assets/Remeras/RMB.jpeg";
+import remeraGrisEscudoFrente from "../assets/Remeras/RGFE.JPG";
+import remeraGrisEscudoEspalda from "../assets/Remeras/RGBE.jpg";
+import remeraNegraEscudoFrente from "../assets/Remeras/RNFE.jpg";
+import remeraNegraEscudoEspalda from "../assets/Remeras/RNBE.jpg";
+import remeraBlancaEscudoFrente from "../assets/Remeras/RBFE.jpg";
+import remeraBlancaEscudoEspalda from "../assets/Remeras/RBBE.jpg";
+import remeraMarronEscudoFrente from "../assets/Remeras/RMFE.jpg";
+import remeraMarronEscudoEspalda from "../assets/Remeras/RMBE.jpg";
 
-// BUZOS
-import buzo1 from "../assets/buzos/buzo-blanco.jpeg.jpeg";
-import buzo2 from "../assets/buzos/buzo-gris.jpeg.jpeg";
-import buzo3 from "../assets/buzos/buzo-negro.jpeg.jpeg";
-import buzo4 from "../assets/buzos/buzo-negro2.jpeg.jpeg";
+// SWEATERS
+import sweater1 from "../assets/buzo-blanco.jpeg.jpeg";
+import sweater2 from "../assets/buzos/buzo-gris.jpeg.jpeg";
+import sweater3 from "../assets/buzo-negro.jpeg.jpeg";
+import sweater4 from "../assets/buzos/buzo-negro2.jpeg.jpeg";
 
 // ACCESORIOS
 import carteraPrint from "../assets/Carprint.jpeg";
 import necesserSoyCeleste from "../assets/SoyCel.jpeg";
+import bagSoles from "../assets/Bolsos/Soles2.jpg";
+import bagJuvee from "../assets/Bolsos/Juvee.jpg";
+import bagSol from "../assets/Bolsos/bolsosol.jpg";
+import bagSols from "../assets/Bolsos/sols.jpg";
+
+// HOMBRES
+import hombreBlanco1 from "../assets/hombre/Blancosol.jpg";
+import hombreBlanco2 from "../assets/hombre/blancoesc.jpg";
+import hombreBlancoNuevo from "../assets/hombre/blancosoln.jpg";
+import hombreGris1 from "../assets/hombre/grissol.jpg";
+import hombreGris2 from "../assets/hombre/grisesc.jpg";
+import hombreMarron1 from "../assets/hombre/marronsol.jpg";
+import hombreMarron2 from "../assets/hombre/marronsolb.jpg";
+import hombreNegro1 from "../assets/hombre/negrosol.jpg";
+import hombreNegro2 from "../assets/hombre/NegroEsc.jpeg";
+import hombreNegroRubio from "../assets/hombre/solamnegro.jpg";
+import hombreBlancoEspalda from "../assets/hombre/blancoespalda.jpg";
+import hombreMarronEspalda from "../assets/hombre/marronespalda.jpg";
+import hombreNegroEspalda from "../assets/hombre/negroespalda.jpg";
+
+// PEQUES
+import pequeBuzoBlanco from "../assets/Peques/buzo-blanco.jpeg.jpeg";
+import pequeBuzoNegro from "../assets/Peques/buzo-negro.jpeg.jpeg";
+import pequeCamisetaCeleste from "../assets/Peques/Camisceles.jpeg";
+import pequeCamisetaNegra from "../assets/Peques/Camisnegr.jpeg";
+
+// MUJERES
+import mujerEscudoAzul from "../assets/mujer/escazul.jpg";
+import mujerEscudoGris from "../assets/mujer/escgris.jpg";
+import mujerEscudoBlanco from "../assets/mujer/escudoblanco.jpg";
+import mujerEspaldaGris from "../assets/mujer/espaldagris.jpg";
+import mujerEspaldaMarron from "../assets/mujer/espaldamarron.jpg";
+import mujerEspaldaNegro from "../assets/mujer/espaldanegro.jpg";
+import mujerEscudoMarron from "../assets/mujer/marronesc.jpg";
+import mujerSolGris from "../assets/mujer/solgris.jpg";
+import mujerSolGris2 from "../assets/mujer/solgris2.jpg";
+import mujerSolMarron from "../assets/mujer/solmarron.jpg";
+import mujerSolNegro from "../assets/mujer/solnegro2.jpg";
 
 const productosPorCategoria = {
   Remeras: [
@@ -26,44 +73,66 @@ const productosPorCategoria = {
       nombre: "Básica Sol",
       color: "Negro",
       material: "Algodón",
-      imagenes: [remera3, remera4],
+      imagenes: [remeraNegraSolFrente, remeraNegraSolEspalda],
     },
     {
       nombre: "Básica Sol",
       color: "Blanco",
       material: "Algodón",
-      imagenes: [remera5, remera6],
+      imagenes: [remeraBlancaSolFrente, remeraBlancaSolEspalda],
     },
     {
       nombre: "Básica Sol",
       color: "Gris",
       material: "Algodón",
-      imagenes: [remera2, remera1],
+      imagenes: [remeraGrisSolFrente, remeraGrisSolEspalda],
     },
     {
       nombre: "Básica Sol",
       color: "Marrón",
       material: "Algodón",
-      imagenes: [remera7, remera8],
+      imagenes: [remeraMarronSolFrente, remeraMarronSolEspalda],
+    },
+    {
+      nombre: "Básica Escudo",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [remeraNegraEscudoFrente, remeraNegraEscudoEspalda],
+    },
+    {
+      nombre: "Básica Escudo",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [remeraBlancaEscudoFrente, remeraBlancaEscudoEspalda],
+    },
+    {
+      nombre: "Básica Escudo",
+      color: "Gris",
+      material: "Algodón",
+      imagenes: [remeraGrisEscudoFrente, remeraGrisEscudoEspalda],
+    },
+    {
+      nombre: "Básica Escudo",
+      color: "Marrón",
+      material: "Algodón",
+      imagenes: [remeraMarronEscudoFrente, remeraMarronEscudoEspalda],
     },
   ],
 
-  Buzos: [
+  Sweaters: [
     {
-      nombre: "Buzo oversize",
+      nombre: "Sweater oversize",
       color: "Blanco",
       material: "Algodón frizado",
-      imagenes: [buzo1, buzo2],
+      imagenes: [sweater1, sweater2],
     },
     {
-      nombre: "Buzo oversize",
+      nombre: "Sweater oversize",
       color: "Negro",
       material: "Algodón frizado",
-      imagenes: [buzo3, buzo4],
+      imagenes: [sweater3, sweater4],
     },
   ],
-
-  Sweaters: [],
 
   Carteras: [
     {
@@ -83,16 +152,175 @@ const productosPorCategoria = {
     },
   ],
 
-  Bags: [],
-  Peques: [],
-  Mujeres: [],
-  Hombres: [],
+  Bags: [
+    {
+      nombre: "Bag Soles",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [bagSoles],
+    },
+    {
+      nombre: "Bag Juveelina",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [bagJuvee],
+    },
+    {
+      nombre: "Bag Sol",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [bagSol],
+    },
+    {
+      nombre: "Bag Sols",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [bagSols],
+    },
+  ],
+  Peques: [
+    {
+      nombre: "Buzo peques",
+      color: "Blanco",
+      material: "Algodón frizado",
+      imagenes: [pequeBuzoBlanco],
+    },
+    {
+      nombre: "Buzo peques",
+      color: "Negro",
+      material: "Algodón frizado",
+      imagenes: [pequeBuzoNegro],
+    },
+    {
+      nombre: "Camiseta peques",
+      color: "Celeste",
+      material: "Algodón",
+      imagenes: [pequeCamisetaCeleste],
+    },
+    {
+      nombre: "Camiseta peques",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [pequeCamisetaNegra],
+    },
+  ],
+  Mujeres: [
+    {
+      nombre: "Remera Escudo",
+      color: "Azul",
+      material: "Algodón",
+      imagenes: [mujerEscudoAzul],
+    },
+    {
+      nombre: "Remera Escudo",
+      color: "Gris",
+      material: "Algodón",
+      imagenes: [mujerEscudoGris, mujerEspaldaGris],
+    },
+    {
+      nombre: "Remera Escudo",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [mujerEscudoBlanco],
+    },
+    {
+      nombre: "Remera Escudo",
+      color: "Marrón",
+      material: "Algodón",
+      imagenes: [mujerEscudoMarron, mujerEspaldaMarron],
+    },
+    {
+      nombre: "Remera Sol",
+      color: "Gris",
+      material: "Algodón",
+      imagenes: [mujerSolGris, mujerEspaldaGris],
+    },
+    {
+      nombre: "Remera Sol",
+      color: "Gris",
+      material: "Algodón",
+      imagenes: [mujerSolGris2],
+    },
+    {
+      nombre: "Remera Sol",
+      color: "Marrón",
+      material: "Algodón",
+      imagenes: [mujerSolMarron, mujerEspaldaMarron],
+    },
+    {
+      nombre: "Remera Sol",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [mujerSolNegro, mujerEspaldaNegro],
+    },
+  ],
+  Hombres: [
+    {
+      nombre: "Remera Sol blanca",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [hombreBlanco1],
+    },
+    {
+      nombre: "Remera Escudo blanca",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [hombreBlanco2],
+    },
+    {
+      nombre: "Remera Sol blanca",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [hombreBlancoNuevo, hombreBlancoEspalda],
+    },
+    {
+      nombre: "Remera Sol gris",
+      color: "Gris",
+      material: "Algodón",
+      imagenes: [hombreGris1],
+    },
+    {
+      nombre: "Remera Escudo gris",
+      color: "Gris",
+      material: "Algodón",
+      imagenes: [hombreGris2],
+    },
+    {
+      nombre: "Remera Sol marrón",
+      color: "Marrón",
+      material: "Algodón",
+      imagenes: [hombreMarron1, hombreMarronEspalda],
+    },
+    {
+      nombre: "Remera Sol marrón",
+      color: "Marrón",
+      material: "Algodón",
+      imagenes: [hombreMarron2],
+    },
+    {
+      nombre: "Remera Sol negra",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [hombreNegro1],
+    },
+    {
+      nombre: "Remera Escudo negra",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [hombreNegro2],
+    },
+    {
+      nombre: "Remera Sol negra",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [hombreNegroRubio, hombreNegroEspalda],
+    },
+  ],
 };
 
 const categoriasPorSeccion = {
   colecciones: [
     { nombre: "Remeras", url: "/colecciones/remeras" },
-    { nombre: "Buzos", url: "/colecciones/buzos" },
     { nombre: "Sweaters", url: "/colecciones/sweaters" },
   ],
   vestimenta: [
@@ -109,7 +337,6 @@ const categoriasPorSeccion = {
 
 const seccionPorCategoria = {
   Remeras: "colecciones",
-  Buzos: "colecciones",
   Sweaters: "colecciones",
   Peques: "vestimenta",
   Mujeres: "vestimenta",
@@ -119,36 +346,44 @@ const seccionPorCategoria = {
   Neceser: "accesorios",
 };
 
-function Categoria({ titulo }) {
+const tallesDisponibles = ["S", "M", "L", "XL", "XXL"];
+
+function Categoria({ titulo, onAddToCart }) {
   const [productoActivo, setProductoActivo] = useState(null);
   const [fotoActual, setFotoActual] = useState(0);
+  const [talleSeleccionado, setTalleSeleccionado] = useState("M");
 
   const productos = productosPorCategoria[titulo] || [];
   const seccionActiva = seccionPorCategoria[titulo] || "colecciones";
   const categorias = categoriasPorSeccion[seccionActiva];
+  const usaTalles = seccionActiva !== "accesorios";
 
   return (
-    <main className="category-page">
+    <main className={`category-page product-count-${productos.length}`}>
       <h1>{titulo}</h1>
 
-      <div className="category-layout">
-        <aside className="category-sidebar">
-          <h3>Categorías</h3>
-          {categorias.map((categoria) => (
-            <a href={categoria.url} key={categoria.url}>
-              {categoria.nombre}
-            </a>
-          ))}
-        </aside>
+      <nav className="category-tabs" aria-label="Categorías">
+        {categorias.map((categoria) => (
+          <Link
+            to={categoria.url}
+            key={categoria.url}
+            className={categoria.nombre === titulo ? "active-category" : ""}
+          >
+            {categoria.nombre}
+          </Link>
+        ))}
+      </nav>
 
+      <div className="category-layout">
         <div className="category-products">
           {productos.map((producto, index) => (
             <div
               className="category-product"
-              key={`${producto.nombre}-${index}`}
+              key={`${producto.nombre}-${producto.color}-${index}`}
               onClick={() => {
                 setProductoActivo(producto);
                 setFotoActual(0);
+                setTalleSeleccionado("M");
               }}
             >
               <img src={producto.imagenes[0]} alt={producto.nombre} />
@@ -178,10 +413,46 @@ function Categoria({ titulo }) {
               {productoActivo.color} · {productoActivo.material}
             </p>
 
+            {usaTalles && (
+              <div className="size-selector">
+                <span>Talle</span>
+                <div>
+                  {tallesDisponibles.map((talle) => (
+                    <button
+                      type="button"
+                      key={talle}
+                      className={talleSeleccionado === talle ? "active-size" : ""}
+                      onClick={() => setTalleSeleccionado(talle)}
+                    >
+                      {talle}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <button
+              type="button"
+              className="add-cart-button"
+              onClick={() => {
+                onAddToCart({
+                  nombre: productoActivo.nombre,
+                  color: productoActivo.color,
+                  material: productoActivo.material,
+                  talle: usaTalles ? talleSeleccionado : null,
+                  categoria: titulo,
+                  imagen: productoActivo.imagenes[0],
+                });
+                setProductoActivo(null);
+              }}
+            >
+              Agregar al carrito
+            </button>
+
             <div className="modal-thumbs">
               {productoActivo.imagenes.map((img, index) => (
                 <img
-                  key={`${productoActivo.nombre}-${index}`}
+                  key={`${productoActivo.nombre}-${productoActivo.color}-${index}`}
                   src={img}
                   alt={`${productoActivo.nombre} ${index + 1}`}
                   onClick={() => setFotoActual(index)}

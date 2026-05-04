@@ -1,6 +1,6 @@
-import camis from "../assets/Camisceles.jpeg";
+import camis from "../assets/Peques/Camisceles.jpeg";
 import buzo from "../assets/Carprint.jpeg";
-import remera from "../assets/buzos/buzo-blanco.jpeg.jpeg";
+import remera from "../assets/Peques/buzo-blanco.jpeg.jpeg";
 
 function Home() {
   return (
