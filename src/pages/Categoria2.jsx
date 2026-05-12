@@ -19,10 +19,6 @@ import remeraBlancaEscudoEspalda from "../assets/Remeras/RBBE.jpg";
 import remeraMarronEscudoFrente from "../assets/Remeras/RMFE.jpg";
 import remeraMarronEscudoEspalda from "../assets/Remeras/RMBE.jpg";
 
-// SWEATERS
-import sweater1 from "../assets/buzo-blanco.jpeg.jpeg";
-import sweater3 from "../assets/buzo-negro.jpeg.jpeg";
-
 // ACCESORIOS
 import carteraPrint from "../assets/Carprint.jpeg";
 import necesserSoyCeleste from "../assets/SoyCel.jpeg";
@@ -120,18 +116,6 @@ const productosPorCategoria = {
 
   Sweaters: [
     {
-      nombre: "Sweater oversize",
-      color: "Blanco",
-      material: "Algodón frizado",
-      imagenes: [sweater1],
-    },
-    {
-      nombre: "Sweater oversize",
-      color: "Negro",
-      material: "Algodón frizado",
-      imagenes: [sweater3],
-    },
-    {
       nombre: "Buzo UruUY",
       color: "Natural",
       material: "Algodón frizado",
@@ -177,7 +161,7 @@ const productosPorCategoria = {
       imagenes: [bagSols],
     },
   ],
-  Peques: [
+    Guríses: [
     {
       nombre: "Buzo Sol",
       color: "Blanco",
@@ -323,7 +307,7 @@ const categoriasPorSeccion = {
     { nombre: "Sweaters", url: "/colecciones/sweaters" },
   ],
   vestimenta: [
-    { nombre: "Peques", url: "/vestimenta/peques" },
+      { nombre: "Guríses", url: "/vestimenta/gurises" },
     { nombre: "Mujeres", url: "/vestimenta/mujeres" },
     { nombre: "Hombres", url: "/vestimenta/hombres" },
   ],
@@ -337,7 +321,7 @@ const categoriasPorSeccion = {
 const seccionPorCategoria = {
   Remeras: "colecciones",
   Sweaters: "colecciones",
-  Peques: "vestimenta",
+    Guríses: "vestimenta",
   Mujeres: "vestimenta",
   Hombres: "vestimenta",
   Carteras: "accesorios",

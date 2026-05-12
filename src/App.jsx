@@ -49,11 +49,11 @@ const searchItems = [
   { nombre: "Bag SolUY", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
   { nombre: "Neceser", detalle: "Accesorios", url: "/accesorios/neceser" },
   { nombre: "Neceser Soy Celeste", detalle: "Accesorios · Neceser", url: "/accesorios/neceser" },
-  { nombre: "Peques", detalle: "Vestimenta", url: "/vestimenta/peques" },
-  { nombre: "Buzo Sol peques blanco", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
-  { nombre: "Buzo Sol peques negro", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
-  { nombre: "Camiseta Escudo peques celeste", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
-  { nombre: "Camiseta Escudo peques negra", detalle: "Vestimenta · Peques", url: "/vestimenta/peques" },
+  { nombre: "Guríses", detalle: "Vestimenta", url: "/vestimenta/gurises" },
+  { nombre: "Buzo Sol guríses blanco", detalle: "Vestimenta · Guríses", url: "/vestimenta/gurises" },
+  { nombre: "Buzo Sol guríses negro", detalle: "Vestimenta · Guríses", url: "/vestimenta/gurises" },
+  { nombre: "Camiseta Escudo guríses celeste", detalle: "Vestimenta · Guríses", url: "/vestimenta/gurises" },
+  { nombre: "Camiseta Escudo guríses negra", detalle: "Vestimenta · Guríses", url: "/vestimenta/gurises" },
   { nombre: "Mujeres", detalle: "Vestimenta", url: "/vestimenta/mujeres" },
   { nombre: "Buzo Escudo mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
   { nombre: "Buzo Sol mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
@@ -191,7 +191,7 @@ function App() {
     <div className="dropdown">
       <span>Vestimenta</span>
       <div className="dropdown-menu">
-        <Link to="/vestimenta/peques">Peques</Link>
+          <Link to="/vestimenta/gurises">Guríses</Link>
         <Link to="/vestimenta/mujeres">Mujeres</Link>
         <Link to="/vestimenta/hombres">Hombres</Link>
       </div>
@@ -349,7 +349,8 @@ function App() {
             <Route path="/colecciones/buzos" element={<Navigate to="/colecciones/sweaters" replace />} />
             <Route path="/colecciones/sweaters" element={<Categoria titulo="Sweaters" onAddToCart={addToCart} />} />
 
-  <Route path="/vestimenta/peques" element={<Categoria titulo="Peques" onAddToCart={addToCart} />} />
+  <Route path="/vestimenta/peques" element={<Navigate to="/vestimenta/gurises" replace />} />
+  <Route path="/vestimenta/gurises" element={<Categoria titulo="Guríses" onAddToCart={addToCart} />} />
   <Route path="/vestimenta/mujeres" element={<Categoria titulo="Mujeres" onAddToCart={addToCart} />} />
   <Route path="/vestimenta/hombres" element={<Categoria titulo="Hombres" onAddToCart={addToCart} />} />
 
