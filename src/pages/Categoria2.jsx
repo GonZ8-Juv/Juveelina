@@ -45,6 +45,8 @@ import hombreNegroRubio from "../assets/hombre/solamnegro.jpg";
 import hombreBlancoEspalda from "../assets/hombre/blancoespalda.jpg";
 import hombreMarronEspalda from "../assets/hombre/marronespalda.jpg";
 import hombreNegroEspalda from "../assets/hombre/negroespalda.jpg";
+import hombreBuzoUruUyFrente from "../assets/hombre/Buzouy.jpeg";
+import hombreBuzoUruUyEspalda from "../assets/hombre/Buzouyesp.jpeg";
 
 // PEQUES
 import pequeBuzoBlanco from "../assets/Peques/buzo-blanco.jpeg.jpeg";
@@ -129,9 +131,15 @@ const productosPorCategoria = {
       material: "Algodón frizado",
       imagenes: [sweater3],
     },
+    {
+      nombre: "Buzo UruUY",
+      color: "Natural",
+      material: "Algodón frizado",
+      imagenes: [hombreBuzoUruUyFrente, hombreBuzoUruUyEspalda],
+    },
   ],
 
-  Carteras: [
+    Carteras: [
     {
       nombre: "Cartera print",
       color: "Natural",
@@ -299,6 +307,12 @@ const productosPorCategoria = {
       color: "Negro",
       material: "Algodón",
       imagenes: [hombreNegroRubio, hombreNegroEspalda],
+    },
+    {
+      nombre: "Buzo UruUY",
+      color: "Natural",
+      material: "Algodón frizado",
+      imagenes: [hombreBuzoUruUyFrente, hombreBuzoUruUyEspalda],
     },
   ],
 };
