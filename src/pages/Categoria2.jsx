@@ -43,6 +43,8 @@ import hombreMarronEspalda from "../assets/hombre/marronespalda.jpg";
 import hombreNegroEspalda from "../assets/hombre/negroespalda.jpg";
 import hombreBuzoUruUyFrente from "../assets/hombre/Buzouy.jpeg";
 import hombreBuzoUruUyEspalda from "../assets/hombre/Buzouyesp.jpeg";
+import hombreBuzoGoldenFrente from "../assets/hombre/Solyoru.jpeg";
+import hombreBuzoGoldenEspalda from "../assets/hombre/solyoruesp.jpeg";
 
 // PEQUES
 import pequeBuzoBlanco from "../assets/Peques/buzo-blanco.jpeg.jpeg";
@@ -116,10 +118,16 @@ const productosPorCategoria = {
 
   Sweaters: [
     {
-      nombre: "Buzo UruUY",
+      nombre: "Buzo ROU",
       color: "Natural",
       material: "Algodón frizado",
       imagenes: [hombreBuzoUruUyFrente, hombreBuzoUruUyEspalda],
+    },
+    {
+      nombre: "Buzo golden",
+      color: "Natural",
+      material: "Algodón frizado",
+      imagenes: [hombreBuzoGoldenFrente, hombreBuzoGoldenEspalda],
     },
   ],
 
@@ -293,7 +301,7 @@ const productosPorCategoria = {
       imagenes: [hombreNegroRubio, hombreNegroEspalda],
     },
     {
-      nombre: "Buzo UruUY",
+      nombre: "Buzo ROU",
       color: "Natural",
       material: "Algodón frizado",
       imagenes: [hombreBuzoUruUyFrente, hombreBuzoUruUyEspalda],

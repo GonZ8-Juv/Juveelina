@@ -40,7 +40,8 @@ const searchItems = [
   { nombre: "Básica Escudo gris", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Básica Escudo marrón", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Sweaters", detalle: "Colecciones", url: "/colecciones/sweaters" },
-  { nombre: "Buzo UruUY", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
+  { nombre: "Buzo ROU", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
+  { nombre: "Buzo golden", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
   { nombre: "Carteras", detalle: "Accesorios", url: "/accesorios/carteras" },
   { nombre: "Cartera print", detalle: "Accesorios · Carteras", url: "/accesorios/carteras" },
   { nombre: "Bags", detalle: "Accesorios", url: "/accesorios/bags" },
@@ -60,7 +61,7 @@ const searchItems = [
   { nombre: "Hombres", detalle: "Vestimenta", url: "/vestimenta/hombres" },
   { nombre: "Buzo Sol hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
   { nombre: "Buzo Escudo hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
-  { nombre: "Buzo UruUY hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
+  { nombre: "Buzo ROU hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
 ];
 
 const topbarMessages = [
