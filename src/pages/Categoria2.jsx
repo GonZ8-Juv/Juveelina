@@ -127,7 +127,7 @@ const productosPorCategoria = {
       nombre: "Buzo golden",
       color: "Natural",
       material: "Algodón frizado",
-      imagenes: [hombreBuzoGoldenFrente, hombreBuzoGoldenEspalda],
+      imagenes: [hombreBuzoGoldenEspalda, hombreBuzoGoldenFrente],
     },
   ],
 
