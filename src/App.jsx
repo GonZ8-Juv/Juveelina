@@ -47,6 +47,7 @@ const searchItems = [
   { nombre: "Cardigan UruWhy beige", detalle: "Colecciones · Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
   { nombre: "Cardigan UruWhy gris", detalle: "Colecciones · Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
   { nombre: "Cardigan UruWhy rosa", detalle: "Colecciones · Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
+  { nombre: "Cardigan UruWhy azul", detalle: "Colecciones · Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
   { nombre: "Sweaters", detalle: "Colecciones", url: "/colecciones/sweaters" },
   { nombre: "Buzo Oriental uy", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
   { nombre: "Buzo Golden.uy", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },

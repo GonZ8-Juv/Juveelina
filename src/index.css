@@ -1048,9 +1048,30 @@ h2 {
 }
 
 .category-product {
+  position: relative;
   width: 100%;
   max-width: 300px;
   text-align: center;
+}
+
+.product-new-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #c4161c;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
 }
 
 .category-product img {
@@ -1235,6 +1256,9 @@ h2 {
 }
 
 .category-tabs a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #222;
   text-decoration: none;
   padding: 10px 16px;
@@ -1242,6 +1266,21 @@ h2 {
   border-radius: 999px;
   background: white;
   font-size: 15px;
+}
+
+.category-new-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #c4161c;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .category-tabs a:hover,

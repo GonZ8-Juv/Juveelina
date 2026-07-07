@@ -37,6 +37,8 @@ import cardiganGrisEspalda from "../assets/CardigansUruWhy/cardigan-gris-espalda
 import cardiganRosaPrincipal from "../assets/CardigansUruWhy/cardigan-rosa-principal.png";
 import cardiganRosaFrente from "../assets/CardigansUruWhy/cardigan-rosa-frente.png";
 import cardiganRosaEspalda from "../assets/CardigansUruWhy/cardigan-rosa-espalda.png";
+import cardiganAzulPrincipal from "../assets/CardigansUruWhy/cardigan-azul-principal.png";
+import cardiganAzulEspalda from "../assets/CardigansUruWhy/cardigan-azul-espalda.png";
 
 // ACCESORIOS
 import carteraPrint from "../assets/Carprint.jpeg";
@@ -164,18 +166,28 @@ const productosPorCategoria = {
       color: "Beige",
       material: "Tejido",
       imagenes: [cardiganBeigePrincipal, cardiganBeigeDetalle, cardiganBeigeEspalda],
+      nuevo: true,
     },
     {
       nombre: "Cardigan UruWhy",
       color: "Gris",
       material: "Tejido",
       imagenes: [cardiganGrisPrincipal, cardiganGrisDetalle, cardiganGrisEspalda],
+      nuevo: true,
     },
     {
       nombre: "Cardigan UruWhy",
       color: "Rosa",
       material: "Tejido",
       imagenes: [cardiganRosaPrincipal, cardiganRosaFrente, cardiganRosaEspalda],
+      nuevo: true,
+    },
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Azul",
+      material: "Tejido",
+      imagenes: [cardiganAzulPrincipal, cardiganAzulEspalda],
+      nuevo: true,
     },
   ],
 
@@ -312,18 +324,28 @@ const productosPorCategoria = {
       color: "Beige",
       material: "Tejido",
       imagenes: [cardiganBeigePrincipal, cardiganBeigeDetalle, cardiganBeigeEspalda],
+      nuevo: true,
     },
     {
       nombre: "Cardigan UruWhy",
       color: "Gris",
       material: "Tejido",
       imagenes: [cardiganGrisPrincipal, cardiganGrisDetalle, cardiganGrisEspalda],
+      nuevo: true,
     },
     {
       nombre: "Cardigan UruWhy",
       color: "Rosa",
       material: "Tejido",
       imagenes: [cardiganRosaPrincipal, cardiganRosaFrente, cardiganRosaEspalda],
+      nuevo: true,
+    },
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Azul",
+      material: "Tejido",
+      imagenes: [cardiganAzulPrincipal, cardiganAzulEspalda],
+      nuevo: true,
     },
     {
       nombre: "Remera sensación Uy",
@@ -468,9 +490,10 @@ function Categoria({ titulo, onAddToCart }) {
             to={categoria.url}
             key={categoria.url}
             className={categoria.nombre === titulo ? "active-category" : ""}
-          >
-            {categoria.nombre}
-          </Link>
+            >
+              <span>{categoria.nombre}</span>
+              {categoria.nombre === "Cardigans UruWhy" && <span className="category-new-badge">NEW</span>}
+            </Link>
         ))}
       </nav>
 
@@ -486,7 +509,8 @@ function Categoria({ titulo, onAddToCart }) {
                 setTalleSeleccionado("M");
               }}
             >
-              <img src={producto.imagenes[0]} alt={producto.nombre} />
+                {producto.nuevo && <span className="product-new-badge">NEW</span>}
+                <img src={producto.imagenes[0]} alt={producto.nombre} />
               <p>{producto.nombre}</p>
               <span>
                 {producto.color} · {producto.material}
