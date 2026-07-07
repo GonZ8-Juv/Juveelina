@@ -39,8 +39,8 @@ const searchItems = [
   { nombre: "Básica Escudo blanca", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Básica Escudo gris", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Básica Escudo marrón", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
-  { nombre: "Remera sensación Uy blanca", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
-  { nombre: "Remera sensación Uy negra", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
+  { nombre: "Sensación Uy blanca", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
+  { nombre: "Sensación Uy negra", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Buzos Uy", detalle: "Colecciones", url: "/colecciones/buzos-uy" },
   { nombre: "Buzo Uy medio sol", detalle: "Colecciones · Buzos Uy", url: "/colecciones/buzos-uy" },
   { nombre: "Cardigans UruWhy", detalle: "Colecciones", url: "/colecciones/cardigans-uruwhy" },
@@ -69,7 +69,7 @@ const searchItems = [
   { nombre: "Buzo patriota mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
   { nombre: "Buzo Vilaró mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
   { nombre: "Cardigan UruWhy mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
-  { nombre: "Remera sensación Uy mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
+  { nombre: "Sensación Uy mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
   { nombre: "Hombres", detalle: "Vestimenta", url: "/vestimenta/hombres" },
   { nombre: "Buzo Vilaró hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
   { nombre: "Buzo patriota hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
@@ -199,7 +199,10 @@ function App() {
       <div className="dropdown-menu">
       <Link to="/colecciones/remeras">Remeras</Link>
       <Link to="/colecciones/buzos-uy">Buzos Uy</Link>
-      <Link to="/colecciones/cardigans-uruwhy">Cardigans UruWhy</Link>
+      <Link to="/colecciones/cardigans-uruwhy" className="dropdown-new-link">
+        <span>Cardigans UruWhy</span>
+        <span className="dropdown-new-badge">NEW</span>
+      </Link>
       <Link to="/colecciones/sweaters">Sweaters</Link>
       </div>
     </div>

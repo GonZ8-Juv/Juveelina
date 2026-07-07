@@ -138,16 +138,18 @@ const productosPorCategoria = {
       imagenes: [remeraMarronEscudoFrente, remeraMarronEscudoEspalda],
     },
     {
-      nombre: "Remera sensación Uy",
+      nombre: "Sensación Uy",
       color: "Blanco",
       material: "Algodón",
       imagenes: [remeraSensacionBlancaFrente, remeraSensacionBlancaDetalle],
+      nuevo: true,
     },
     {
-      nombre: "Remera sensación Uy",
+      nombre: "Sensación Uy",
       color: "Negro",
       material: "Algodón",
       imagenes: [remeraSensacionNegraFrente, remeraSensacionNegraEspalda],
+      nuevo: true,
     },
   ],
 
@@ -167,6 +169,7 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganBeigePrincipal, cardiganBeigeDetalle, cardiganBeigeEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
     {
       nombre: "Cardigan UruWhy",
@@ -174,6 +177,7 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganGrisPrincipal, cardiganGrisDetalle, cardiganGrisEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
     {
       nombre: "Cardigan UruWhy",
@@ -181,6 +185,7 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganRosaPrincipal, cardiganRosaFrente, cardiganRosaEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
     {
       nombre: "Cardigan UruWhy",
@@ -188,6 +193,7 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganAzulPrincipal, cardiganAzulEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
   ],
 
@@ -325,6 +331,7 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganBeigePrincipal, cardiganBeigeDetalle, cardiganBeigeEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
     {
       nombre: "Cardigan UruWhy",
@@ -332,6 +339,7 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganGrisPrincipal, cardiganGrisDetalle, cardiganGrisEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
     {
       nombre: "Cardigan UruWhy",
@@ -339,6 +347,7 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganRosaPrincipal, cardiganRosaFrente, cardiganRosaEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
     {
       nombre: "Cardigan UruWhy",
@@ -346,21 +355,31 @@ const productosPorCategoria = {
       material: "Tejido",
       imagenes: [cardiganAzulPrincipal, cardiganAzulEspalda],
       nuevo: true,
+      talles: ["S/M", "L/XL"],
     },
     {
-      nombre: "Remera sensación Uy",
+      nombre: "Sensación Uy",
       color: "Blanco",
       material: "Algodón",
       imagenes: [remeraSensacionBlancaFrente, remeraSensacionBlancaDetalle],
+      nuevo: true,
     },
     {
-      nombre: "Remera sensación Uy",
+      nombre: "Sensación Uy",
       color: "Negro",
       material: "Algodón",
       imagenes: [remeraSensacionNegraFrente, remeraSensacionNegraEspalda],
+      nuevo: true,
     },
   ],
   Hombres: [
+    {
+      nombre: "Buzo Horse",
+      color: "Natural",
+      material: "Algodón frizado",
+      imagenes: [hombreHorseFrente, hombreHorseEspalda],
+      nuevo: true,
+    },
     {
       nombre: "Buzo Vilaró",
       color: "Blanco",
@@ -427,12 +446,6 @@ const productosPorCategoria = {
       material: "Algodón frizado",
       imagenes: [hombreBuzoUruUyFrente, hombreBuzoUruUyEspalda],
     },
-    {
-      nombre: "Buzo Horse",
-      color: "Natural",
-      material: "Algodón frizado",
-      imagenes: [hombreHorseFrente, hombreHorseEspalda],
-    },
   ],
 };
 
@@ -479,6 +492,7 @@ function Categoria({ titulo, onAddToCart }) {
   const seccionActiva = seccionPorCategoria[titulo] || "colecciones";
   const categorias = categoriasPorSeccion[seccionActiva];
   const usaTalles = seccionActiva !== "accesorios";
+  const tallesProductoActivo = productoActivo?.talles || tallesDisponibles;
 
   return (
     <main className={`category-page product-count-${productos.length}`}>
@@ -503,11 +517,11 @@ function Categoria({ titulo, onAddToCart }) {
             <div
               className="category-product"
               key={`${producto.nombre}-${producto.color}-${index}`}
-              onClick={() => {
-                setProductoActivo(producto);
-                setFotoActual(0);
-                setTalleSeleccionado("M");
-              }}
+                onClick={() => {
+                  setProductoActivo(producto);
+                  setFotoActual(0);
+                  setTalleSeleccionado((producto.talles || tallesDisponibles)[0]);
+                }}
             >
                 {producto.nuevo && <span className="product-new-badge">NEW</span>}
                 <img src={producto.imagenes[0]} alt={producto.nombre} />
@@ -541,7 +555,7 @@ function Categoria({ titulo, onAddToCart }) {
               <div className="size-selector">
                 <span>Talle</span>
                 <div>
-                  {tallesDisponibles.map((talle) => (
+                  {tallesProductoActivo.map((talle) => (
                     <button
                       type="button"
                       key={talle}
