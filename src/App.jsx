@@ -51,7 +51,6 @@ const searchItems = [
   { nombre: "Sweaters", detalle: "Colecciones", url: "/colecciones/sweaters" },
   { nombre: "Buzo Oriental uy", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
   { nombre: "Buzo Golden.uy", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
-  { nombre: "Buzo Golden.Uy rev", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
   { nombre: "Carteras", detalle: "Accesorios", url: "/accesorios/carteras" },
   { nombre: "Cartera print", detalle: "Accesorios · Carteras", url: "/accesorios/carteras" },
   { nombre: "Bags", detalle: "Accesorios", url: "/accesorios/bags" },

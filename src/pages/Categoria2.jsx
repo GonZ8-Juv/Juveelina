@@ -211,12 +211,6 @@ const productosPorCategoria = {
       material: "Algodón frizado",
       imagenes: [hombreBuzoGoldenEspalda, hombreBuzoGoldenFrente],
     },
-    {
-      nombre: "Buzo Golden.Uy rev",
-      color: "Natural",
-      material: "Algodón frizado",
-      imagenes: [hombreBuzoGoldenFrente, hombreBuzoGoldenEspalda],
-    },
   ],
 
     Carteras: [
