@@ -38,6 +38,7 @@ import cardiganRosaPrincipal from "../assets/CardigansUruWhy/cardigan-rosa-princ
 import cardiganRosaFrente from "../assets/CardigansUruWhy/cardigan-rosa-frente.png";
 import cardiganRosaEspalda from "../assets/CardigansUruWhy/cardigan-rosa-espalda.png";
 import cardiganAzulPrincipal from "../assets/CardigansUruWhy/cardigan-azul-principal.png";
+import cardiganAzulEntero from "../assets/CardigansUruWhy/cardigan-azul-entero.png";
 import cardiganAzulEspalda from "../assets/CardigansUruWhy/cardigan-azul-espalda.png";
 
 // ACCESORIOS
@@ -90,6 +91,20 @@ import mujerSolNegro from "../assets/mujer/solnegro2.jpg";
 const productosPorCategoria = {
   Remeras: [
     {
+      nombre: "Sensación Uy",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [remeraSensacionBlancaDetalle, remeraSensacionBlancaFrente],
+      nuevo: true,
+    },
+    {
+      nombre: "Sensación Uy",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [remeraSensacionNegraFrente, remeraSensacionNegraEspalda],
+      nuevo: true,
+    },
+    {
       nombre: "Básica Sol",
       color: "Negro",
       material: "Algodón",
@@ -137,20 +152,6 @@ const productosPorCategoria = {
       material: "Algodón",
       imagenes: [remeraMarronEscudoFrente, remeraMarronEscudoEspalda],
     },
-    {
-      nombre: "Sensación Uy",
-      color: "Blanco",
-      material: "Algodón",
-      imagenes: [remeraSensacionBlancaFrente, remeraSensacionBlancaDetalle],
-      nuevo: true,
-    },
-    {
-      nombre: "Sensación Uy",
-      color: "Negro",
-      material: "Algodón",
-      imagenes: [remeraSensacionNegraFrente, remeraSensacionNegraEspalda],
-      nuevo: true,
-    },
   ],
 
   "Buzos Uy": [
@@ -191,7 +192,7 @@ const productosPorCategoria = {
       nombre: "Cardigan UruWhy",
       color: "Azul",
       material: "Tejido",
-      imagenes: [cardiganAzulPrincipal, cardiganAzulEspalda],
+      imagenes: [cardiganAzulPrincipal, cardiganAzulEntero, cardiganAzulEspalda],
       nuevo: true,
       talles: ["S/M", "L/XL"],
     },
@@ -353,7 +354,7 @@ const productosPorCategoria = {
       nombre: "Cardigan UruWhy",
       color: "Azul",
       material: "Tejido",
-      imagenes: [cardiganAzulPrincipal, cardiganAzulEspalda],
+      imagenes: [cardiganAzulPrincipal, cardiganAzulEntero, cardiganAzulEspalda],
       nuevo: true,
       talles: ["S/M", "L/XL"],
     },
