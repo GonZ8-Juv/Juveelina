@@ -39,6 +39,14 @@ const searchItems = [
   { nombre: "Básica Escudo blanca", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Básica Escudo gris", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Básica Escudo marrón", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
+  { nombre: "Remera sensación Uy blanca", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
+  { nombre: "Remera sensación Uy negra", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
+  { nombre: "Buzos Uy", detalle: "Colecciones", url: "/colecciones/buzos-uy" },
+  { nombre: "Buzo Uy medio sol", detalle: "Colecciones · Buzos Uy", url: "/colecciones/buzos-uy" },
+  { nombre: "Cardigans UruWhy", detalle: "Colecciones", url: "/colecciones/cardigans-uruwhy" },
+  { nombre: "Cardigan UruWhy beige", detalle: "Colecciones · Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
+  { nombre: "Cardigan UruWhy gris", detalle: "Colecciones · Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
+  { nombre: "Cardigan UruWhy rosa", detalle: "Colecciones · Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
   { nombre: "Sweaters", detalle: "Colecciones", url: "/colecciones/sweaters" },
   { nombre: "Buzo Oriental uy", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
   { nombre: "Buzo Golden.uy", detalle: "Colecciones · Sweaters", url: "/colecciones/sweaters" },
@@ -59,10 +67,13 @@ const searchItems = [
   { nombre: "Mujeres", detalle: "Vestimenta", url: "/vestimenta/mujeres" },
   { nombre: "Buzo patriota mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
   { nombre: "Buzo Vilaró mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
+  { nombre: "Cardigan UruWhy mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
+  { nombre: "Remera sensación Uy mujer", detalle: "Vestimenta · Mujeres", url: "/vestimenta/mujeres" },
   { nombre: "Hombres", detalle: "Vestimenta", url: "/vestimenta/hombres" },
   { nombre: "Buzo Vilaró hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
   { nombre: "Buzo patriota hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
   { nombre: "Buzo Oriental uy hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
+  { nombre: "Buzo Horse hombre", detalle: "Vestimenta · Hombres", url: "/vestimenta/hombres" },
 ];
 
 const topbarMessages = [
@@ -186,6 +197,8 @@ function App() {
       <span>Colecciones</span>
       <div className="dropdown-menu">
       <Link to="/colecciones/remeras">Remeras</Link>
+      <Link to="/colecciones/buzos-uy">Buzos Uy</Link>
+      <Link to="/colecciones/cardigans-uruwhy">Cardigans UruWhy</Link>
       <Link to="/colecciones/sweaters">Sweaters</Link>
       </div>
     </div>
@@ -348,6 +361,8 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path="/colecciones/remeras" element={<Categoria titulo="Remeras" onAddToCart={addToCart} />} />
+            <Route path="/colecciones/buzos-uy" element={<Categoria titulo="Buzos Uy" onAddToCart={addToCart} />} />
+            <Route path="/colecciones/cardigans-uruwhy" element={<Categoria titulo="Cardigans UruWhy" onAddToCart={addToCart} />} />
             <Route path="/colecciones/buzos" element={<Navigate to="/colecciones/sweaters" replace />} />
             <Route path="/colecciones/sweaters" element={<Categoria titulo="Sweaters" onAddToCart={addToCart} />} />
 

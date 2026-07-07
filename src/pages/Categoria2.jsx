@@ -18,6 +18,25 @@ import remeraBlancaEscudoFrente from "../assets/Remeras/RBFE.jpg";
 import remeraBlancaEscudoEspalda from "../assets/Remeras/RBBE.jpg";
 import remeraMarronEscudoFrente from "../assets/Remeras/RMFE.jpg";
 import remeraMarronEscudoEspalda from "../assets/Remeras/RMBE.jpg";
+import remeraSensacionBlancaFrente from "../assets/RemerasSensacionUy/remera-sensacion-blanca-frente.png";
+import remeraSensacionBlancaDetalle from "../assets/RemerasSensacionUy/remera-sensacion-blanca-detalle.png";
+import remeraSensacionNegraFrente from "../assets/RemerasSensacionUy/remera-sensacion-negra-frente.jpg";
+import remeraSensacionNegraEspalda from "../assets/RemerasSensacionUy/remera-sensacion-negra-espalda.jpg";
+
+// BUZOS UY
+import buzoUyMedioSolFrente from "../assets/BuzosUy/buzo-medio-sol-frente.png";
+import buzoUyMedioSolEspalda from "../assets/BuzosUy/buzo-medio-sol-espalda.png";
+
+// CARDIGANS URUWHY
+import cardiganBeigePrincipal from "../assets/CardigansUruWhy/cardigan-beige-principal.jpg";
+import cardiganBeigeDetalle from "../assets/CardigansUruWhy/cardigan-beige-detalle.jpg";
+import cardiganBeigeEspalda from "../assets/CardigansUruWhy/cardigan-beige-espalda.jpg";
+import cardiganGrisPrincipal from "../assets/CardigansUruWhy/cardigan-gris-principal.jpg";
+import cardiganGrisDetalle from "../assets/CardigansUruWhy/cardigan-gris-detalle.jpg";
+import cardiganGrisEspalda from "../assets/CardigansUruWhy/cardigan-gris-espalda.jpg";
+import cardiganRosaPrincipal from "../assets/CardigansUruWhy/cardigan-rosa-principal.png";
+import cardiganRosaFrente from "../assets/CardigansUruWhy/cardigan-rosa-frente.png";
+import cardiganRosaEspalda from "../assets/CardigansUruWhy/cardigan-rosa-espalda.png";
 
 // ACCESORIOS
 import carteraPrint from "../assets/Carprint.jpeg";
@@ -45,6 +64,8 @@ import hombreBuzoUruUyFrente from "../assets/hombre/Buzouy.jpeg";
 import hombreBuzoUruUyEspalda from "../assets/hombre/Buzouyesp.jpeg";
 import hombreBuzoGoldenFrente from "../assets/hombre/Solyoru.jpeg";
 import hombreBuzoGoldenEspalda from "../assets/hombre/solyoruesp.jpeg";
+import hombreHorseFrente from "../assets/hombre/Horse.png";
+import hombreHorseEspalda from "../assets/hombre/Horse back.png";
 
 // PEQUES
 import pequeBuzoBlanco from "../assets/Peques/buzo-blanco.jpeg.jpeg";
@@ -113,6 +134,48 @@ const productosPorCategoria = {
       color: "Marrón",
       material: "Algodón",
       imagenes: [remeraMarronEscudoFrente, remeraMarronEscudoEspalda],
+    },
+    {
+      nombre: "Remera sensación Uy",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [remeraSensacionBlancaFrente, remeraSensacionBlancaDetalle],
+    },
+    {
+      nombre: "Remera sensación Uy",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [remeraSensacionNegraFrente, remeraSensacionNegraEspalda],
+    },
+  ],
+
+  "Buzos Uy": [
+    {
+      nombre: "Buzo Uy medio sol",
+      color: "Natural",
+      material: "Algodón frizado",
+      imagenes: [buzoUyMedioSolFrente, buzoUyMedioSolEspalda],
+    },
+  ],
+
+  "Cardigans UruWhy": [
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Beige",
+      material: "Tejido",
+      imagenes: [cardiganBeigePrincipal, cardiganBeigeDetalle, cardiganBeigeEspalda],
+    },
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Gris",
+      material: "Tejido",
+      imagenes: [cardiganGrisPrincipal, cardiganGrisDetalle, cardiganGrisEspalda],
+    },
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Rosa",
+      material: "Tejido",
+      imagenes: [cardiganRosaPrincipal, cardiganRosaFrente, cardiganRosaEspalda],
     },
   ],
 
@@ -244,6 +307,36 @@ const productosPorCategoria = {
       material: "Algodón",
       imagenes: [mujerSolNegro, mujerEspaldaNegro],
     },
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Beige",
+      material: "Tejido",
+      imagenes: [cardiganBeigePrincipal, cardiganBeigeDetalle, cardiganBeigeEspalda],
+    },
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Gris",
+      material: "Tejido",
+      imagenes: [cardiganGrisPrincipal, cardiganGrisDetalle, cardiganGrisEspalda],
+    },
+    {
+      nombre: "Cardigan UruWhy",
+      color: "Rosa",
+      material: "Tejido",
+      imagenes: [cardiganRosaPrincipal, cardiganRosaFrente, cardiganRosaEspalda],
+    },
+    {
+      nombre: "Remera sensación Uy",
+      color: "Blanco",
+      material: "Algodón",
+      imagenes: [remeraSensacionBlancaFrente, remeraSensacionBlancaDetalle],
+    },
+    {
+      nombre: "Remera sensación Uy",
+      color: "Negro",
+      material: "Algodón",
+      imagenes: [remeraSensacionNegraFrente, remeraSensacionNegraEspalda],
+    },
   ],
   Hombres: [
     {
@@ -312,12 +405,20 @@ const productosPorCategoria = {
       material: "Algodón frizado",
       imagenes: [hombreBuzoUruUyFrente, hombreBuzoUruUyEspalda],
     },
+    {
+      nombre: "Buzo Horse",
+      color: "Natural",
+      material: "Algodón frizado",
+      imagenes: [hombreHorseFrente, hombreHorseEspalda],
+    },
   ],
 };
 
 const categoriasPorSeccion = {
   colecciones: [
     { nombre: "Remeras", url: "/colecciones/remeras" },
+    { nombre: "Buzos Uy", url: "/colecciones/buzos-uy" },
+    { nombre: "Cardigans UruWhy", url: "/colecciones/cardigans-uruwhy" },
     { nombre: "Sweaters", url: "/colecciones/sweaters" },
   ],
   vestimenta: [
@@ -334,6 +435,8 @@ const categoriasPorSeccion = {
 
 const seccionPorCategoria = {
   Remeras: "colecciones",
+  "Buzos Uy": "colecciones",
+  "Cardigans UruWhy": "colecciones",
   Sweaters: "colecciones",
     Guríses: "vestimenta",
   Mujeres: "vestimenta",
