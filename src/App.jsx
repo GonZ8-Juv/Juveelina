@@ -14,6 +14,7 @@ import jmarr from "./assets/jmarr-2x.png";
 import ing from "./assets/ing.png";
 import whatsapp from "./assets/whatsapp.png";
 import mail from "./assets/mail.png";
+import cardigansApilados from "./assets/Cardigans apilados.jpeg";
 
 import { FaInstagram, FaSearch, FaShoppingBag, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -113,6 +114,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [cartOpen, setCartOpen] = useState(false);
   const [cartPromptOpen, setCartPromptOpen] = useState(false);
+  const [newArrivalsOpen, setNewArrivalsOpen] = useState(true);
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem("juveelina-cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -179,6 +181,39 @@ function App() {
   return (
     <div>
       <ScrollToTop />
+
+      {newArrivalsOpen && (
+        <div className="new-arrivals-backdrop" onClick={() => setNewArrivalsOpen(false)}>
+          <section className="new-arrivals-popup" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="new-arrivals-close"
+              aria-label="Cerrar novedades"
+              onClick={() => setNewArrivalsOpen(false)}
+            >
+              ×
+            </button>
+            <div className="new-arrivals-banner">NUEVOS INGRESOS!</div>
+            <Link
+              to="/colecciones/cardigans-uruwhy"
+              className="new-arrivals-image-link"
+              onClick={() => setNewArrivalsOpen(false)}
+            >
+              <img src={cardigansApilados} alt="Cardigans UruWhy" />
+            </Link>
+            <div className="new-arrivals-content">
+              <h2>Cardigans</h2>
+              <Link
+                to="/colecciones/cardigans-uruwhy"
+                className="new-arrivals-button"
+                onClick={() => setNewArrivalsOpen(false)}
+              >
+                Ver más
+              </Link>
+            </div>
+          </section>
+        </div>
+      )}
 
       {/* TOP BAR */}
       <div className="topbar">

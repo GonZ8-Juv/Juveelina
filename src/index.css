@@ -102,6 +102,27 @@ h2 {
 }
 
 @media (max-width: 768px) {
+  .new-arrivals-backdrop {
+    padding: 16px;
+  }
+
+  .new-arrivals-popup {
+    width: min(360px, 100%);
+  }
+
+  .new-arrivals-banner {
+    font-size: 18px;
+    padding: 13px 42px 12px 18px;
+  }
+
+  .new-arrivals-content {
+    padding: 16px 18px 20px;
+  }
+
+  .new-arrivals-content h2 {
+    font-size: 22px;
+  }
+
   .hero {
     height: 350px;
     background-position: center;
@@ -176,6 +197,89 @@ h2 {
   padding: 7px 0;
   font-size: 12px;
   letter-spacing: 1.2px;
+}
+
+.new-arrivals-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(20, 16, 12, 0.38);
+  backdrop-filter: blur(8px);
+}
+
+.new-arrivals-popup {
+  position: relative;
+  width: min(420px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: hidden auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  text-align: center;
+}
+
+.new-arrivals-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.new-arrivals-banner {
+  background: #c4161c;
+  color: #fff;
+  padding: 14px 44px 13px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.new-arrivals-image-link {
+  display: block;
+}
+
+.new-arrivals-image-link img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.new-arrivals-content {
+  padding: 18px 24px 24px;
+}
+
+.new-arrivals-content h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+.new-arrivals-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 28px;
+  background: #111;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 .topbar p {
