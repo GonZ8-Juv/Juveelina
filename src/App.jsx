@@ -15,6 +15,8 @@ import ing from "./assets/ing.png";
 import whatsapp from "./assets/whatsapp.png";
 import mail from "./assets/mail.png";
 import cardigansApilados from "./assets/Cardigans apilados.jpeg";
+import cardiganBeigeDetalle from "./assets/CardigansUruWhy/cardigan-beige-detalle.jpg";
+import cardiganGrisDetalle from "./assets/CardigansUruWhy/cardigan-gris-detalle.jpg";
 
 import { FaInstagram, FaSearch, FaShoppingBag, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -29,6 +31,11 @@ import Terminos from "./pages/Terminos.jsx";
 import "./index.css";
 
 const heroes = [hero4, hero2, hero3];
+const newArrivalsImages = [
+  cardigansApilados,
+  cardiganBeigeDetalle,
+  cardiganGrisDetalle,
+];
 
 const searchItems = [
   { nombre: "Remeras", detalle: "Colecciones", url: "/colecciones/remeras" },
@@ -115,6 +122,7 @@ function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartPromptOpen, setCartPromptOpen] = useState(false);
   const [newArrivalsOpen, setNewArrivalsOpen] = useState(true);
+  const [currentNewArrival, setCurrentNewArrival] = useState(0);
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem("juveelina-cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -154,6 +162,16 @@ function App() {
   useEffect(() => {
     localStorage.setItem("juveelina-cart", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  useEffect(() => {
+    if (!newArrivalsOpen) return undefined;
+
+    const imageInterval = setInterval(() => {
+      setCurrentNewArrival((prev) => (prev + 1) % newArrivalsImages.length);
+    }, 3000);
+
+    return () => clearInterval(imageInterval);
+  }, [newArrivalsOpen]);
 
   useEffect(() => {
     const heroInterval = setInterval(() => {
@@ -199,10 +217,14 @@ function App() {
               className="new-arrivals-image-link"
               onClick={() => setNewArrivalsOpen(false)}
             >
-              <img src={cardigansApilados} alt="Cardigans UruWhy" />
+              <img
+                key={currentNewArrival}
+                src={newArrivalsImages[currentNewArrival]}
+                alt="Cardigans UruWhy"
+              />
             </Link>
             <div className="new-arrivals-content">
-              <h2>Cardigans</h2>
+              <h2>Cardigans UruWhy</h2>
               <Link
                 to="/colecciones/cardigans-uruwhy"
                 className="new-arrivals-button"
