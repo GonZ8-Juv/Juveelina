@@ -88,7 +88,7 @@ import mujerSolGris2 from "../assets/mujer/solgris2.jpg";
 import mujerSolMarron from "../assets/mujer/solmarron.jpg";
 import mujerSolNegro from "../assets/mujer/solnegro2.jpg";
 
-const productosPorCategoria = {
+export const productosPorCategoria = {
   Remeras: [
     {
       nombre: "Sensación Uy",
@@ -478,55 +478,69 @@ const seccionPorCategoria = {
 
 const tallesDisponibles = ["S", "M", "L", "XL", "XXL"];
 
-function Categoria({ titulo, onAddToCart }) {
+const categoriasDeRopa = [
+  "Cardigans UruWhy",
+  "Remeras",
+  "Buzos Uy",
+  "Sweaters",
+  "Guríses",
+  "Mujeres",
+  "Hombres",
+];
+
+const categoriaPorProductoVisto = new Map();
+
+export const productosTienda = categoriasDeRopa
+  .flatMap((categoria) =>
+    (productosPorCategoria[categoria] || []).map((producto) => ({
+      ...producto,
+      categoria,
+    }))
+  )
+  .filter((producto) => {
+    const identidad = `${producto.nombre}-${producto.color}`;
+    const categoriaVista = categoriaPorProductoVisto.get(identidad);
+
+    if (categoriaVista && categoriaVista !== producto.categoria) return false;
+    if (!categoriaVista) categoriaPorProductoVisto.set(identidad, producto.categoria);
+    return true;
+  })
+  .sort((a, b) => Number(Boolean(b.nuevo)) - Number(Boolean(a.nuevo)));
+
+export function ProductGallery({
+  productos,
+  onAddToCart,
+  categoriaPredeterminada,
+  className = "",
+}) {
   const [productoActivo, setProductoActivo] = useState(null);
   const [fotoActual, setFotoActual] = useState(0);
   const [talleSeleccionado, setTalleSeleccionado] = useState("M");
 
-  const productos = productosPorCategoria[titulo] || [];
-  const seccionActiva = seccionPorCategoria[titulo] || "colecciones";
-  const categorias = categoriasPorSeccion[seccionActiva];
-  const usaTalles = seccionActiva !== "accesorios";
+  const usaTalles = categoriaPredeterminada !== "accesorios";
   const tallesProductoActivo = productoActivo?.talles || tallesDisponibles;
 
   return (
-    <main className={`category-page product-count-${productos.length}`}>
-      <h1>{titulo}</h1>
-
-      <nav className="category-tabs" aria-label="Categorías">
-        {categorias.map((categoria) => (
-          <Link
-            to={categoria.url}
-            key={categoria.url}
-            className={categoria.nombre === titulo ? "active-category" : ""}
-            >
-              <span>{categoria.nombre}</span>
-              {categoria.nombre === "Cardigans UruWhy" && <span className="category-new-badge">NEW</span>}
-            </Link>
+    <>
+      <div className={`category-products ${className}`.trim()}>
+        {productos.map((producto, index) => (
+          <div
+            className="category-product"
+            key={`${producto.nombre}-${producto.color}-${producto.imagenes[0]}-${index}`}
+            onClick={() => {
+              setProductoActivo(producto);
+              setFotoActual(0);
+              setTalleSeleccionado((producto.talles || tallesDisponibles)[0]);
+            }}
+          >
+            {producto.nuevo && <span className="product-new-badge">NEW</span>}
+            <img src={producto.imagenes[0]} alt={producto.nombre} />
+            <p>{producto.nombre}</p>
+            <span>
+              {producto.color} · {producto.material}
+            </span>
+          </div>
         ))}
-      </nav>
-
-      <div className="category-layout">
-        <div className="category-products">
-          {productos.map((producto, index) => (
-            <div
-              className="category-product"
-              key={`${producto.nombre}-${producto.color}-${index}`}
-                onClick={() => {
-                  setProductoActivo(producto);
-                  setFotoActual(0);
-                  setTalleSeleccionado((producto.talles || tallesDisponibles)[0]);
-                }}
-            >
-                {producto.nuevo && <span className="product-new-badge">NEW</span>}
-                <img src={producto.imagenes[0]} alt={producto.nombre} />
-              <p>{producto.nombre}</p>
-              <span>
-                {producto.color} · {producto.material}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
 
       {productoActivo && (
@@ -573,7 +587,7 @@ function Categoria({ titulo, onAddToCart }) {
                   color: productoActivo.color,
                   material: productoActivo.material,
                   talle: usaTalles ? talleSeleccionado : null,
-                  categoria: titulo,
+                  categoria: productoActivo.categoria || categoriaPredeterminada,
                   imagen: productoActivo.imagenes[0],
                 });
                 setProductoActivo(null);
@@ -596,6 +610,41 @@ function Categoria({ titulo, onAddToCart }) {
           </div>
         </div>
       )}
+    </>
+  );
+}
+
+function Categoria({ titulo, onAddToCart }) {
+  const productos = productosPorCategoria[titulo] || [];
+  const seccionActiva = seccionPorCategoria[titulo] || "colecciones";
+  const categorias = categoriasPorSeccion[seccionActiva];
+
+  return (
+    <main className={`category-page product-count-${productos.length}`}>
+      <h1>{titulo}</h1>
+
+      <nav className="category-tabs" aria-label="Categorías">
+        {categorias.map((categoria) => (
+          <Link
+            to={categoria.url}
+            key={categoria.url}
+            className={categoria.nombre === titulo ? "active-category" : ""}
+          >
+            <span>{categoria.nombre}</span>
+            {categoria.nombre === "Cardigans UruWhy" && (
+              <span className="category-new-badge">NEW</span>
+            )}
+          </Link>
+        ))}
+      </nav>
+
+      <div className="category-layout">
+        <ProductGallery
+          productos={productos}
+          onAddToCart={onAddToCart}
+          categoriaPredeterminada={seccionActiva === "accesorios" ? "accesorios" : titulo}
+        />
+      </div>
     </main>
   );
 }

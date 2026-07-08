@@ -418,7 +418,7 @@ function App() {
 
             {/* Mostrar pag */}
             <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home onAddToCart={addToCart} />} />
 
             <Route path="/colecciones/remeras" element={<Categoria titulo="Remeras" onAddToCart={addToCart} />} />
             <Route path="/colecciones/buzos-uy" element={<Categoria titulo="Buzos Uy" onAddToCart={addToCart} />} />
@@ -443,12 +443,6 @@ function App() {
  {/* Pie de pag */} 
 
  <footer className="footer">
-
-{/* NEWSLETTER */}
-<div className="footer-newsletter">
-  <h3>ɴᴏ ᴛᴇ ǫᴜᴇᴅᴇꜱ ᴄᴏɴ ʟᴀ ᴍᴀɴɪᴊᴀ, ᴠᴇꜱᴛɪʟᴀ!</h3>
-  
-</div>
 
 {/* COLUMNAS */}
 <div className="footer-columns">

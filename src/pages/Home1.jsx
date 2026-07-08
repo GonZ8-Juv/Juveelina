@@ -1,22 +1,35 @@
 import camis from "../assets/Peques/Camisceles.jpeg";
 import buzo from "../assets/Carprint.jpeg";
 import remera from "../assets/Peques/buzo-blanco.jpeg.jpeg";
+import { ProductGallery, productosTienda } from "./Categoria2.jsx";
 
-function Home() {
+function Home({ onAddToCart }) {
   return (
-    <section className="home-featured">
-      <div className="featured-card">
-        <img src={camis} />
-      </div>
+    <>
+      <section className="home-featured">
+        <div className="featured-card">
+          <img src={camis} alt="Colección infantil Juveelina" />
+        </div>
 
-      <div className="featured-card">
-        <img src={buzo} />
-      </div>
+        <div className="featured-card">
+          <img src={buzo} alt="Accesorios Juveelina" />
+        </div>
 
-      <div className="featured-card">
-        <img src={remera} />
-      </div>
-    </section>
+        <div className="featured-card">
+          <img src={remera} alt="Ropa Juveelina" />
+        </div>
+      </section>
+
+      <section className="home-store" aria-labelledby="home-store-title">
+        <h2 id="home-store-title">NO TE QUEDES CON LA MANIJA, VESTILA!</h2>
+        <ProductGallery
+          productos={productosTienda}
+          onAddToCart={onAddToCart}
+          categoriaPredeterminada="Ropa"
+          className="home-products-grid"
+        />
+      </section>
+    </>
   );
 }
 
