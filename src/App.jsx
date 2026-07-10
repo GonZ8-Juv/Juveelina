@@ -115,8 +115,10 @@ function ScrollToTop() {
 }
 
 function App() {
+  const location = useLocation();
   const [currentHero, setCurrentHero] = useState(0);
   const [currentMessage, setCurrentMessage] = useState(0);
+  const [pageLoading, setPageLoading] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [cartOpen, setCartOpen] = useState(false);
@@ -164,6 +166,23 @@ function App() {
   }, [cartItems]);
 
   useEffect(() => {
+    const isProductPage =
+      location.pathname.startsWith("/colecciones/") ||
+      location.pathname.startsWith("/vestimenta/") ||
+      location.pathname.startsWith("/accesorios/");
+
+    if (!isProductPage) {
+      setPageLoading(false);
+      return undefined;
+    }
+
+    setPageLoading(true);
+    const loadingTimer = setTimeout(() => setPageLoading(false), 680);
+
+    return () => clearTimeout(loadingTimer);
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (!newArrivalsOpen) return undefined;
 
     const imageInterval = setInterval(() => {
@@ -199,6 +218,13 @@ function App() {
   return (
     <div>
       <ScrollToTop />
+
+      {pageLoading && (
+        <div className="page-loading-cloud" aria-live="polite" aria-label="Cargando productos">
+          <span className="page-loading-spinner" />
+          <p>Cargando</p>
+        </div>
+      )}
 
       {newArrivalsOpen && (
         <div className="new-arrivals-backdrop" onClick={() => setNewArrivalsOpen(false)}>
@@ -417,28 +443,30 @@ function App() {
 
 
             {/* Mostrar pag */}
-            <Routes>
-            <Route path="/" element={<Home onAddToCart={addToCart} />} />
+            <main className="page-shell" key={location.pathname}>
+              <Routes location={location}>
+                <Route path="/" element={<Home onAddToCart={addToCart} />} />
 
-            <Route path="/colecciones/remeras" element={<Categoria titulo="Remeras" onAddToCart={addToCart} />} />
-            <Route path="/colecciones/buzos-uy" element={<Categoria titulo="Buzos Uy" onAddToCart={addToCart} />} />
-            <Route path="/colecciones/cardigans-uruwhy" element={<Categoria titulo="Cardigans UruWhy" onAddToCart={addToCart} />} />
-            <Route path="/colecciones/buzos" element={<Navigate to="/colecciones/sweaters" replace />} />
-            <Route path="/colecciones/sweaters" element={<Categoria titulo="Sweaters" onAddToCart={addToCart} />} />
+                <Route path="/colecciones/remeras" element={<Categoria titulo="Remeras" onAddToCart={addToCart} />} />
+                <Route path="/colecciones/buzos-uy" element={<Categoria titulo="Buzos Uy" onAddToCart={addToCart} />} />
+                <Route path="/colecciones/cardigans-uruwhy" element={<Categoria titulo="Cardigans UruWhy" onAddToCart={addToCart} />} />
+                <Route path="/colecciones/buzos" element={<Navigate to="/colecciones/sweaters" replace />} />
+                <Route path="/colecciones/sweaters" element={<Categoria titulo="Sweaters" onAddToCart={addToCart} />} />
 
-  <Route path="/vestimenta/peques" element={<Navigate to="/vestimenta/gurises" replace />} />
-  <Route path="/vestimenta/gurises" element={<Categoria titulo="Guríses" onAddToCart={addToCart} />} />
-  <Route path="/vestimenta/mujeres" element={<Categoria titulo="Mujeres" onAddToCart={addToCart} />} />
-  <Route path="/vestimenta/hombres" element={<Categoria titulo="Hombres" onAddToCart={addToCart} />} />
+                <Route path="/vestimenta/peques" element={<Navigate to="/vestimenta/gurises" replace />} />
+                <Route path="/vestimenta/gurises" element={<Categoria titulo="Guríses" onAddToCart={addToCart} />} />
+                <Route path="/vestimenta/mujeres" element={<Categoria titulo="Mujeres" onAddToCart={addToCart} />} />
+                <Route path="/vestimenta/hombres" element={<Categoria titulo="Hombres" onAddToCart={addToCart} />} />
 
-  <Route path="/accesorios/carteras" element={<Categoria titulo="Carteras" onAddToCart={addToCart} />} />
-  <Route path="/accesorios/bags" element={<Categoria titulo="Bags" onAddToCart={addToCart} />} />
-  <Route path="/accesorios/neceser" element={<Categoria titulo="Neceser" onAddToCart={addToCart} />} />
-  <Route path="/contacto" element={<Contacto />} />
-  <Route path="/nosotros" element={<Nosotros />} />
-  <Route path="/como-comprar" element={<ComoComprar />} />
-  <Route path="/terminos-y-condiciones" element={<Terminos />} />
-</Routes>
+                <Route path="/accesorios/carteras" element={<Categoria titulo="Carteras" onAddToCart={addToCart} />} />
+                <Route path="/accesorios/bags" element={<Categoria titulo="Bags" onAddToCart={addToCart} />} />
+                <Route path="/accesorios/neceser" element={<Categoria titulo="Neceser" onAddToCart={addToCart} />} />
+                <Route path="/contacto" element={<Contacto />} />
+                <Route path="/nosotros" element={<Nosotros />} />
+                <Route path="/como-comprar" element={<ComoComprar />} />
+                <Route path="/terminos-y-condiciones" element={<Terminos />} />
+              </Routes>
+            </main>
 
  {/* Pie de pag */} 
 

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaInstagram, FaShareAlt, FaWhatsapp } from "react-icons/fa";
 
 // REMERAS
 import remeraGrisSolFrente from "../assets/Remeras/RGF.jpeg";
@@ -478,6 +479,29 @@ const seccionPorCategoria = {
 
 const tallesDisponibles = ["S", "M", "L", "XL", "XXL"];
 
+const getProductDescription = (producto, categoriaPredeterminada) => {
+  const categoria = producto.categoria || categoriaPredeterminada;
+  const material = producto.material?.toLowerCase() || "materiales seleccionados";
+
+  if (categoria === "accesorios") {
+    return `Accesorio de ${material}, pensado para sumar identidad uruguaya a todos los días.`;
+  }
+
+  if (producto.nombre.toLowerCase().includes("cardigan")) {
+    return `Cardigan de ${material}, cómodo y versátil, con detalles inspirados en Uruguay.`;
+  }
+
+  if (producto.nombre.toLowerCase().includes("camiseta")) {
+    return `Camiseta de ${material}, liviana y cómoda para acompañar todos los días.`;
+  }
+
+  if (producto.nombre.toLowerCase().includes("remera")) {
+    return `Remera de ${material}, con diseño urbano y detalles de identidad uruguaya.`;
+  }
+
+  return `Buzo de ${material}, cómodo y con presencia urbana para vestir la cultura uruguaya.`;
+};
+
 const categoriasDeRopa = [
   "Cardigans UruWhy",
   "Remeras",
@@ -514,11 +538,40 @@ export function ProductGallery({
   className = "",
 }) {
   const [productoActivo, setProductoActivo] = useState(null);
+  const [productoCargando, setProductoCargando] = useState(null);
   const [fotoActual, setFotoActual] = useState(0);
   const [talleSeleccionado, setTalleSeleccionado] = useState("M");
+  const productOpenTimer = useRef(null);
+  const modalContentRef = useRef(null);
 
   const usaTalles = categoriaPredeterminada !== "accesorios";
   const tallesProductoActivo = productoActivo?.talles || tallesDisponibles;
+  const productShareText = productoActivo
+    ? `Mirá este producto de Juveelina: ${productoActivo.nombre} ${productoActivo.color}`
+    : "";
+  const productShareUrl =
+    typeof window !== "undefined" ? window.location.href : "https://juveelina.com";
+
+  useEffect(() => {
+    return () => {
+      if (productOpenTimer.current) clearTimeout(productOpenTimer.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!productoActivo) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    requestAnimationFrame(() => {
+      modalContentRef.current?.scrollTo({ top: 0, left: 0 });
+    });
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [productoActivo]);
 
   return (
     <>
@@ -527,10 +580,16 @@ export function ProductGallery({
           <div
             className="category-product"
             key={`${producto.nombre}-${producto.color}-${producto.imagenes[0]}-${index}`}
+            style={{ "--product-index": index }}
             onClick={() => {
-              setProductoActivo(producto);
+              if (productOpenTimer.current) clearTimeout(productOpenTimer.current);
+              setProductoCargando(producto);
               setFotoActual(0);
               setTalleSeleccionado((producto.talles || tallesDisponibles)[0]);
+              productOpenTimer.current = setTimeout(() => {
+                setProductoActivo(producto);
+                setProductoCargando(null);
+              }, 430);
             }}
           >
             {producto.nuevo && <span className="product-new-badge">NEW</span>}
@@ -543,70 +602,157 @@ export function ProductGallery({
         ))}
       </div>
 
+      {productoCargando && (
+        <div className="product-loading-cloud" aria-label="Abriendo producto">
+          <span className="page-loading-spinner" />
+        </div>
+      )}
+
       {productoActivo && (
-        <div className="modal" onClick={() => setProductoActivo(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setProductoActivo(null)}>
+        <div className="modal product-detail-modal" onClick={() => setProductoActivo(null)}>
+          <div
+            className="modal-content product-detail-content"
+            ref={modalContentRef}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="modal-close product-detail-close" onClick={() => setProductoActivo(null)}>
               ×
             </button>
 
-            <img
-              src={productoActivo.imagenes[fotoActual]}
-              alt={productoActivo.nombre}
-            />
+            <button
+              type="button"
+              className="product-detail-back"
+              onClick={() => setProductoActivo(null)}
+            >
+              Volver al listado
+            </button>
 
-            <h2>{productoActivo.nombre}</h2>
-            <p>
-              {productoActivo.color} · {productoActivo.material}
-            </p>
-
-            {usaTalles && (
-              <div className="size-selector">
-                <span>Talle</span>
-                <div>
-                  {tallesProductoActivo.map((talle) => (
+            <section className="product-detail-view">
+              <div className="product-detail-gallery">
+                <div className="modal-thumbs product-detail-thumbs">
+                  {productoActivo.imagenes.map((img, index) => (
                     <button
                       type="button"
-                      key={talle}
-                      className={talleSeleccionado === talle ? "active-size" : ""}
-                      onClick={() => setTalleSeleccionado(talle)}
+                      key={`${productoActivo.nombre}-${productoActivo.color}-${index}`}
+                      onClick={() => setFotoActual(index)}
+                      className={fotoActual === index ? "active-thumb" : ""}
+                      aria-label={`Ver foto ${index + 1}`}
                     >
-                      {talle}
+                      <img src={img} alt={`${productoActivo.nombre} ${index + 1}`} />
                     </button>
                   ))}
                 </div>
+
+                <figure className="product-detail-main-image">
+                  <img
+                    key={`${productoActivo.nombre}-${productoActivo.color}-${fotoActual}`}
+                    src={productoActivo.imagenes[fotoActual]}
+                    alt={productoActivo.nombre}
+                  />
+                </figure>
               </div>
-            )}
 
-            <button
-              type="button"
-              className="add-cart-button"
-              onClick={() => {
-                onAddToCart({
-                  nombre: productoActivo.nombre,
-                  color: productoActivo.color,
-                  material: productoActivo.material,
-                  talle: usaTalles ? talleSeleccionado : null,
-                  categoria: productoActivo.categoria || categoriaPredeterminada,
-                  imagen: productoActivo.imagenes[0],
-                });
-                setProductoActivo(null);
-              }}
-            >
-              Agregar al carrito
-            </button>
+              <aside className="product-detail-panel">
+                {productoActivo.nuevo && <span className="product-detail-new">NEW</span>}
+                <p className="product-detail-kicker">
+                  {productoActivo.categoria || categoriaPredeterminada}
+                </p>
+                <h2>{productoActivo.nombre}</h2>
+                <p className="product-detail-ref">
+                  REF: {productoActivo.nombre.slice(0, 3).toUpperCase()}
+                  {productoActivo.color.slice(0, 3).toUpperCase()}
+                </p>
 
-            <div className="modal-thumbs">
-              {productoActivo.imagenes.map((img, index) => (
-                <img
-                  key={`${productoActivo.nombre}-${productoActivo.color}-${index}`}
-                  src={img}
-                  alt={`${productoActivo.nombre} ${index + 1}`}
-                  onClick={() => setFotoActual(index)}
-                  className={fotoActual === index ? "active-thumb" : ""}
-                />
-              ))}
-            </div>
+                <div className="product-detail-meta">
+                  <p>
+                    <strong>Color</strong>
+                    <span>{productoActivo.color}</span>
+                  </p>
+                  <p>
+                    <strong>Material</strong>
+                    <span>{productoActivo.material}</span>
+                  </p>
+                </div>
+
+                {usaTalles && (
+                  <div className="size-selector product-detail-sizes">
+                    <span>Seleccionar talle</span>
+                    <div>
+                      {tallesProductoActivo.map((talle) => (
+                        <button
+                          type="button"
+                          key={talle}
+                          className={talleSeleccionado === talle ? "active-size" : ""}
+                          onClick={() => setTalleSeleccionado(talle)}
+                        >
+                          {talle}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  className="add-cart-button product-detail-cart"
+                  onClick={() => {
+                    onAddToCart({
+                      nombre: productoActivo.nombre,
+                      color: productoActivo.color,
+                      material: productoActivo.material,
+                      talle: usaTalles ? talleSeleccionado : null,
+                      categoria: productoActivo.categoria || categoriaPredeterminada,
+                      imagen: productoActivo.imagenes[0],
+                    });
+                    setProductoActivo(null);
+                  }}
+                >
+                  Agregar al carrito
+                </button>
+
+                <div className="product-detail-description">
+                  <h3>Descripción</h3>
+                  <p>{getProductDescription(productoActivo, categoriaPredeterminada)}</p>
+                </div>
+
+                <div className="product-detail-share">
+                  <span>Compartir</span>
+                  <button
+                    type="button"
+                    aria-label="Compartir producto"
+                    onClick={() => {
+                      if (navigator.share) {
+                        navigator.share({
+                          title: productoActivo.nombre,
+                          text: productShareText,
+                          url: productShareUrl,
+                        });
+                      } else {
+                        navigator.clipboard?.writeText(`${productShareText} ${productShareUrl}`);
+                      }
+                    }}
+                  >
+                    <FaShareAlt />
+                  </button>
+                  <a
+                    href={`https://wa.me/?text=${encodeURIComponent(`${productShareText} ${productShareUrl}`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Compartir por WhatsApp"
+                  >
+                    <FaWhatsapp />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/juveelina/?hl=es"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Ver Instagram de Juveelina"
+                  >
+                    <FaInstagram />
+                  </a>
+                </div>
+              </aside>
+            </section>
           </div>
         </div>
       )}
