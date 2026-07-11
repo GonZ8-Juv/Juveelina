@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
 
+import hero1 from "./assets/Fondo1.png";
 import hero2 from "./assets/fondo2.jpg";
 import hero3 from "./assets/fondo3.jpg";
 import hero4 from "./assets/fondo4.jpg";
@@ -30,7 +31,12 @@ import Terminos from "./pages/Terminos.jsx";
 
 import "./index.css";
 
-const heroes = [hero4, hero2, hero3];
+const heroes = [
+  { image: hero1, duration: 18000 },
+  { image: hero4, duration: 12000 },
+  { image: hero2, duration: 12000 },
+  { image: hero3, duration: 12000 },
+];
 const newArrivalsImages = [
   cardigansApilados,
   cardiganBeigeDetalle,
@@ -193,19 +199,19 @@ function App() {
   }, [newArrivalsOpen]);
 
   useEffect(() => {
-    const heroInterval = setInterval(() => {
+    const heroTimer = setTimeout(() => {
       setCurrentHero((prev) => (prev + 1) % heroes.length);
-    }, 12000);
+    }, heroes[currentHero].duration);
 
     const textInterval = setInterval(() => {
       setCurrentMessage((prev) => (prev + 1) % topbarMessages.length);
     }, 12000);
 
     return () => {
-      clearInterval(heroInterval);
+      clearTimeout(heroTimer);
       clearInterval(textInterval);
     };
-  }, []);
+  }, [currentHero]);
 
   const prevHero = () => {
     setCurrentHero((prev) => (prev === 0 ? heroes.length - 1 : prev - 1));
@@ -428,7 +434,7 @@ function App() {
     <div
       key={index}
       className={`hero-fade ${index === currentHero ? "active" : ""}`}
-      style={{ backgroundImage: `url(${img})` }}
+      style={{ backgroundImage: `url(${img.image})` }}
     />
   ))}
 

@@ -540,6 +540,7 @@ export function ProductGallery({
   const [productoActivo, setProductoActivo] = useState(null);
   const [productoCargando, setProductoCargando] = useState(null);
   const [fotoActual, setFotoActual] = useState(0);
+  const [imagenAmpliada, setImagenAmpliada] = useState(false);
   const [talleSeleccionado, setTalleSeleccionado] = useState("M");
   const productOpenTimer = useRef(null);
   const modalContentRef = useRef(null);
@@ -585,6 +586,7 @@ export function ProductGallery({
               if (productOpenTimer.current) clearTimeout(productOpenTimer.current);
               setProductoCargando(producto);
               setFotoActual(0);
+              setImagenAmpliada(false);
               setTalleSeleccionado((producto.talles || tallesDisponibles)[0]);
               productOpenTimer.current = setTimeout(() => {
                 setProductoActivo(producto);
@@ -609,20 +611,35 @@ export function ProductGallery({
       )}
 
       {productoActivo && (
-        <div className="modal product-detail-modal" onClick={() => setProductoActivo(null)}>
+        <div
+          className="modal product-detail-modal"
+          onClick={() => {
+            setImagenAmpliada(false);
+            setProductoActivo(null);
+          }}
+        >
           <div
             className="modal-content product-detail-content"
             ref={modalContentRef}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="modal-close product-detail-close" onClick={() => setProductoActivo(null)}>
+            <button
+              className="modal-close product-detail-close"
+              onClick={() => {
+                setImagenAmpliada(false);
+                setProductoActivo(null);
+              }}
+            >
               ×
             </button>
 
             <button
               type="button"
               className="product-detail-back"
-              onClick={() => setProductoActivo(null)}
+              onClick={() => {
+                setImagenAmpliada(false);
+                setProductoActivo(null);
+              }}
             >
               Volver al listado
             </button>
@@ -634,7 +651,10 @@ export function ProductGallery({
                     <button
                       type="button"
                       key={`${productoActivo.nombre}-${productoActivo.color}-${index}`}
-                      onClick={() => setFotoActual(index)}
+                      onClick={() => {
+                        setFotoActual(index);
+                        setImagenAmpliada(false);
+                      }}
                       className={fotoActual === index ? "active-thumb" : ""}
                       aria-label={`Ver foto ${index + 1}`}
                     >
@@ -643,12 +663,18 @@ export function ProductGallery({
                   ))}
                 </div>
 
-                <figure className="product-detail-main-image">
+                <figure
+                  className={`product-detail-main-image ${imagenAmpliada ? "zoomed" : ""}`}
+                  onClick={() => setImagenAmpliada((actual) => !actual)}
+                >
                   <img
                     key={`${productoActivo.nombre}-${productoActivo.color}-${fotoActual}`}
                     src={productoActivo.imagenes[fotoActual]}
                     alt={productoActivo.nombre}
                   />
+                  <figcaption>
+                    {imagenAmpliada ? "Tocar para volver" : "Tocar para ampliar"}
+                  </figcaption>
                 </figure>
               </div>
 
@@ -704,6 +730,7 @@ export function ProductGallery({
                       categoria: productoActivo.categoria || categoriaPredeterminada,
                       imagen: productoActivo.imagenes[0],
                     });
+                    setImagenAmpliada(false);
                     setProductoActivo(null);
                   }}
                 >
