@@ -2,22 +2,19 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
 
-import hero1 from "./assets/Fondo1.png";
-import hero2 from "./assets/fondo2.jpg";
-import hero3 from "./assets/fondo3.jpg";
-import hero4 from "./assets/fondo4.jpg";
+import hero1 from "./assets/Fondo1.webp";
+import hero2 from "./assets/fondo2.webp";
+import hero3 from "./assets/fondo3.webp";
+import hero4 from "./assets/fondo4.webp";
 
 import visa from "./assets/visa.png";
 import master from "./assets/master.png";
 import oca from "./assets/oca.png";
 import jmarr from "./assets/jmarr-2x.png";
 
-import ing from "./assets/ing.png";
-import whatsapp from "./assets/whatsapp.png";
-import mail from "./assets/mail.png";
-import cardigansApilados from "./assets/Cardigans apilados.jpeg";
-import cardiganBeigeDetalle from "./assets/CardigansUruWhy/cardigan-beige-detalle.jpg";
-import cardiganGrisDetalle from "./assets/CardigansUruWhy/cardigan-gris-detalle.jpg";
+import cardigansApilados from "./assets/Cardigans apilados.webp";
+import cardiganBeigeDetalle from "./assets/CardigansUruWhy/cardigan-beige-detalle.webp";
+import cardiganGrisDetalle from "./assets/CardigansUruWhy/cardigan-gris-detalle.webp";
 
 import { FaInstagram, FaSearch, FaShoppingBag, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -177,15 +174,18 @@ function App() {
       location.pathname.startsWith("/vestimenta/") ||
       location.pathname.startsWith("/accesorios/");
 
-    if (!isProductPage) {
-      setPageLoading(false);
-      return undefined;
-    }
+    const startTimer = setTimeout(() => {
+      setPageLoading(isProductPage);
+    }, 0);
 
-    setPageLoading(true);
+    if (!isProductPage) return () => clearTimeout(startTimer);
+
     const loadingTimer = setTimeout(() => setPageLoading(false), 680);
 
-    return () => clearTimeout(loadingTimer);
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(loadingTimer);
+    };
   }, [location.pathname]);
 
   useEffect(() => {

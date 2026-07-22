@@ -1,6 +1,6 @@
-import camis from "../assets/Peques/Camisceles.jpeg";
-import buzo from "../assets/Carprint.jpeg";
-import remera from "../assets/Peques/buzo-blanco.jpeg.jpeg";
+import camis from "../assets/Peques/Camisceles.webp";
+import buzo from "../assets/Carprint.webp";
+import remera from "../assets/Peques/buzo-blanco.jpeg.webp";
 import { ProductGallery, productosTienda } from "./Categoria2.jsx";
 
 function Home({ onAddToCart }) {

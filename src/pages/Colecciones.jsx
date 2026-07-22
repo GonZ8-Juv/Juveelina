@@ -1,6 +1,6 @@
-import camis from "../assets/Camisceles.jpeg";
-import buzo from "../assets/Buzoblan.jpeg";
-import remera from "../assets/RGF.jpeg";
+import camis from "../assets/Peques/Camisceles.webp";
+import buzo from "../assets/Peques/buzo-blanco.jpeg.webp";
+import remera from "../assets/Remeras/RGF.webp";
 
 function Colecciones() {
   return (

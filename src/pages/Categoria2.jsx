@@ -1,93 +1,94 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaShareAlt, FaWhatsapp } from "react-icons/fa";
 
 // REMERAS
-import remeraGrisSolFrente from "../assets/Remeras/RGF.jpeg";
-import remeraGrisSolEspalda from "../assets/Remeras/RGB.jpeg";
-import remeraNegraSolFrente from "../assets/Remeras/RNF.jpeg";
-import remeraNegraSolEspalda from "../assets/Remeras/RNB.jpeg";
-import remeraBlancaSolFrente from "../assets/Remeras/RBF.jpeg";
-import remeraBlancaSolEspalda from "../assets/Remeras/RBB.jpeg";
-import remeraMarronSolFrente from "../assets/Remeras/RMF.jpeg";
-import remeraMarronSolEspalda from "../assets/Remeras/RMB.jpeg";
-import remeraGrisEscudoFrente from "../assets/Remeras/RGFE.JPG";
-import remeraGrisEscudoEspalda from "../assets/Remeras/RGBE.jpg";
-import remeraNegraEscudoFrente from "../assets/Remeras/RNFE.jpg";
-import remeraNegraEscudoEspalda from "../assets/Remeras/RNBE.jpg";
-import remeraBlancaEscudoFrente from "../assets/Remeras/RBFE.jpg";
-import remeraBlancaEscudoEspalda from "../assets/Remeras/RBBE.jpg";
-import remeraMarronEscudoFrente from "../assets/Remeras/RMFE.jpg";
-import remeraMarronEscudoEspalda from "../assets/Remeras/RMBE.jpg";
-import remeraSensacionBlancaFrente from "../assets/RemerasSensacionUy/remera-sensacion-blanca-frente.png";
-import remeraSensacionBlancaDetalle from "../assets/RemerasSensacionUy/remera-sensacion-blanca-detalle.png";
-import remeraSensacionNegraFrente from "../assets/RemerasSensacionUy/remera-sensacion-negra-frente.jpg";
-import remeraSensacionNegraEspalda from "../assets/RemerasSensacionUy/remera-sensacion-negra-espalda.jpg";
+import remeraGrisSolFrente from "../assets/Remeras/RGF.webp";
+import remeraGrisSolEspalda from "../assets/Remeras/RGB.webp";
+import remeraNegraSolFrente from "../assets/Remeras/RNF.webp";
+import remeraNegraSolEspalda from "../assets/Remeras/RNB.webp";
+import remeraBlancaSolFrente from "../assets/Remeras/RBF.webp";
+import remeraBlancaSolEspalda from "../assets/Remeras/RBB.webp";
+import remeraMarronSolFrente from "../assets/Remeras/RMF.webp";
+import remeraMarronSolEspalda from "../assets/Remeras/RMB.webp";
+import remeraGrisEscudoFrente from "../assets/Remeras/RGFE.webp";
+import remeraGrisEscudoEspalda from "../assets/Remeras/RGBE.webp";
+import remeraNegraEscudoFrente from "../assets/Remeras/RNFE.webp";
+import remeraNegraEscudoEspalda from "../assets/Remeras/RNBE.webp";
+import remeraBlancaEscudoFrente from "../assets/Remeras/RBFE.webp";
+import remeraBlancaEscudoEspalda from "../assets/Remeras/RBBE.webp";
+import remeraMarronEscudoFrente from "../assets/Remeras/RMFE.webp";
+import remeraMarronEscudoEspalda from "../assets/Remeras/RMBE.webp";
+import remeraSensacionBlancaFrente from "../assets/RemerasSensacionUy/remera-sensacion-blanca-frente.webp";
+import remeraSensacionBlancaDetalle from "../assets/RemerasSensacionUy/remera-sensacion-blanca-detalle.webp";
+import remeraSensacionNegraFrente from "../assets/RemerasSensacionUy/remera-sensacion-negra-frente.webp";
+import remeraSensacionNegraEspalda from "../assets/RemerasSensacionUy/remera-sensacion-negra-espalda.webp";
 
 // BUZOS UY
-import buzoUyMedioSolFrente from "../assets/BuzosUy/buzo-medio-sol-frente.png";
-import buzoUyMedioSolEspalda from "../assets/BuzosUy/buzo-medio-sol-espalda.png";
+import buzoUyMedioSolFrente from "../assets/BuzosUy/buzo-medio-sol-frente.webp";
+import buzoUyMedioSolEspalda from "../assets/BuzosUy/buzo-medio-sol-espalda.webp";
 
 // CARDIGANS URUWHY
-import cardiganBeigePrincipal from "../assets/CardigansUruWhy/cardigan-beige-principal.jpg";
-import cardiganBeigeDetalle from "../assets/CardigansUruWhy/cardigan-beige-detalle.jpg";
-import cardiganBeigeEspalda from "../assets/CardigansUruWhy/cardigan-beige-espalda.jpg";
-import cardiganGrisPrincipal from "../assets/CardigansUruWhy/cardigan-gris-principal.jpg";
-import cardiganGrisDetalle from "../assets/CardigansUruWhy/cardigan-gris-detalle.jpg";
-import cardiganGrisEspalda from "../assets/CardigansUruWhy/cardigan-gris-espalda.jpg";
-import cardiganRosaPrincipal from "../assets/CardigansUruWhy/cardigan-rosa-principal.png";
-import cardiganRosaFrente from "../assets/CardigansUruWhy/cardigan-rosa-frente.png";
-import cardiganRosaEspalda from "../assets/CardigansUruWhy/cardigan-rosa-espalda.png";
-import cardiganAzulPrincipal from "../assets/CardigansUruWhy/cardigan-azul-principal.png";
-import cardiganAzulEntero from "../assets/CardigansUruWhy/cardigan-azul-entero.png";
-import cardiganAzulEspalda from "../assets/CardigansUruWhy/cardigan-azul-espalda.png";
+import cardiganBeigePrincipal from "../assets/CardigansUruWhy/cardigan-beige-principal.webp";
+import cardiganBeigeDetalle from "../assets/CardigansUruWhy/cardigan-beige-detalle.webp";
+import cardiganBeigeEspalda from "../assets/CardigansUruWhy/cardigan-beige-espalda.webp";
+import cardiganGrisPrincipal from "../assets/CardigansUruWhy/cardigan-gris-principal.webp";
+import cardiganGrisDetalle from "../assets/CardigansUruWhy/cardigan-gris-detalle.webp";
+import cardiganGrisEspalda from "../assets/CardigansUruWhy/cardigan-gris-espalda.webp";
+import cardiganRosaPrincipal from "../assets/CardigansUruWhy/cardigan-rosa-principal.webp";
+import cardiganRosaFrente from "../assets/CardigansUruWhy/cardigan-rosa-frente.webp";
+import cardiganRosaEspalda from "../assets/CardigansUruWhy/cardigan-rosa-espalda.webp";
+import cardiganAzulPrincipal from "../assets/CardigansUruWhy/cardigan-azul-principal.webp";
+import cardiganAzulEntero from "../assets/CardigansUruWhy/cardigan-azul-entero.webp";
+import cardiganAzulEspalda from "../assets/CardigansUruWhy/cardigan-azul-espalda.webp";
 
 // ACCESORIOS
-import carteraPrint from "../assets/Carprint.jpeg";
-import necesserSoyCeleste from "../assets/SoyCel.jpeg";
-import bagSoles from "../assets/Bolsos/Soles2.jpg";
-import bagJuvee from "../assets/Bolsos/Juvee.jpg";
-import bagSol from "../assets/Bolsos/bolsosol.jpg";
-import bagSols from "../assets/Bolsos/sols.jpg";
+import carteraPrint from "../assets/Carprint.webp";
+import necesserSoyCeleste from "../assets/SoyCel.webp";
+import bagSoles from "../assets/Bolsos/Soles2.webp";
+import bagJuvee from "../assets/Bolsos/Juvee.webp";
+import bagSol from "../assets/Bolsos/bolsosol.webp";
+import bagSols from "../assets/Bolsos/sols.webp";
 
 // HOMBRES
-import hombreBlanco1 from "../assets/hombre/Blancosol.jpg";
-import hombreBlanco2 from "../assets/hombre/blancoesc.jpg";
-import hombreBlancoNuevo from "../assets/hombre/blancosoln.jpg";
-import hombreGris1 from "../assets/hombre/grissol.jpg";
-import hombreGris2 from "../assets/hombre/grisesc.jpg";
-import hombreMarron1 from "../assets/hombre/marronsol.jpg";
-import hombreMarron2 from "../assets/hombre/marronsolb.jpg";
-import hombreNegro1 from "../assets/hombre/negrosol.jpg";
-import hombreNegro2 from "../assets/hombre/NegroEsc.jpeg";
-import hombreNegroRubio from "../assets/hombre/solamnegro.jpg";
-import hombreBlancoEspalda from "../assets/hombre/blancoespalda.jpg";
-import hombreMarronEspalda from "../assets/hombre/marronespalda.jpg";
-import hombreNegroEspalda from "../assets/hombre/negroespalda.jpg";
-import hombreBuzoUruUyFrente from "../assets/hombre/Buzouy.jpeg";
-import hombreBuzoUruUyEspalda from "../assets/hombre/Buzouyesp.jpeg";
-import hombreBuzoGoldenFrente from "../assets/hombre/Solyoru.jpeg";
-import hombreBuzoGoldenEspalda from "../assets/hombre/solyoruesp.jpeg";
-import hombreHorseFrente from "../assets/hombre/Horse.png";
-import hombreHorseEspalda from "../assets/hombre/Horse back.png";
+import hombreBlanco1 from "../assets/hombre/Blancosol.webp";
+import hombreBlanco2 from "../assets/hombre/blancoesc.webp";
+import hombreBlancoNuevo from "../assets/hombre/blancosoln.webp";
+import hombreGris1 from "../assets/hombre/grissol.webp";
+import hombreGris2 from "../assets/hombre/grisesc.webp";
+import hombreMarron1 from "../assets/hombre/marronsol.webp";
+import hombreMarron2 from "../assets/hombre/marronsolb.webp";
+import hombreNegro1 from "../assets/hombre/negrosol.webp";
+import hombreNegro2 from "../assets/hombre/NegroEsc.webp";
+import hombreNegroRubio from "../assets/hombre/solamnegro.webp";
+import hombreBlancoEspalda from "../assets/hombre/blancoespalda.webp";
+import hombreMarronEspalda from "../assets/hombre/marronespalda.webp";
+import hombreNegroEspalda from "../assets/hombre/negroespalda.webp";
+import hombreBuzoUruUyFrente from "../assets/hombre/Buzouy.webp";
+import hombreBuzoUruUyEspalda from "../assets/hombre/Buzouyesp.webp";
+import hombreBuzoGoldenFrente from "../assets/hombre/Solyoru.webp";
+import hombreBuzoGoldenEspalda from "../assets/hombre/solyoruesp.webp";
+import hombreHorseFrente from "../assets/hombre/Horse.webp";
+import hombreHorseEspalda from "../assets/hombre/Horse back.webp";
 
 // PEQUES
-import pequeBuzoBlanco from "../assets/Peques/buzo-blanco.jpeg.jpeg";
-import pequeBuzoNegro from "../assets/Peques/buzo-negro.jpeg.jpeg";
-import pequeCamisetaCeleste from "../assets/Peques/Camisceles.jpeg";
-import pequeCamisetaNegra from "../assets/Peques/Camisnegr.jpeg";
+import pequeBuzoBlanco from "../assets/Peques/buzo-blanco.jpeg.webp";
+import pequeBuzoNegro from "../assets/Peques/buzo-negro.jpeg.webp";
+import pequeCamisetaCeleste from "../assets/Peques/Camisceles.webp";
+import pequeCamisetaNegra from "../assets/Peques/Camisnegr.webp";
 
 // MUJERES
-import mujerEscudoAzul from "../assets/mujer/escazul.jpg";
-import mujerEscudoGris from "../assets/mujer/escgris.jpg";
-import mujerEscudoBlanco from "../assets/mujer/escudoblanco.jpg";
-import mujerEspaldaGris from "../assets/mujer/espaldagris.jpg";
-import mujerEspaldaMarron from "../assets/mujer/espaldamarron.jpg";
-import mujerEspaldaNegro from "../assets/mujer/espaldanegro.jpg";
-import mujerEscudoMarron from "../assets/mujer/marronesc.jpg";
-import mujerSolGris2 from "../assets/mujer/solgris2.jpg";
-import mujerSolMarron from "../assets/mujer/solmarron.jpg";
-import mujerSolNegro from "../assets/mujer/solnegro2.jpg";
+import mujerEscudoAzul from "../assets/mujer/escazul.webp";
+import mujerEscudoGris from "../assets/mujer/escgris.webp";
+import mujerEscudoBlanco from "../assets/mujer/escudoblanco.webp";
+import mujerEspaldaGris from "../assets/mujer/espaldagris.webp";
+import mujerEspaldaMarron from "../assets/mujer/espaldamarron.webp";
+import mujerEspaldaNegro from "../assets/mujer/espaldanegro.webp";
+import mujerEscudoMarron from "../assets/mujer/marronesc.webp";
+import mujerSolGris2 from "../assets/mujer/solgris2.webp";
+import mujerSolMarron from "../assets/mujer/solmarron.webp";
+import mujerSolNegro from "../assets/mujer/solnegro2.webp";
 
 export const productosPorCategoria = {
   Remeras: [
