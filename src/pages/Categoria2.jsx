@@ -291,23 +291,23 @@ export const productosPorCategoria = {
       imagenes: [bagSols],
     },
   ],
-  "Materas.Uy": [
+  "Materas Criollas": [
     {
-      nombre: "Matera Juvee brown",
+      nombre: "Matera Criolla Marrón",
       color: "Marrón",
       material: "Lona",
       imagenes: [materaMarron, materasGrupo],
       nuevo: true,
     },
     {
-      nombre: "Matera Juvee beige",
+      nombre: "Matera Criolla Beige",
       color: "Beige",
       material: "Lona",
       imagenes: [materaBeige, materasGrupo],
       nuevo: true,
     },
     {
-      nombre: "Matera Juvee black",
+      nombre: "Matera Criolla Negra",
       color: "Negro",
       material: "Lona",
       imagenes: [materaNegra, materasGrupo],
@@ -523,7 +523,7 @@ const categoriasPorSeccion = {
   accesorios: [
     { nombre: "Carteras", url: "/accesorios/carteras" },
     { nombre: "Bags", url: "/accesorios/bags" },
-    { nombre: "Materas.Uy", url: "/accesorios/materas-uy" },
+    { nombre: "Materas Criollas", url: "/accesorios/materas-criollas" },
     { nombre: "Neceser", url: "/accesorios/neceser" },
   ],
 };
@@ -538,7 +538,7 @@ const seccionPorCategoria = {
   Hombres: "vestimenta",
   Carteras: "accesorios",
   Bags: "accesorios",
-  "Materas.Uy": "accesorios",
+  "Materas Criollas": "accesorios",
   Neceser: "accesorios",
 };
 
@@ -869,7 +869,7 @@ function Categoria({ titulo, onAddToCart }) {
             className={categoria.nombre === titulo ? "active-category" : ""}
           >
             <span>{categoria.nombre}</span>
-            {["Cardigans UruWhy", "Materas.Uy"].includes(categoria.nombre) && (
+            {["Cardigans UruWhy", "Materas Criollas"].includes(categoria.nombre) && (
               <span className="category-new-badge">NEW</span>
             )}
           </Link>

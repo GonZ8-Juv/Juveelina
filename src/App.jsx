@@ -40,8 +40,8 @@ const heroes = [
 const newArrivals = [
   {
     image: materasGrupo,
-    title: "Materas.Uy",
-    url: "/accesorios/materas-uy",
+    title: "Materas Criollas",
+    url: "/accesorios/materas-criollas",
   },
   {
     image: cardigansApilados,
@@ -92,10 +92,10 @@ const searchItems = [
   { nombre: "Bag Sol.uy", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
   { nombre: "Bag Mix.Uy", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
   { nombre: "Bag PinkJuvee", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
-  { nombre: "Materas.Uy", detalle: "Accesorios", url: "/accesorios/materas-uy" },
-  { nombre: "Matera Juvee brown", detalle: "Accesorios · Materas.Uy", url: "/accesorios/materas-uy" },
-  { nombre: "Matera Juvee beige", detalle: "Accesorios · Materas.Uy", url: "/accesorios/materas-uy" },
-  { nombre: "Matera Juvee black", detalle: "Accesorios · Materas.Uy", url: "/accesorios/materas-uy" },
+  { nombre: "Materas Criollas", detalle: "Accesorios", url: "/accesorios/materas-criollas" },
+  { nombre: "Matera Criolla Marrón", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
+  { nombre: "Matera Criolla Beige", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
+  { nombre: "Matera Criolla Negra", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
   { nombre: "Neceser", detalle: "Accesorios", url: "/accesorios/neceser" },
   { nombre: "Neceser Soy Celeste", detalle: "Accesorios · Neceser", url: "/accesorios/neceser" },
   { nombre: "Guríses", detalle: "Vestimenta", url: "/vestimenta/gurises" },
@@ -338,8 +338,8 @@ function App() {
       <div className="dropdown-menu">
         <Link to="/accesorios/carteras">Carteras</Link>
         <Link to="/accesorios/bags">Bags</Link>
-        <Link to="/accesorios/materas-uy" className="dropdown-new-link">
-          <span>Materas.Uy</span>
+        <Link to="/accesorios/materas-criollas" className="dropdown-new-link">
+          <span>Materas Criollas</span>
           <span className="dropdown-new-badge">NEW</span>
         </Link>
         <Link to="/accesorios/neceser">Neceser</Link>
@@ -499,7 +499,8 @@ function App() {
 
                 <Route path="/accesorios/carteras" element={<Categoria titulo="Carteras" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/bags" element={<Categoria titulo="Bags" onAddToCart={addToCart} />} />
-                <Route path="/accesorios/materas-uy" element={<Categoria titulo="Materas.Uy" onAddToCart={addToCart} />} />
+                <Route path="/accesorios/materas-uy" element={<Navigate to="/accesorios/materas-criollas" replace />} />
+                <Route path="/accesorios/materas-criollas" element={<Categoria titulo="Materas Criollas" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/neceser" element={<Categoria titulo="Neceser" onAddToCart={addToCart} />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/nosotros" element={<Nosotros />} />
