@@ -50,16 +50,16 @@ import bagSoles from "../assets/Bolsos/Soles2.webp";
 import bagJuvee from "../assets/Bolsos/Juvee.webp";
 import bagSol from "../assets/Bolsos/bolsosol.webp";
 import bagSols from "../assets/Bolsos/sols.webp";
-import toteJuveRosa from "../assets/Tote Juve rosa.webp";
-import toteMixUy from "../assets/Tote Mix.Uy.webp";
-import totePrint from "../assets/Tote print.webp";
-import totePrintDetalle from "../assets/Tote print 2.webp";
-import toteSolUy from "../assets/Totel Sol.uy.webp";
-import toteSolUyDetalle from "../assets/Tote sol.uy2.webp";
+import bagPinkJuvee from "../assets/Bag PinkJuvee.webp";
+import bagMixUy from "../assets/Bag Mix.Uy.webp";
+import printUy from "../assets/Print.Uy.webp";
+import printUyDetalle from "../assets/Print.Uy 2.webp";
+import bagSolUy from "../assets/Bag Sol.uy.webp";
+import bagSolUyDetalle from "../assets/Bag sol.uy2.webp";
 import materasGrupo from "../assets/3 materas.webp";
-import materaBeige from "../assets/Matera beige.webp";
-import materaMarron from "../assets/Matera marron.webp";
-import materaNegra from "../assets/Matera negra.webp";
+import materaBeige from "../assets/Matera Juvee beige.webp";
+import materaMarron from "../assets/Matera Juvee brown.webp";
+import materaNegra from "../assets/Matera Juvee black.webp";
 
 // HOMBRES
 import hombreBlanco1 from "../assets/hombre/Blancosol.webp";
@@ -232,6 +232,13 @@ export const productosPorCategoria = {
       material: "Yute y lona",
       imagenes: [carteraPrint],
     },
+    {
+      nombre: "Print.Uy",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [printUy, printUyDetalle],
+      nuevo: true,
+    },
   ],
 
   Neceser: [
@@ -245,31 +252,24 @@ export const productosPorCategoria = {
 
   Bags: [
     {
-      nombre: "Tote print",
+      nombre: "Bag Sol.uy",
       color: "Natural",
       material: "Lona",
-      imagenes: [totePrint, totePrintDetalle],
+      imagenes: [bagSolUy, bagSolUyDetalle],
       nuevo: true,
     },
     {
-      nombre: "Tote Sol.uy",
+      nombre: "Bag Mix.Uy",
       color: "Natural",
       material: "Lona",
-      imagenes: [toteSolUy, toteSolUyDetalle],
+      imagenes: [bagMixUy],
       nuevo: true,
     },
     {
-      nombre: "Tote Mix.Uy",
-      color: "Natural",
-      material: "Lona",
-      imagenes: [toteMixUy],
-      nuevo: true,
-    },
-    {
-      nombre: "Tote Juve rosa",
+      nombre: "Bag PinkJuvee",
       color: "Rosa",
       material: "Lona",
-      imagenes: [toteJuveRosa],
+      imagenes: [bagPinkJuvee],
       nuevo: true,
     },
     {
@@ -293,21 +293,21 @@ export const productosPorCategoria = {
   ],
   "Materas.Uy": [
     {
-      nombre: "Matera marrón",
+      nombre: "Matera Juvee brown",
       color: "Marrón",
       material: "Lona",
       imagenes: [materaMarron, materasGrupo],
       nuevo: true,
     },
     {
-      nombre: "Matera beige",
+      nombre: "Matera Juvee beige",
       color: "Beige",
       material: "Lona",
       imagenes: [materaBeige, materasGrupo],
       nuevo: true,
     },
     {
-      nombre: "Matera negra",
+      nombre: "Matera Juvee black",
       color: "Negro",
       material: "Lona",
       imagenes: [materaNegra, materasGrupo],
