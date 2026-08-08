@@ -6,6 +6,7 @@ import hero1 from "./assets/Fondo1.webp";
 import hero2 from "./assets/fondo2.webp";
 import hero3 from "./assets/fondo3.webp";
 import hero4 from "./assets/fondo4.webp";
+import heroBanner from "./assets/Banner.webp";
 
 import visa from "./assets/visa.png";
 import master from "./assets/master.png";
@@ -15,6 +16,7 @@ import jmarr from "./assets/jmarr-2x.png";
 import cardigansApilados from "./assets/Cardigans apilados.webp";
 import cardiganBeigeDetalle from "./assets/CardigansUruWhy/cardigan-beige-detalle.webp";
 import cardiganGrisDetalle from "./assets/CardigansUruWhy/cardigan-gris-detalle.webp";
+import materasGrupo from "./assets/3 materas.webp";
 
 import { FaInstagram, FaSearch, FaShoppingBag, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -33,11 +35,29 @@ const heroes = [
   { image: hero4, duration: 12000 },
   { image: hero2, duration: 12000 },
   { image: hero3, duration: 12000 },
+  { image: heroBanner, duration: 12000 },
 ];
-const newArrivalsImages = [
-  cardigansApilados,
-  cardiganBeigeDetalle,
-  cardiganGrisDetalle,
+const newArrivals = [
+  {
+    image: materasGrupo,
+    title: "Materas.Uy",
+    url: "/accesorios/materas-uy",
+  },
+  {
+    image: cardigansApilados,
+    title: "Cardigans UruWhy",
+    url: "/colecciones/cardigans-uruwhy",
+  },
+  {
+    image: cardiganBeigeDetalle,
+    title: "Cardigans UruWhy",
+    url: "/colecciones/cardigans-uruwhy",
+  },
+  {
+    image: cardiganGrisDetalle,
+    title: "Cardigans UruWhy",
+    url: "/colecciones/cardigans-uruwhy",
+  },
 ];
 
 const searchItems = [
@@ -68,6 +88,14 @@ const searchItems = [
   { nombre: "Bag Juveelina", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
   { nombre: "Bag Vilaró", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
   { nombre: "Bag SolUY", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
+  { nombre: "Tote print", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
+  { nombre: "Tote Sol.uy", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
+  { nombre: "Tote Mix.Uy", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
+  { nombre: "Tote Juve rosa", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
+  { nombre: "Materas.Uy", detalle: "Accesorios", url: "/accesorios/materas-uy" },
+  { nombre: "Matera marrón", detalle: "Accesorios · Materas.Uy", url: "/accesorios/materas-uy" },
+  { nombre: "Matera beige", detalle: "Accesorios · Materas.Uy", url: "/accesorios/materas-uy" },
+  { nombre: "Matera negra", detalle: "Accesorios · Materas.Uy", url: "/accesorios/materas-uy" },
   { nombre: "Neceser", detalle: "Accesorios", url: "/accesorios/neceser" },
   { nombre: "Neceser Soy Celeste", detalle: "Accesorios · Neceser", url: "/accesorios/neceser" },
   { nombre: "Guríses", detalle: "Vestimenta", url: "/vestimenta/gurises" },
@@ -139,6 +167,7 @@ function App() {
         `${item.nombre} ${item.detalle}`.toLowerCase().includes(normalizedSearch)
       )
     : searchItems.slice(0, 5);
+  const activeNewArrival = newArrivals[currentNewArrival];
 
   const closeSearch = () => {
     setSearchOpen(false);
@@ -192,7 +221,7 @@ function App() {
     if (!newArrivalsOpen) return undefined;
 
     const imageInterval = setInterval(() => {
-      setCurrentNewArrival((prev) => (prev + 1) % newArrivalsImages.length);
+      setCurrentNewArrival((prev) => (prev + 1) % newArrivals.length);
     }, 3000);
 
     return () => clearInterval(imageInterval);
@@ -245,20 +274,20 @@ function App() {
             </button>
             <div className="new-arrivals-banner">NUEVOS INGRESOS!</div>
             <Link
-              to="/colecciones/cardigans-uruwhy"
+              to={activeNewArrival.url}
               className="new-arrivals-image-link"
               onClick={() => setNewArrivalsOpen(false)}
             >
               <img
                 key={currentNewArrival}
-                src={newArrivalsImages[currentNewArrival]}
-                alt="Cardigans UruWhy"
+                src={activeNewArrival.image}
+                alt={activeNewArrival.title}
               />
             </Link>
             <div className="new-arrivals-content">
-              <h2>Cardigans UruWhy</h2>
+              <h2>{activeNewArrival.title}</h2>
               <Link
-                to="/colecciones/cardigans-uruwhy"
+                to={activeNewArrival.url}
                 className="new-arrivals-button"
                 onClick={() => setNewArrivalsOpen(false)}
               >
@@ -309,6 +338,10 @@ function App() {
       <div className="dropdown-menu">
         <Link to="/accesorios/carteras">Carteras</Link>
         <Link to="/accesorios/bags">Bags</Link>
+        <Link to="/accesorios/materas-uy" className="dropdown-new-link">
+          <span>Materas.Uy</span>
+          <span className="dropdown-new-badge">NEW</span>
+        </Link>
         <Link to="/accesorios/neceser">Neceser</Link>
       </div>
     </div>
@@ -466,6 +499,7 @@ function App() {
 
                 <Route path="/accesorios/carteras" element={<Categoria titulo="Carteras" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/bags" element={<Categoria titulo="Bags" onAddToCart={addToCart} />} />
+                <Route path="/accesorios/materas-uy" element={<Categoria titulo="Materas.Uy" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/neceser" element={<Categoria titulo="Neceser" onAddToCart={addToCart} />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/nosotros" element={<Nosotros />} />

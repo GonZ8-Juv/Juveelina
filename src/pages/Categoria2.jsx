@@ -50,6 +50,16 @@ import bagSoles from "../assets/Bolsos/Soles2.webp";
 import bagJuvee from "../assets/Bolsos/Juvee.webp";
 import bagSol from "../assets/Bolsos/bolsosol.webp";
 import bagSols from "../assets/Bolsos/sols.webp";
+import toteJuveRosa from "../assets/Tote Juve rosa.webp";
+import toteMixUy from "../assets/Tote Mix.Uy.webp";
+import totePrint from "../assets/Tote print.webp";
+import totePrintDetalle from "../assets/Tote print 2.webp";
+import toteSolUy from "../assets/Totel Sol.uy.webp";
+import toteSolUyDetalle from "../assets/Tote sol.uy2.webp";
+import materasGrupo from "../assets/3 materas.webp";
+import materaBeige from "../assets/Matera beige.webp";
+import materaMarron from "../assets/Matera marron.webp";
+import materaNegra from "../assets/Matera negra.webp";
 
 // HOMBRES
 import hombreBlanco1 from "../assets/hombre/Blancosol.webp";
@@ -235,6 +245,34 @@ export const productosPorCategoria = {
 
   Bags: [
     {
+      nombre: "Tote print",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [totePrint, totePrintDetalle],
+      nuevo: true,
+    },
+    {
+      nombre: "Tote Sol.uy",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [toteSolUy, toteSolUyDetalle],
+      nuevo: true,
+    },
+    {
+      nombre: "Tote Mix.Uy",
+      color: "Natural",
+      material: "Lona",
+      imagenes: [toteMixUy],
+      nuevo: true,
+    },
+    {
+      nombre: "Tote Juve rosa",
+      color: "Rosa",
+      material: "Lona",
+      imagenes: [toteJuveRosa],
+      nuevo: true,
+    },
+    {
       nombre: "Bag Juveelina",
       color: "Natural",
       material: "Lona",
@@ -253,6 +291,30 @@ export const productosPorCategoria = {
       imagenes: [bagSols],
     },
   ],
+  "Materas.Uy": [
+    {
+      nombre: "Matera marrón",
+      color: "Marrón",
+      material: "Lona",
+      imagenes: [materaMarron, materasGrupo],
+      nuevo: true,
+    },
+    {
+      nombre: "Matera beige",
+      color: "Beige",
+      material: "Lona",
+      imagenes: [materaBeige, materasGrupo],
+      nuevo: true,
+    },
+    {
+      nombre: "Matera negra",
+      color: "Negro",
+      material: "Lona",
+      imagenes: [materaNegra, materasGrupo],
+      nuevo: true,
+    },
+  ],
+
     Guríses: [
     {
       nombre: "Buzo Vilaró",
@@ -461,6 +523,7 @@ const categoriasPorSeccion = {
   accesorios: [
     { nombre: "Carteras", url: "/accesorios/carteras" },
     { nombre: "Bags", url: "/accesorios/bags" },
+    { nombre: "Materas.Uy", url: "/accesorios/materas-uy" },
     { nombre: "Neceser", url: "/accesorios/neceser" },
   ],
 };
@@ -475,6 +538,7 @@ const seccionPorCategoria = {
   Hombres: "vestimenta",
   Carteras: "accesorios",
   Bags: "accesorios",
+  "Materas.Uy": "accesorios",
   Neceser: "accesorios",
 };
 
@@ -805,7 +869,7 @@ function Categoria({ titulo, onAddToCart }) {
             className={categoria.nombre === titulo ? "active-category" : ""}
           >
             <span>{categoria.nombre}</span>
-            {categoria.nombre === "Cardigans UruWhy" && (
+            {["Cardigans UruWhy", "Materas.Uy"].includes(categoria.nombre) && (
               <span className="category-new-badge">NEW</span>
             )}
           </Link>
