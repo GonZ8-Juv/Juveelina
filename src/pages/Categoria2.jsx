@@ -227,7 +227,7 @@ export const productosPorCategoria = {
 
     Carteras: [
     {
-      nombre: "Cartera print",
+      nombre: "Print.R.O.U",
       color: "Natural",
       material: "Yute y lona",
       imagenes: [carteraPrint],
