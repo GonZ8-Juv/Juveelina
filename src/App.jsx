@@ -85,13 +85,8 @@ const searchItems = [
   { nombre: "Carteras", detalle: "Accesorios", url: "/accesorios/carteras" },
   { nombre: "Print.R.O.U", detalle: "Accesorios · Carteras", url: "/accesorios/carteras" },
   { nombre: "Print.Uy", detalle: "Accesorios · Carteras", url: "/accesorios/carteras" },
-  { nombre: "Bags", detalle: "Accesorios", url: "/accesorios/bags" },
-  { nombre: "Bag Juveelina", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
-  { nombre: "Bag Vilaró", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
-  { nombre: "Bag SolUY", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
-  { nombre: "Bag Sol.uy", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
-  { nombre: "Bag Mix.Uy", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
-  { nombre: "Bag PinkJuvee", detalle: "Accesorios · Bags", url: "/accesorios/bags" },
+  { nombre: "TOTES", detalle: "Accesorios", url: "/accesorios/bags" },
+  { nombre: "Tote bag", detalle: "Accesorios · TOTES", url: "/accesorios/bags" },
   { nombre: "Materas Criollas", detalle: "Accesorios", url: "/accesorios/materas-criollas" },
   { nombre: "Matera Criolla Marrón", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
   { nombre: "Matera Criolla Beige", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
@@ -337,7 +332,7 @@ function App() {
       <span>Accesorios</span>
       <div className="dropdown-menu">
         <Link to="/accesorios/carteras">Carteras</Link>
-        <Link to="/accesorios/bags">Bags</Link>
+        <Link to="/accesorios/bags">TOTES</Link>
         <Link to="/accesorios/materas-criollas" className="dropdown-new-link">
           <span>Materas Criollas</span>
           <span className="dropdown-new-badge">NEW</span>
@@ -498,7 +493,7 @@ function App() {
                 <Route path="/vestimenta/hombres" element={<Categoria titulo="Hombres" onAddToCart={addToCart} />} />
 
                 <Route path="/accesorios/carteras" element={<Categoria titulo="Carteras" onAddToCart={addToCart} />} />
-                <Route path="/accesorios/bags" element={<Categoria titulo="Bags" onAddToCart={addToCart} />} />
+                <Route path="/accesorios/bags" element={<Categoria titulo="TOTES" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/materas-uy" element={<Navigate to="/accesorios/materas-criollas" replace />} />
                 <Route path="/accesorios/materas-criollas" element={<Categoria titulo="Materas Criollas" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/neceser" element={<Categoria titulo="Neceser" onAddToCart={addToCart} />} />

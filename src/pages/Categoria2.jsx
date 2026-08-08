@@ -250,42 +250,42 @@ export const productosPorCategoria = {
     },
   ],
 
-  Bags: [
+  TOTES: [
     {
-      nombre: "Bag Sol.uy",
+      nombre: "Tote bag",
       color: "Natural",
       material: "Lona",
       imagenes: [bagSolUy, bagSolUyDetalle],
       nuevo: true,
     },
     {
-      nombre: "Bag Mix.Uy",
+      nombre: "Tote bag",
       color: "Natural",
       material: "Lona",
       imagenes: [bagMixUy],
       nuevo: true,
     },
     {
-      nombre: "Bag PinkJuvee",
+      nombre: "Tote bag",
       color: "Rosa",
       material: "Lona",
       imagenes: [bagPinkJuvee],
       nuevo: true,
     },
     {
-      nombre: "Bag Juveelina",
+      nombre: "Tote bag",
       color: "Natural",
       material: "Lona",
       imagenes: [bagJuvee],
     },
     {
-      nombre: "Bag Vilaró",
+      nombre: "Tote bag",
       color: "Natural",
       material: "Lona",
       imagenes: [bagSol, bagSoles],
     },
     {
-      nombre: "Bag SolUY",
+      nombre: "Tote bag",
       color: "Natural",
       material: "Lona",
       imagenes: [bagSols],
@@ -522,7 +522,7 @@ const categoriasPorSeccion = {
   ],
   accesorios: [
     { nombre: "Carteras", url: "/accesorios/carteras" },
-    { nombre: "Bags", url: "/accesorios/bags" },
+    { nombre: "TOTES", url: "/accesorios/bags" },
     { nombre: "Materas Criollas", url: "/accesorios/materas-criollas" },
     { nombre: "Neceser", url: "/accesorios/neceser" },
   ],
@@ -537,7 +537,7 @@ const seccionPorCategoria = {
   Mujeres: "vestimenta",
   Hombres: "vestimenta",
   Carteras: "accesorios",
-  Bags: "accesorios",
+  TOTES: "accesorios",
   "Materas Criollas": "accesorios",
   Neceser: "accesorios",
 };
