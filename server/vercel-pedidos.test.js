@@ -31,6 +31,9 @@ test('Vercel: envía ambos correos, usa precio del catálogo y permite responder
   assert.match(emails[1].text, /Recibimos tu solicitud/);
   assert.match(emails[1].text, /6[.,]000/);
   assert.match(emails[1].text, /datos bancarios/);
+  assert.match(emails[1].html, /Hola Prueba,/);
+  assert.match(emails[1].html, /https:\/\/tienda.example\/mail\/jmarr-2x.png/);
+  assert.match(emails[1].html, /Sin costo/);
   await handler(req, response());
   assert.equal(sent[0].headers['Idempotency-Key'], sent[1].headers['Idempotency-Key']);
   assert.equal(sent[0].body, sent[1].body);

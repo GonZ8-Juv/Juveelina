@@ -51,7 +51,7 @@ export function crearHandler({ config = configuracionCorreo(), fetchImpl = fetch
       const id = `JUV-${body.requestId}`;
       const emails = ['tienda', 'cliente'].map((recipient) => {
         const mail = crearCorreo(pedido, id, recipient, config);
-        return { from: mail.from, to: [mail.to], reply_to: mail.replyTo, subject: mail.subject, text: mail.text };
+        return { from: mail.from, to: [mail.to], reply_to: mail.replyTo, subject: mail.subject, text: mail.text, ...(mail.html ? { html: mail.html } : {}) };
       });
       const response = await fetchImpl('https://api.resend.com/emails/batch', {
         method: 'POST',

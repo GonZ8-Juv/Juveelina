@@ -1,4 +1,5 @@
 import catalogo from '../src/data/catalogo.json' with { type: 'json' };
+import { correoClienteHtml } from './correo-html.js';
 import precios from '../src/data/precios.json' with { type: 'json' };
 import { formatoPrecio, resumenPedido, precioPorMedio, mediosPago } from '../src/data/importes.js';
 
@@ -53,6 +54,7 @@ export function crearCorreo(pedido, id, recipient, config) {
     from: config.from,
     to: cliente ? pedido.correo : config.to,
     replyTo: cliente ? config.to : pedido.correo,
+    ...(cliente ? { html: correoClienteHtml(pedido, id, config) } : {}),
     subject: cliente ? `Juveelina: recibimos tu solicitud ${id}` : `Nueva solicitud ${id} — ${mediosPago[metodoPago]}`,
     text: cliente
       ? `Hola ${pedido.nombre},\n\n¡Gracias por elegir Juveelina! Recibimos tu solicitud.\n\n${resumen}\nVamos a confirmar disponibilidad y el importe final. Después te enviaremos manualmente ${instrucciones}.\n\nTodavía no se realizó ningún cobro ni se reservó stock. No necesitás enviar datos de tu tarjeta por correo.\n\nSi querés corregir algo, respondé este mensaje.\n\nEquipo Juveelina`
