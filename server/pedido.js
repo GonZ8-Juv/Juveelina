@@ -1,6 +1,6 @@
 import catalogo from '../src/data/catalogo.json' with { type: 'json' };
 import precios from '../src/data/precios.json' with { type: 'json' };
-import { formatoPrecio, resumenImportes, precioPorMedio, mediosPago } from '../src/data/importes.js';
+import { formatoPrecio, resumenPedido, precioPorMedio, mediosPago } from '../src/data/importes.js';
 
 const productos = new Map(Object.values(catalogo).flat().map((p) => [p.id, p]));
 const emailValido = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+$/i;
@@ -34,7 +34,7 @@ export function validarPedido(body) {
   });
   const keys = items.map((item) => `${item.productoId}:${item.talle}`);
   if (new Set(keys).size !== keys.length) throw new OrderError('Agrupá las cantidades de cada producto.');
-  return { nombre, correo, telefono, entrega: body.entrega, metodoPago: body.metodoPago, direccion, notas, items, ...resumenImportes(items), moneda: 'UYU', estado: 'pendiente_confirmacion' };
+  return { nombre, correo, telefono, entrega: body.entrega, metodoPago: body.metodoPago, direccion, notas, items, ...resumenPedido(items, body.entrega), moneda: 'UYU', estado: 'pendiente_confirmacion' };
 }
 
 export function crearCorreo(pedido, id, recipient, config) {
@@ -44,7 +44,9 @@ export function crearCorreo(pedido, id, recipient, config) {
   const importe = pedido.pendiente
     ? `Hay productos con precio a confirmar.${pedido.subtotal ? ` Subtotal de productos con precio: ${formatoPrecio(pedido.subtotal)}.` : ''}`
     : `Subtotal de productos: ${formatoPrecio(pedido.subtotal)}.`;
-  const entrega = pedido.entrega === 'envio' ? `Envío a: ${pedido.direccion}. Costo de envío a confirmar.` : 'Retiro en Punta Carretas, a coordinar.';
+  const { envio, total } = resumenPedido(pedido.items, pedido.entrega);
+  const entrega = (pedido.entrega === 'envio' ? `Envío a: ${pedido.direccion}. Costo de envío: ${formatoPrecio(envio)}.` : 'Retiro en Punta Carretas, sin costo, a coordinar.')
+    + '\n' + (total === null ? 'Total a confirmar por productos sin precio informado.' : `Total: ${formatoPrecio(total)}.`);
   const resumen = `Solicitud ${id}\nMedio de pago: ${mediosPago[metodoPago]}\nMoneda: pesos uruguayos (UYU)\n\n${detalle}\n\n${importe}\n${entrega}\n${pedido.notas ? `Observaciones: ${pedido.notas}\n` : ''}`;
   const cliente = recipient === 'cliente';
   return {
@@ -57,4 +59,3 @@ export function crearCorreo(pedido, id, recipient, config) {
       : `${resumen}\nCliente: ${pedido.nombre}\nCorreo: ${pedido.correo}\nTeléfono: ${pedido.telefono}\n\nPendiente de confirmación y pago. Revisar stock, confirmar el total con envío y responder al cliente con ${instrucciones}. Verificar el ingreso en ${metodoPago === 'transferencia' ? 'la cuenta bancaria' : 'Mercado Pago'} antes de preparar la entrega.`,
   };
 }
-

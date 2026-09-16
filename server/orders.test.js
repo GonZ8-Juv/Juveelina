@@ -37,6 +37,27 @@ test('aplica el precio del medio elegido y los accesorios quedan a confirmar', (
   assert.doesNotMatch(correo.text, /enlace de Mercado Pago/);
 });
 
+test('envío fijo por pedido, retiro gratis y total pendiente si falta un precio', () => {
+  for (const [metodoPago, total] of [['transferencia', 6200], ['mercadopago', 6600]]) {
+    const pedido = validarPedido(body({ metodoPago, entrega: 'envio', direccion: 'Dirección de prueba', envio: 1, total: 1 }));
+    assert.equal(pedido.envio, 200);
+    assert.equal(pedido.total, total);
+    for (const recipient of ['cliente', 'tienda']) {
+      const correo = crearCorreo(pedido, 'prueba', recipient, mailConfig);
+      assert.match(correo.text, /Costo de envío:.*200/);
+      assert.match(correo.text, new RegExp(`Total:.*6[.,]${total === 6200 ? '200' : '600'}`));
+      assert.doesNotMatch(correo.text, /envío a confirmar/);
+    }
+  }
+  const retiro = validarPedido(body());
+  assert.equal(retiro.envio, 0);
+  assert.equal(retiro.total, 6400);
+  const pendiente = validarPedido(body({ entrega: 'envio', direccion: 'Dirección de prueba', items: [{ productoId: 'JUV-030', cantidad: 1 }] }));
+  assert.equal(pendiente.envio, 200);
+  assert.equal(pendiente.total, null);
+  assert.match(crearCorreo(pendiente, 'prueba', 'cliente', mailConfig).text, /Total a confirmar por productos/);
+});
+
 test('tarifas por tipo de prenda coinciden con la lista del negocio', () => {
   for (const [id, transferencia, mercadopago] of [
     ['JUV-001', 3000, 3200], ['JUV-003', 1500, 1800], ['JUV-005', 1300, 1500],

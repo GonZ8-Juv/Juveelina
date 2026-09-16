@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import { productosPorId } from '../data/catalogo.js';
-import { formatoPrecio, resumenImportes, precioPorMedio, mediosPago } from '../data/importes.js';
+import { formatoPrecio, resumenPedido, precioPorMedio, mediosPago } from '../data/importes.js';
 import './Carrito.css';
 
 const inicial = { nombre: '', correo: '', telefono: '', entrega: 'envio', metodoPago: 'mercadopago', direccion: '', notas: '', website: '' };
@@ -18,7 +18,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
   const panelRef = useRef(null);
   const productos = items.map((item) => ({ ...item, ...productosPorId[item.productoId], precio: precioPorMedio(productosPorId[item.productoId]?.precios, form.metodoPago), id: item.id, cantidad: item.cantidad, talle: item.talle, productoId: item.productoId }));
   const invalido = productos.some((p) => !productosPorId[p.productoId] || (p.talles.length > 0 && !p.talles.includes(p.talle)));
-  const { subtotal, pendiente } = resumenImportes(productos);
+  const { subtotal, pendiente, envio, total } = resumenPedido(productos, form.entrega);
 
   useEffect(() => {
     if (!visible) return;
@@ -129,7 +129,8 @@ export default function Carrito({ visible, onClose, items, setItems }) {
               <p><span>{pendiente ? 'Subtotal con precio informado' : 'Subtotal de productos'}</span><strong>{subtotal ? formatoPrecio(subtotal) : 'A confirmar'}</strong></p>
               <p>Precios en pesos uruguayos · {mediosPago[form.metodoPago]}</p>
               {pendiente && <p>Hay productos con precio a confirmar. Te enviaremos el importe final antes de pagar.</p>}
-              <p>Envío a confirmar según destino. Retiro en Punta Carretas a coordinar.</p>
+              <p className="order-amount"><span>{form.entrega === 'envio' ? 'Envío a domicilio' : 'Retiro en Punta Carretas'}</span><strong>{envio ? formatoPrecio(envio) : 'Sin costo'}</strong></p>
+              <p className="order-amount"><span>Total</span><strong>{pendiente ? 'A confirmar' : formatoPrecio(total)}</strong></p>
             </div>
             <form className="order-form" onSubmit={enviar}>
               <fieldset disabled={enviando}>

@@ -1,3 +1,5 @@
+import { COSTO_ENVIO, formatoPrecio } from '../data/importes.js';
+
 function ComoComprar() {
   return (
     <main className="info-page buy-page">
@@ -11,6 +13,7 @@ function ComoComprar() {
         <ol>
           <li>Completá tus datos en el carrito y elegí envío o retiro y el medio de pago: transferencia bancaria o Mercado Pago. El subtotal se calcula según tu elección.</li>
           <li>Enviá tu solicitud. Recibirás por correo el resumen de tu pedido.</li>
+          <li>El envío a domicilio cuesta {formatoPrecio(COSTO_ENVIO)}. El retiro en Punta Carretas es sin costo.</li>
           <li>Confirmaremos disponibilidad y el importe final, incluido el envío si corresponde.</li>
           <li>Te enviaremos por correo los datos bancarios o un enlace de Mercado Pago, según el medio que hayas elegido.</li>
           <li>Una vez verificado el pago, coordinaremos la entrega.</li>

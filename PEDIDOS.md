@@ -40,7 +40,7 @@ Se recomienda un proveedor de correo transaccional con dominio verificado. Gmail
 
 ## Entrega y operación del servidor Node con SMTP
 
-Se mantuvieron las opciones ya anunciadas en la web: envío a todo el país y retiro en Punta Carretas. El costo del envío se confirma manualmente. No se inventaron precios de envío, plazos de respuesta ni stock.
+Se mantuvieron las opciones ya anunciadas en la web: envío a todo el país y retiro en Punta Carretas. El envío cuesta $200 UYU por pedido y el retiro es sin costo. La tarifa compartida por el carrito y el servidor está en `src/data/importes.js`. Los productos sin precio siguen pendientes de cotización.
 
 Cada solicitud se guarda en `orders` junto con dos tareas en `outbox`, una para la tienda y otra para el cliente. La respuesta de la API confirma el registro, no la entrega en la bandeja del destinatario. El servicio procesa la cola cada 30 segundos. Los correos fallidos se reintentan con demoras crecientes hasta 8 intentos; luego quedan en estado `failed` para revisión. Los logs solo muestran ID de solicitud, tipo de destinatario e intento.
 

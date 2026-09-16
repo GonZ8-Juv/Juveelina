@@ -15,7 +15,7 @@
 .order-quantity { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
 .order-quantity select { padding: 8px; border: 1px solid #cfc4b9; border-radius: 4px; font: inherit; }
 .order-totals { margin: 22px 0; padding: 16px; background: #f6f2ec; border-radius: 8px; line-height: 1.5; }
-.order-totals p:first-child { display: flex; justify-content: space-between; gap: 12px; }
+.order-totals p:first-child, .order-totals .order-amount { display: flex; justify-content: space-between; gap: 12px; }
 .order-totals p { font-size: 14px; }
 .order-totals strong { white-space: nowrap; }
 .order-form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
@@ -30,4 +30,4 @@
 .order-unavailable { padding: 14px; background: #f6f2ec; line-height: 1.5; }
 .order-success { padding: 20px 0; line-height: 1.7; overflow-wrap: anywhere; }
 .order-form .order-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-@media (max-width: 420px) { .order-panel { padding: 18px; } .order-totals p:first-child { flex-direction: column; gap: 4px; } }
+@media (max-width: 420px) { .order-panel { padding: 18px; } .order-totals p:first-child, .order-totals .order-amount { flex-direction: column; gap: 4px; } }
