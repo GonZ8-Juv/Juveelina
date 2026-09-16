@@ -442,7 +442,7 @@
     {
       "nombre": "Matera Criolla Marrón",
       "color": "Marrón",
-      "material": "Lona",
+      "material": "Cuero",
       "imagenes": [
         "Materas/Matera Juvee brown.webp",
         "3 materas.webp"
@@ -454,7 +454,7 @@
     {
       "nombre": "Matera Criolla Blanca",
       "color": "Blanco",
-      "material": "Lona",
+      "material": "Cuero",
       "imagenes": [
         "Materas/file_00000000d17c820e80419465bce0c40c.webp",
         "Materas/file_0000000037d8820e812e38e0ff4c3691(1).webp",
@@ -468,7 +468,7 @@
     {
       "nombre": "Matera Criolla Negra",
       "color": "Negro",
-      "material": "Lona",
+      "material": "Cuero",
       "imagenes": [
         "Materas/Matera Juvee black.webp",
         "3 materas.webp"
