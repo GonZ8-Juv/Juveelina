@@ -23,7 +23,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
   useEffect(() => {
     if (!visible) return;
     const controller = new AbortController();
-    fetch('/api/pedidos/config', { signal: controller.signal })
+    fetch('/api/pedidos/config', { signal: AbortSignal.any([controller.signal, AbortSignal.timeout(8000)]) })
       .then((res) => res.ok ? res.json() : Promise.reject())
       .then((data) => setDisponible(data.disponible === true))
       .catch(() => { if (!controller.signal.aborted) setDisponible(false); });

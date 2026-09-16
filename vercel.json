@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/pedidos.js": { "maxDuration": 30 }
+  },
+  "rewrites": [
+    { "source": "/colecciones/:path*", "destination": "/index.html" },
+    { "source": "/vestimenta/:path*", "destination": "/index.html" },
+    { "source": "/accesorios/:path*", "destination": "/index.html" },
+    { "source": "/contacto", "destination": "/index.html" },
+    { "source": "/nosotros", "destination": "/index.html" },
+    { "source": "/como-comprar", "destination": "/index.html" },
+    { "source": "/terminos-y-condiciones", "destination": "/index.html" }
+  ]
+}
