@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { enlaceProducto } from "../data/enlaces.js";
 import { FaInstagram, FaShareAlt, FaWhatsapp } from "react-icons/fa";
 
 import { productosPorCategoria } from "../data/catalogo.js";
@@ -108,11 +109,20 @@ export function ProductGallery({
   categoriaPredeterminada,
   className = "",
 }) {
-  const [productoActivo, setProductoActivo] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const productoActivo = productos.find((producto) => producto.id === searchParams.get('producto')) || null;
+  const setProductoActivo = (producto) => {
+    setSearchParams((actual) => {
+      const siguiente = new URLSearchParams(actual);
+      if (producto) siguiente.set('producto', producto.id);
+      else siguiente.delete('producto');
+      return siguiente;
+    }, { replace: !producto });
+  };
   const [productoCargando, setProductoCargando] = useState(null);
   const [fotoActual, setFotoActual] = useState(0);
   const [imagenAmpliada, setImagenAmpliada] = useState(false);
-  const [talleSeleccionado, setTalleSeleccionado] = useState("M");
+  const [talleSeleccionado, setTalleSeleccionado] = useState(() => productoActivo?.talles?.[0] || "M");
   const productOpenTimer = useRef(null);
   const modalContentRef = useRef(null);
 
@@ -121,8 +131,9 @@ export function ProductGallery({
   const productShareText = productoActivo
     ? `Mirá este producto de Juveelina: ${productoActivo.nombre} ${productoActivo.color}`
     : "";
-  const productShareUrl =
-    typeof window !== "undefined" ? window.location.href : "https://juveelina.com";
+  const productShareUrl = productoActivo
+    ? new URL(enlaceProducto(productoActivo.id), window.location.origin).href
+    : "https://www.juveelina.com";
 
   useEffect(() => {
     return () => {

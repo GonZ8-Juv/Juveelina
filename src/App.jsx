@@ -154,7 +154,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [cartOpen, setCartOpen] = useState(false);
   const [cartPromptOpen, setCartPromptOpen] = useState(false);
-  const [newArrivalsOpen, setNewArrivalsOpen] = useState(true);
+  const [newArrivalsOpen, setNewArrivalsOpen] = useState(() => !new URLSearchParams(location.search).has('producto'));
   const [currentNewArrival, setCurrentNewArrival] = useState(0);
   const [cartItems, setCartItems] = useState(cargarCarrito);
 
@@ -250,7 +250,7 @@ function App() {
         </div>
       )}
 
-      {newArrivalsOpen && (
+      {newArrivalsOpen && !new URLSearchParams(location.search).has('producto') && (
         <div className="new-arrivals-backdrop" onClick={() => setNewArrivalsOpen(false)}>
           <section className="new-arrivals-popup" onClick={(e) => e.stopPropagation()}>
             <button
@@ -436,7 +436,7 @@ function App() {
 
 
             {/* Mostrar pag */}
-            <main className="page-shell" key={location.pathname}>
+            <main className="page-shell" key={location.pathname + location.search}>
               <Routes location={location}>
                 <Route path="/" element={<Home onAddToCart={addToCart} />} />
 
