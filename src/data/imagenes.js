@@ -1,10 +1,10 @@
-import imagen0 from "../assets/Camp jean/file_00000000cfcc820e81728114c2d3bb03.png";
-import imagen1 from "../assets/Camp jean/file_000000002734820e9319131635ebc65a.png";
-import imagen2 from "../assets/Camp jean/file_00000000df44820eaf6969701c5e76de.png";
-import imagen3 from "../assets/Camp jean/file_000000000854820eab84663894029171.png";
-import imagen4 from "../assets/Camp jean/file_0000000015c081f4b5ec5e7fd8584598.png";
-import imagen5 from "../assets/Camp jean/file_000000005fb081f58106cf4e7e5730db.png";
-import imagen6 from "../assets/Camp jean/file_0000000020dc820ea802c0c8828e5148.png";
+import imagen0 from "../assets/Camp jean/file_00000000cfcc820e81728114c2d3bb03.webp";
+import imagen1 from "../assets/Camp jean/file_000000002734820e9319131635ebc65a.webp";
+import imagen2 from "../assets/Camp jean/file_00000000df44820eaf6969701c5e76de.webp";
+import imagen3 from "../assets/Camp jean/file_000000000854820eab84663894029171.webp";
+import imagen4 from "../assets/Camp jean/file_0000000015c081f4b5ec5e7fd8584598.webp";
+import imagen5 from "../assets/Camp jean/file_000000005fb081f58106cf4e7e5730db.webp";
+import imagen6 from "../assets/Camp jean/file_0000000020dc820ea802c0c8828e5148.webp";
 import imagen7 from "../assets/RemerasSensacionUy/remera-sensacion-blanca-detalle.webp";
 import imagen8 from "../assets/RemerasSensacionUy/remera-sensacion-blanca-frente.webp";
 import imagen9 from "../assets/RemerasSensacionUy/remera-sensacion-negra-frente.webp";
@@ -57,10 +57,10 @@ import imagen55 from "../assets/Bolsos/Soles2.webp";
 import imagen56 from "../assets/Bolsos/sols.webp";
 import imagen57 from "../assets/Materas/Matera Juvee brown.webp";
 import imagen58 from "../assets/3 materas.webp";
-import imagen59 from "../assets/Materas/file_00000000d17c820e80419465bce0c40c.png";
-import imagen60 from "../assets/Materas/file_0000000037d8820e812e38e0ff4c3691(1).png";
-import imagen61 from "../assets/Materas/file_00000000528c820e865f7a87a1e9c945.png";
-import imagen62 from "../assets/Materas/file_00000000ff84820e86dc43c035b8d4c1.png";
+import imagen59 from "../assets/Materas/file_00000000d17c820e80419465bce0c40c.webp";
+import imagen60 from "../assets/Materas/file_0000000037d8820e812e38e0ff4c3691(1).webp";
+import imagen61 from "../assets/Materas/file_00000000528c820e865f7a87a1e9c945.webp";
+import imagen62 from "../assets/Materas/file_00000000ff84820e86dc43c035b8d4c1.webp";
 import imagen63 from "../assets/Materas/Matera Juvee black.webp";
 import imagen64 from "../assets/Peques/buzo-blanco.jpeg.webp";
 import imagen65 from "../assets/Peques/buzo-negro.jpeg.webp";
@@ -93,13 +93,13 @@ import imagen91 from "../assets/hombre/solamnegro.webp";
 import imagen92 from "../assets/hombre/negroespalda.webp";
 
 export default {
-  "Camp jean/file_00000000cfcc820e81728114c2d3bb03.png": imagen0,
-  "Camp jean/file_000000002734820e9319131635ebc65a.png": imagen1,
-  "Camp jean/file_00000000df44820eaf6969701c5e76de.png": imagen2,
-  "Camp jean/file_000000000854820eab84663894029171.png": imagen3,
-  "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.png": imagen4,
-  "Camp jean/file_000000005fb081f58106cf4e7e5730db.png": imagen5,
-  "Camp jean/file_0000000020dc820ea802c0c8828e5148.png": imagen6,
+  "Camp jean/file_00000000cfcc820e81728114c2d3bb03.webp": imagen0,
+  "Camp jean/file_000000002734820e9319131635ebc65a.webp": imagen1,
+  "Camp jean/file_00000000df44820eaf6969701c5e76de.webp": imagen2,
+  "Camp jean/file_000000000854820eab84663894029171.webp": imagen3,
+  "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.webp": imagen4,
+  "Camp jean/file_000000005fb081f58106cf4e7e5730db.webp": imagen5,
+  "Camp jean/file_0000000020dc820ea802c0c8828e5148.webp": imagen6,
   "RemerasSensacionUy/remera-sensacion-blanca-detalle.webp": imagen7,
   "RemerasSensacionUy/remera-sensacion-blanca-frente.webp": imagen8,
   "RemerasSensacionUy/remera-sensacion-negra-frente.webp": imagen9,
@@ -152,10 +152,10 @@ export default {
   "Bolsos/sols.webp": imagen56,
   "Materas/Matera Juvee brown.webp": imagen57,
   "3 materas.webp": imagen58,
-  "Materas/file_00000000d17c820e80419465bce0c40c.png": imagen59,
-  "Materas/file_0000000037d8820e812e38e0ff4c3691(1).png": imagen60,
-  "Materas/file_00000000528c820e865f7a87a1e9c945.png": imagen61,
-  "Materas/file_00000000ff84820e86dc43c035b8d4c1.png": imagen62,
+  "Materas/file_00000000d17c820e80419465bce0c40c.webp": imagen59,
+  "Materas/file_0000000037d8820e812e38e0ff4c3691(1).webp": imagen60,
+  "Materas/file_00000000528c820e865f7a87a1e9c945.webp": imagen61,
+  "Materas/file_00000000ff84820e86dc43c035b8d4c1.webp": imagen62,
   "Materas/Matera Juvee black.webp": imagen63,
   "Peques/buzo-blanco.jpeg.webp": imagen64,
   "Peques/buzo-negro.jpeg.webp": imagen65,

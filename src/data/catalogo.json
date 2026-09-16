@@ -5,10 +5,10 @@
       "color": "Jean claro",
       "material": "Jean",
       "imagenes": [
-        "Camp jean/file_00000000cfcc820e81728114c2d3bb03.png",
-        "Camp jean/file_000000002734820e9319131635ebc65a.png",
-        "Camp jean/file_00000000df44820eaf6969701c5e76de.png",
-        "Camp jean/file_000000000854820eab84663894029171.png"
+        "Camp jean/file_00000000cfcc820e81728114c2d3bb03.webp",
+        "Camp jean/file_000000002734820e9319131635ebc65a.webp",
+        "Camp jean/file_00000000df44820eaf6969701c5e76de.webp",
+        "Camp jean/file_000000000854820eab84663894029171.webp"
       ],
       "nuevo": true,
       "id": "JUV-001",
@@ -25,9 +25,9 @@
       "color": "Jean oscuro",
       "material": "Jean",
       "imagenes": [
-        "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.png",
-        "Camp jean/file_000000005fb081f58106cf4e7e5730db.png",
-        "Camp jean/file_0000000020dc820ea802c0c8828e5148.png"
+        "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.webp",
+        "Camp jean/file_000000005fb081f58106cf4e7e5730db.webp",
+        "Camp jean/file_0000000020dc820ea802c0c8828e5148.webp"
       ],
       "nuevo": true,
       "id": "JUV-002",
@@ -456,10 +456,10 @@
       "color": "Blanco",
       "material": "Lona",
       "imagenes": [
-        "Materas/file_00000000d17c820e80419465bce0c40c.png",
-        "Materas/file_0000000037d8820e812e38e0ff4c3691(1).png",
-        "Materas/file_00000000528c820e865f7a87a1e9c945.png",
-        "Materas/file_00000000ff84820e86dc43c035b8d4c1.png"
+        "Materas/file_00000000d17c820e80419465bce0c40c.webp",
+        "Materas/file_0000000037d8820e812e38e0ff4c3691(1).webp",
+        "Materas/file_00000000528c820e865f7a87a1e9c945.webp",
+        "Materas/file_00000000ff84820e86dc43c035b8d4c1.webp"
       ],
       "nuevo": true,
       "id": "JUV-030",
@@ -550,10 +550,10 @@
       "color": "Jean claro",
       "material": "Jean",
       "imagenes": [
-        "Camp jean/file_00000000cfcc820e81728114c2d3bb03.png",
-        "Camp jean/file_000000002734820e9319131635ebc65a.png",
-        "Camp jean/file_00000000df44820eaf6969701c5e76de.png",
-        "Camp jean/file_000000000854820eab84663894029171.png"
+        "Camp jean/file_00000000cfcc820e81728114c2d3bb03.webp",
+        "Camp jean/file_000000002734820e9319131635ebc65a.webp",
+        "Camp jean/file_00000000df44820eaf6969701c5e76de.webp",
+        "Camp jean/file_000000000854820eab84663894029171.webp"
       ],
       "nuevo": true,
       "id": "JUV-001",
@@ -570,9 +570,9 @@
       "color": "Jean oscuro",
       "material": "Jean",
       "imagenes": [
-        "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.png",
-        "Camp jean/file_000000005fb081f58106cf4e7e5730db.png",
-        "Camp jean/file_0000000020dc820ea802c0c8828e5148.png"
+        "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.webp",
+        "Camp jean/file_000000005fb081f58106cf4e7e5730db.webp",
+        "Camp jean/file_0000000020dc820ea802c0c8828e5148.webp"
       ],
       "nuevo": true,
       "id": "JUV-002",
