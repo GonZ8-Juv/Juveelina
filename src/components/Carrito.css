@@ -1,0 +1,33 @@
+.product-price { display: block; margin: 8px 0; color: #593e2c; font-size: 1rem; }
+.product-prices { display: grid; gap: 6px; margin: 12px 0; color: #593e2c; }
+.product-prices > div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 4px 8px; }
+.product-prices strong { font-size: 1rem; }
+.product-prices span { font-size: .8rem; color: #666; }
+.product-detail-panel .product-prices > div { justify-content: flex-start; }
+.order-panel { width: min(560px, 100%); box-sizing: border-box; }
+.order-panel button:disabled { opacity: .55; cursor: not-allowed; }
+.order-panel a { color: #593e2c; text-decoration: underline; }
+.order-email-notice { display: flex; align-items: flex-start; gap: 12px; margin: 20px 0; padding: 16px; border: 1px solid #d8bd92; border-left: 4px solid #94632c; border-radius: 8px; background: #fff6e7; color: #51391f; line-height: 1.55; }
+.order-email-icon { flex: 0 0 22px; width: 22px; height: 22px; margin-top: 2px; }
+.order-email-notice > div { min-width: 0; }
+.order-email-notice p { margin: 10px 0 0; font-size: 14px; }
+.order-email-notice .order-email-reminder { font-weight: 600; }
+.order-quantity { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+.order-quantity select { padding: 8px; border: 1px solid #cfc4b9; border-radius: 4px; font: inherit; }
+.order-totals { margin: 22px 0; padding: 16px; background: #f6f2ec; border-radius: 8px; line-height: 1.5; }
+.order-totals p:first-child { display: flex; justify-content: space-between; gap: 12px; }
+.order-totals p { font-size: 14px; }
+.order-totals strong { white-space: nowrap; }
+.order-form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.order-form legend { font-size: 20px; font-weight: 600; margin-bottom: 18px; }
+.order-form label { display: grid; gap: 8px; margin-bottom: 16px; font-size: 14px; }
+.order-form input, .order-form select, .order-form textarea { width: 100%; box-sizing: border-box; border: 1px solid #cfc4b9; border-radius: 5px; padding: 12px; font: inherit; font-size: 16px; background: white; color: #222; }
+.order-form textarea { resize: vertical; }
+.order-form :focus-visible, .order-panel button:focus-visible { outline: 2px solid #815b3e; outline-offset: 3px; }
+.order-submit { width: 100%; border: 0; border-radius: 5px; padding: 15px 18px; background: #593e2c; color: white; cursor: pointer; font: inherit; font-weight: 600; }
+.order-privacy, .order-payment-note { color: #666; font-size: 13px; line-height: 1.6; }
+.order-error { color: #942d25; line-height: 1.5; }
+.order-unavailable { padding: 14px; background: #f6f2ec; line-height: 1.5; }
+.order-success { padding: 20px 0; line-height: 1.7; overflow-wrap: anywhere; }
+.order-form .order-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 420px) { .order-panel { padding: 18px; } .order-totals p:first-child { flex-direction: column; gap: 4px; } }

@@ -1,0 +1,1004 @@
+{
+  "Campera-Jean": [
+    {
+      "nombre": "Campera de Jean",
+      "color": "Jean claro",
+      "material": "Jean",
+      "imagenes": [
+        "Camp jean/file_00000000cfcc820e81728114c2d3bb03.png",
+        "Camp jean/file_000000002734820e9319131635ebc65a.png",
+        "Camp jean/file_00000000df44820eaf6969701c5e76de.png",
+        "Camp jean/file_000000000854820eab84663894029171.png"
+      ],
+      "nuevo": true,
+      "id": "JUV-001",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Campera de Jean",
+      "color": "Jean oscuro",
+      "material": "Jean",
+      "imagenes": [
+        "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.png",
+        "Camp jean/file_000000005fb081f58106cf4e7e5730db.png",
+        "Camp jean/file_0000000020dc820ea802c0c8828e5148.png"
+      ],
+      "nuevo": true,
+      "id": "JUV-002",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    }
+  ],
+  "Remeras": [
+    {
+      "nombre": "Sensación Uy",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "RemerasSensacionUy/remera-sensacion-blanca-detalle.webp",
+        "RemerasSensacionUy/remera-sensacion-blanca-frente.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-003",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Sensación Uy",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "RemerasSensacionUy/remera-sensacion-negra-frente.webp",
+        "RemerasSensacionUy/remera-sensacion-negra-espalda.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-004",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Sol",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RNF.webp",
+        "Remeras/RNB.webp"
+      ],
+      "id": "JUV-005",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Sol",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RBF.webp",
+        "Remeras/RBB.webp"
+      ],
+      "id": "JUV-006",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Sol",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RGF.webp",
+        "Remeras/RGB.webp"
+      ],
+      "id": "JUV-007",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Sol",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RMF.webp",
+        "Remeras/RMB.webp"
+      ],
+      "id": "JUV-008",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Escudo",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RNFE.webp",
+        "Remeras/RNBE.webp"
+      ],
+      "id": "JUV-009",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Escudo",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RBFE.webp",
+        "Remeras/RBBE.webp"
+      ],
+      "id": "JUV-010",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Escudo",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RGFE.webp",
+        "Remeras/RGBE.webp"
+      ],
+      "id": "JUV-011",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Básica Escudo",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/RMFE.webp",
+        "Remeras/RMBE.webp"
+      ],
+      "id": "JUV-012",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    }
+  ],
+  "Buzos Uy": [
+    {
+      "nombre": "Buzo Uy medio sol",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "BuzosUy/buzo-medio-sol-frente.webp",
+        "BuzosUy/buzo-medio-sol-espalda.webp"
+      ],
+      "id": "JUV-013",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    }
+  ],
+  "Cardigans UruWhy": [
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Beige",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-beige-principal.webp",
+        "CardigansUruWhy/cardigan-beige-detalle.webp",
+        "CardigansUruWhy/cardigan-beige-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-014"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Gris",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-gris-principal.webp",
+        "CardigansUruWhy/cardigan-gris-detalle.webp",
+        "CardigansUruWhy/cardigan-gris-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-015"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Rosa",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-rosa-principal.webp",
+        "CardigansUruWhy/cardigan-rosa-frente.webp",
+        "CardigansUruWhy/cardigan-rosa-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-016"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Azul",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-azul-principal.webp",
+        "CardigansUruWhy/cardigan-azul-entero.webp",
+        "CardigansUruWhy/cardigan-azul-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-017"
+    }
+  ],
+  "Sweaters": [
+    {
+      "nombre": "Buzo Oriental uy",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/Buzouy.webp",
+        "hombre/Buzouyesp.webp"
+      ],
+      "id": "JUV-018",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Golden.uy",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/solyoruesp.webp",
+        "hombre/Solyoru.webp"
+      ],
+      "id": "JUV-019",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    }
+  ],
+  "Carteras": [
+    {
+      "nombre": "Print.R.O.U",
+      "color": "Natural",
+      "material": "Yute y lona",
+      "imagenes": [
+        "Carprint.webp"
+      ],
+      "id": "JUV-020",
+      "talles": []
+    },
+    {
+      "nombre": "Print.Uy",
+      "color": "Natural",
+      "material": "Lona",
+      "imagenes": [
+        "Print.Uy.webp",
+        "Print.Uy 2.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-021",
+      "talles": []
+    }
+  ],
+  "Neceser": [
+    {
+      "nombre": "Neceser Soy Celeste",
+      "color": "Natural",
+      "material": "Lona y yute",
+      "imagenes": [
+        "SoyCel.webp"
+      ],
+      "id": "JUV-022",
+      "talles": []
+    }
+  ],
+  "TOTES": [
+    {
+      "nombre": "Tote bag",
+      "color": "Natural",
+      "material": "Lona",
+      "imagenes": [
+        "Bag Sol.uy.webp",
+        "Bag sol.uy2.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-023",
+      "talles": []
+    },
+    {
+      "nombre": "Tote bag",
+      "color": "Natural",
+      "material": "Lona",
+      "imagenes": [
+        "Bag Mix.Uy.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-024",
+      "talles": []
+    },
+    {
+      "nombre": "Tote bag",
+      "color": "Rosa",
+      "material": "Lona",
+      "imagenes": [
+        "Bag PinkJuvee.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-025",
+      "talles": []
+    },
+    {
+      "nombre": "Tote bag",
+      "color": "Natural",
+      "material": "Lona",
+      "imagenes": [
+        "Bolsos/Juvee.webp"
+      ],
+      "id": "JUV-026",
+      "talles": []
+    },
+    {
+      "nombre": "Tote bag",
+      "color": "Natural",
+      "material": "Lona",
+      "imagenes": [
+        "Bolsos/bolsosol.webp",
+        "Bolsos/Soles2.webp"
+      ],
+      "id": "JUV-027",
+      "talles": []
+    },
+    {
+      "nombre": "Tote bag",
+      "color": "Natural",
+      "material": "Lona",
+      "imagenes": [
+        "Bolsos/sols.webp"
+      ],
+      "id": "JUV-028",
+      "talles": []
+    }
+  ],
+  "Materas Criollas": [
+    {
+      "nombre": "Matera Criolla Marrón",
+      "color": "Marrón",
+      "material": "Lona",
+      "imagenes": [
+        "Materas/Matera Juvee brown.webp",
+        "3 materas.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-029",
+      "talles": []
+    },
+    {
+      "nombre": "Matera Criolla Blanca",
+      "color": "Blanco",
+      "material": "Lona",
+      "imagenes": [
+        "Materas/file_00000000d17c820e80419465bce0c40c.png",
+        "Materas/file_0000000037d8820e812e38e0ff4c3691(1).png",
+        "Materas/file_00000000528c820e865f7a87a1e9c945.png",
+        "Materas/file_00000000ff84820e86dc43c035b8d4c1.png"
+      ],
+      "nuevo": true,
+      "id": "JUV-030",
+      "talles": []
+    },
+    {
+      "nombre": "Matera Criolla Negra",
+      "color": "Negro",
+      "material": "Lona",
+      "imagenes": [
+        "Materas/Matera Juvee black.webp",
+        "3 materas.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-031",
+      "talles": []
+    }
+  ],
+  "Guríses": [
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Blanco",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "Peques/buzo-blanco.jpeg.webp"
+      ],
+      "id": "JUV-032",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Negro",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "Peques/buzo-negro.jpeg.webp"
+      ],
+      "id": "JUV-033",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Camiseta Escudo",
+      "color": "Celeste",
+      "material": "Algodón",
+      "imagenes": [
+        "Peques/Camisceles.webp"
+      ],
+      "id": "JUV-034",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Camiseta Escudo",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "Peques/Camisnegr.webp"
+      ],
+      "id": "JUV-035",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    }
+  ],
+  "Mujeres": [
+    {
+      "nombre": "Campera de Jean",
+      "color": "Jean claro",
+      "material": "Jean",
+      "imagenes": [
+        "Camp jean/file_00000000cfcc820e81728114c2d3bb03.png",
+        "Camp jean/file_000000002734820e9319131635ebc65a.png",
+        "Camp jean/file_00000000df44820eaf6969701c5e76de.png",
+        "Camp jean/file_000000000854820eab84663894029171.png"
+      ],
+      "nuevo": true,
+      "id": "JUV-001",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Campera de Jean",
+      "color": "Jean oscuro",
+      "material": "Jean",
+      "imagenes": [
+        "Camp jean/file_0000000015c081f4b5ec5e7fd8584598.png",
+        "Camp jean/file_000000005fb081f58106cf4e7e5730db.png",
+        "Camp jean/file_0000000020dc820ea802c0c8828e5148.png"
+      ],
+      "nuevo": true,
+      "id": "JUV-002",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Azul",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/escazul.webp"
+      ],
+      "id": "JUV-036",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/escgris.webp",
+        "mujer/espaldagris.webp"
+      ],
+      "id": "JUV-037",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/escudoblanco.webp"
+      ],
+      "id": "JUV-038",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/marronesc.webp",
+        "mujer/espaldamarron.webp"
+      ],
+      "id": "JUV-039",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/solgris2.webp"
+      ],
+      "id": "JUV-040",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/solmarron.webp",
+        "mujer/espaldamarron.webp"
+      ],
+      "id": "JUV-041",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/solnegro2.webp",
+        "mujer/espaldanegro.webp"
+      ],
+      "id": "JUV-042",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Beige",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-beige-principal.webp",
+        "CardigansUruWhy/cardigan-beige-detalle.webp",
+        "CardigansUruWhy/cardigan-beige-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-014"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Gris",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-gris-principal.webp",
+        "CardigansUruWhy/cardigan-gris-detalle.webp",
+        "CardigansUruWhy/cardigan-gris-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-015"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Rosa",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-rosa-principal.webp",
+        "CardigansUruWhy/cardigan-rosa-frente.webp",
+        "CardigansUruWhy/cardigan-rosa-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-016"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Azul",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-azul-principal.webp",
+        "CardigansUruWhy/cardigan-azul-entero.webp",
+        "CardigansUruWhy/cardigan-azul-espalda.webp"
+      ],
+      "nuevo": true,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-017"
+    },
+    {
+      "nombre": "Sensación Uy",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "RemerasSensacionUy/remera-sensacion-blanca-frente.webp",
+        "RemerasSensacionUy/remera-sensacion-blanca-detalle.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-003",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Sensación Uy",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "RemerasSensacionUy/remera-sensacion-negra-frente.webp",
+        "RemerasSensacionUy/remera-sensacion-negra-espalda.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-004",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    }
+  ],
+  "Hombres": [
+    {
+      "nombre": "Buzo Horse",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/Horse.webp",
+        "hombre/Horse back.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-043",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/Blancosol.webp"
+      ],
+      "id": "JUV-044",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/blancoesc.webp"
+      ],
+      "id": "JUV-045",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/blancosoln.webp",
+        "hombre/blancoespalda.webp"
+      ],
+      "id": "JUV-046",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/grissol.webp"
+      ],
+      "id": "JUV-047",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/grisesc.webp"
+      ],
+      "id": "JUV-048",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/marronsol.webp",
+        "hombre/marronespalda.webp"
+      ],
+      "id": "JUV-049",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/marronsolb.webp"
+      ],
+      "id": "JUV-050",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/negrosol.webp"
+      ],
+      "id": "JUV-051",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/NegroEsc.webp"
+      ],
+      "id": "JUV-052",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/solamnegro.webp",
+        "hombre/negroespalda.webp"
+      ],
+      "id": "JUV-053",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Oriental uy",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/Buzouy.webp",
+        "hombre/Buzouyesp.webp"
+      ],
+      "id": "JUV-018",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    }
+  ]
+}

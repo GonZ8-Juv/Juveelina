@@ -28,6 +28,8 @@ import Nosotros from "./pages/Nosotros.jsx";
 import ComoComprar from "./pages/ComoComprar.jsx";
 import Terminos from "./pages/Terminos.jsx";
 
+import Carrito from "./components/Carrito.jsx";
+import { cargarCarrito } from "./data/carrito.js";
 import "./index.css";
 
 const heroes = [
@@ -61,6 +63,9 @@ const newArrivals = [
 ];
 
 const searchItems = [
+  { nombre: "Campera-Jean", detalle: "Colecciones", url: "/colecciones/campera-jean" },
+  { nombre: "Campera de Jean clara", detalle: "Colecciones · Campera-Jean", url: "/colecciones/campera-jean" },
+  { nombre: "Campera de Jean oscura", detalle: "Colecciones · Campera-Jean", url: "/colecciones/campera-jean" },
   { nombre: "Remeras", detalle: "Colecciones", url: "/colecciones/remeras" },
   { nombre: "Básica Sol negra", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
   { nombre: "Básica Sol blanca", detalle: "Colecciones · Remeras", url: "/colecciones/remeras" },
@@ -89,7 +94,7 @@ const searchItems = [
   { nombre: "Tote bag", detalle: "Accesorios · TOTES", url: "/accesorios/bags" },
   { nombre: "Materas Criollas", detalle: "Accesorios", url: "/accesorios/materas-criollas" },
   { nombre: "Matera Criolla Marrón", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
-  { nombre: "Matera Criolla Beige", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
+  { nombre: "Matera Criolla Blanca", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
   { nombre: "Matera Criolla Negra", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
   { nombre: "Neceser", detalle: "Accesorios", url: "/accesorios/neceser" },
   { nombre: "Neceser Soy Celeste", detalle: "Accesorios · Neceser", url: "/accesorios/neceser" },
@@ -151,10 +156,7 @@ function App() {
   const [cartPromptOpen, setCartPromptOpen] = useState(false);
   const [newArrivalsOpen, setNewArrivalsOpen] = useState(true);
   const [currentNewArrival, setCurrentNewArrival] = useState(0);
-  const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem("juveelina-cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cartItems, setCartItems] = useState(cargarCarrito);
 
   const normalizedSearch = searchTerm.trim().toLowerCase();
   const searchResults = normalizedSearch
@@ -170,26 +172,18 @@ function App() {
   };
 
   const addToCart = (item) => {
-    setCartItems((actual) => [
-      ...actual,
-      {
-        ...item,
-        id: `${item.nombre}-${item.color}-${item.talle}-${Date.now()}`,
-      },
-    ]);
+    const id = item.productoId + ':' + (item.talle || null);
+    setCartItems((actual) => {
+      const exists = actual.find((entry) => entry.id === id);
+      return exists
+        ? actual.map((entry) => entry.id === id ? { ...entry, cantidad: Math.min(10, entry.cantidad + 1) } : entry)
+        : [...actual, { ...item, id, cantidad: 1 }];
+    });
     setCartPromptOpen(true);
   };
 
-  const removeFromCart = (id) => {
-    setCartItems((actual) => actual.filter((item) => item.id !== id));
-  };
-
-  const clearCart = () => {
-    setCartItems([]);
-  };
-
   useEffect(() => {
-    localStorage.setItem("juveelina-cart", JSON.stringify(cartItems));
+    try { localStorage.setItem("juveelina-cart", JSON.stringify(cartItems)); } catch { /* El carrito sigue disponible durante la sesión. */ }
   }, [cartItems]);
 
   useEffect(() => {
@@ -310,6 +304,10 @@ function App() {
       <span>Colecciones</span>
       <div className="dropdown-menu">
       <Link to="/colecciones/remeras">Remeras</Link>
+      <Link to="/colecciones/campera-jean" className="dropdown-new-link">
+        <span>Campera-Jean</span>
+        <span className="dropdown-new-badge">NEW</span>
+      </Link>
       <Link to="/colecciones/buzos-uy">Buzos Uy</Link>
       <Link to="/colecciones/cardigans-uruwhy" className="dropdown-new-link">
         <span>Cardigans UruWhy</span>
@@ -351,7 +349,7 @@ function App() {
     </a>
     <button type="button" aria-label="Carrito" className="cart-icon-button" onClick={() => setCartOpen(true)}>
       <FaShoppingBag />
-      {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
+      {cartItems.length > 0 && <span className="cart-count">{cartItems.reduce((total, item) => total + item.cantidad, 0)}</span>}
     </button>
 
   
@@ -391,46 +389,7 @@ function App() {
   </div>
 )}
 
-{cartOpen && (
-  <div className="cart-backdrop" onClick={() => setCartOpen(false)}>
-    <aside className="cart-panel" onClick={(e) => e.stopPropagation()}>
-      <div className="cart-header">
-        <h2>Carrito</h2>
-        <button type="button" onClick={() => setCartOpen(false)}>
-          ×
-        </button>
-      </div>
-
-      <p className="cart-note">Guardá acá las prendas que te gustan para tenerlas a mano.</p>
-
-      {cartItems.length > 0 ? (
-        <>
-          <div className="cart-items">
-            {cartItems.map((item) => (
-              <article className="cart-item" key={item.id}>
-                <img src={item.imagen} alt={item.nombre} />
-                <div>
-                  <h3>{item.nombre}</h3>
-                  <p>{item.talle ? `${item.color} · Talle ${item.talle}` : item.color}</p>
-                  <small>{item.categoria}</small>
-                  <button type="button" onClick={() => removeFromCart(item.id)}>
-                    Quitar
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <button type="button" className="clear-cart-button" onClick={clearCart}>
-            Vaciar carrito
-          </button>
-        </>
-      ) : (
-        <p className="empty-cart">Todavía no agregaste productos.</p>
-      )}
-    </aside>
-  </div>
-)}
+<Carrito visible={cartOpen} onClose={() => setCartOpen(false)} items={cartItems} setItems={setCartItems} />
 
 {cartPromptOpen && (
   <div className="cart-prompt-backdrop" onClick={() => setCartPromptOpen(false)}>
@@ -482,6 +441,7 @@ function App() {
                 <Route path="/" element={<Home onAddToCart={addToCart} />} />
 
                 <Route path="/colecciones/remeras" element={<Categoria titulo="Remeras" onAddToCart={addToCart} />} />
+                <Route path="/colecciones/campera-jean" element={<Categoria titulo="Campera-Jean" onAddToCart={addToCart} />} />
                 <Route path="/colecciones/buzos-uy" element={<Categoria titulo="Buzos Uy" onAddToCart={addToCart} />} />
                 <Route path="/colecciones/cardigans-uruwhy" element={<Categoria titulo="Cardigans UruWhy" onAddToCart={addToCart} />} />
                 <Route path="/colecciones/buzos" element={<Navigate to="/colecciones/sweaters" replace />} />
