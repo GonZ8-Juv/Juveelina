@@ -2,7 +2,7 @@
 .product-prices { display: grid; gap: 6px; margin: 12px 0; color: #593e2c; }
 .product-prices > div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 4px 8px; }
 .product-prices strong { font-size: 1rem; }
-.product-prices span { font-size: .8rem; color: #666; }
+.product-prices span { flex: 0 0 100%; font-size: .8rem; color: #666; }
 .product-detail-panel .product-prices > div { justify-content: flex-start; }
 .order-panel { width: min(560px, 100%); box-sizing: border-box; }
 .order-panel button:disabled { opacity: .55; cursor: not-allowed; }
