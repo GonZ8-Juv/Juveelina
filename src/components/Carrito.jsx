@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import { productosPorId } from '../data/catalogo.js';
-import { formatoPrecio, resumenPedido, precioPorMedio, mediosPago } from '../data/importes.js';
+import { formatoPrecio, resumenPedido, precioPorMedio, precioOriginalPorMedio, DESCUENTO, mediosPago } from '../data/importes.js';
 import './Carrito.css';
 
 const inicial = { nombre: '', correo: '', telefono: '', entrega: 'envio', metodoPago: 'mercadopago', direccion: '', notas: '', website: '' };
@@ -113,7 +113,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
                   <div>
                     <h3>{item.nombre}</h3>
                     <p>{item.color}{item.talle ? ` · Talle ${item.talle}` : ''}</p>
-                    <p className="product-price">{formatoPrecio(item.precio)} <small>por unidad</small></p>
+                    <p className="product-price"><strong className="sale-price">{formatoPrecio(item.precio)}</strong> {item.precio && <><del className="original-price">{formatoPrecio(precioOriginalPorMedio(item.precios, form.metodoPago))}</del> <small>(-{DESCUENTO}%)</small></>} <small>por unidad</small></p>
                     {!productosPorId[item.productoId] && <p className="order-error">Volvé a agregar este producto desde el catálogo.</p>}
                     <label className="order-quantity">Cantidad
                       <select aria-label={`Cantidad de ${item.nombre} ${item.color} ${item.talle || ''}`} value={item.cantidad} disabled={enviando} onChange={(e) => setItems((prev) => prev.map((p) => p.id === item.id ? { ...p, cantidad: Number(e.target.value) } : p))}>

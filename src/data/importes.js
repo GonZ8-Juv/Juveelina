@@ -1,7 +1,10 @@
 export const COSTO_ENVIO = 200;
+export const DESCUENTO = 15;
 export const tienePrecio = (precio) => Number.isFinite(precio) && precio > 0;
 export const mediosPago = { transferencia: 'Transferencia bancaria', mercadopago: 'Mercado Pago' };
-export const precioPorMedio = (precios, medio) => tienePrecio(precios?.[medio]) ? precios[medio] : null;
+export const precioOriginalPorMedio = (precios, medio) => tienePrecio(precios?.[medio]) ? precios[medio] : null;
+export const aplicarDescuento = (precio) => tienePrecio(precio) ? Math.round(precio * (100 - DESCUENTO)) / 100 : null;
+export const precioPorMedio = (precios, medio) => aplicarDescuento(precioOriginalPorMedio(precios, medio));
 export const formatoPrecio = (precio) => tienePrecio(precio)
   ? new Intl.NumberFormat('es-UY', { style: 'currency', currency: 'UYU' }).format(precio)
   : 'Consultar precio';

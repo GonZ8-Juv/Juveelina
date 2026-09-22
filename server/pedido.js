@@ -1,7 +1,7 @@
 import catalogo from '../src/data/catalogo.json' with { type: 'json' };
 import { correoClienteHtml } from './correo-html.js';
 import precios from '../src/data/precios.json' with { type: 'json' };
-import { formatoPrecio, resumenPedido, precioPorMedio, mediosPago } from '../src/data/importes.js';
+import { formatoPrecio, resumenPedido, precioPorMedio, precioOriginalPorMedio, DESCUENTO, mediosPago } from '../src/data/importes.js';
 
 const productos = new Map(Object.values(catalogo).flat().map((p) => [p.id, p]));
 const emailValido = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+$/i;
@@ -31,7 +31,7 @@ export function validarPedido(body) {
     if (!producto || !Number.isInteger(item.cantidad) || item.cantidad < 1 || item.cantidad > 10) throw new OrderError('Revisá los productos y las cantidades.');
     const talle = producto.talles.length ? item.talle : null;
     if (producto.talles.length && !producto.talles.includes(talle)) throw new OrderError('Seleccioná un talle válido.');
-    return { productoId: producto.id, nombre: producto.nombre, color: producto.color, talle, cantidad: item.cantidad, precio: precioPorMedio(precios[producto.id], body.metodoPago) };
+    return { productoId: producto.id, nombre: producto.nombre, color: producto.color, talle, cantidad: item.cantidad, precioOriginal: precioOriginalPorMedio(precios[producto.id], body.metodoPago), descuento: DESCUENTO, precio: precioPorMedio(precios[producto.id], body.metodoPago) };
   });
   const keys = items.map((item) => `${item.productoId}:${item.talle}`);
   if (new Set(keys).size !== keys.length) throw new OrderError('Agrupá las cantidades de cada producto.');
@@ -41,7 +41,7 @@ export function validarPedido(body) {
 export function crearCorreo(pedido, id, recipient, config) {
   const metodoPago = pedido.metodoPago || 'mercadopago';
   const instrucciones = metodoPago === 'transferencia' ? 'los datos bancarios para realizar la transferencia' : 'un enlace de Mercado Pago para completar el pago';
-  const detalle = pedido.items.map((item) => `• ${item.cantidad} × ${item.nombre} · ${item.color}${item.talle ? ` · Talle ${item.talle}` : ''} (${item.productoId}) — ${formatoPrecio(item.precio)} por unidad`).join('\n');
+  const detalle = pedido.items.map((item) => `• ${item.cantidad} × ${item.nombre} · ${item.color}${item.talle ? ` · Talle ${item.talle}` : ''} (${item.productoId}) — ${formatoPrecio(item.precio)} por unidad${item.precioOriginal ? ` (antes ${formatoPrecio(item.precioOriginal)}, -${item.descuento}%)` : ''}`).join('\n');
   const importe = pedido.pendiente
     ? `Hay productos con precio a confirmar.${pedido.subtotal ? ` Subtotal de productos con precio: ${formatoPrecio(pedido.subtotal)}.` : ''}`
     : `Subtotal de productos: ${formatoPrecio(pedido.subtotal)}.`;

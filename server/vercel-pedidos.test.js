@@ -29,7 +29,7 @@ test('Vercel: envía ambos correos, usa precio del catálogo y permite responder
   assert.deepEqual(emails[1].to, ['cliente@example.com']);
   assert.equal(emails[1].reply_to, config.to);
   assert.match(emails[1].text, /Recibimos tu solicitud/);
-  assert.match(emails[1].text, /6[.,]000/);
+  assert.match(emails[1].text, /5[.,]100/);
   assert.match(emails[1].text, /datos bancarios/);
   assert.match(emails[1].html, /Hola Prueba,/);
   assert.match(emails[1].html, /https:\/\/tienda.example\/mail\/jmarr-2x.png/);

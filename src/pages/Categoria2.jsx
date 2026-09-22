@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { enlaceProducto } from "../data/enlaces.js";
+import { DESCUENTO } from "../data/importes.js";
 import { FaInstagram, FaShareAlt, FaWhatsapp } from "react-icons/fa";
 
 import { productosPorCategoria } from "../data/catalogo.js";
@@ -177,6 +178,7 @@ export function ProductGallery({
             }}
           >
             {producto.nuevo && <span className="product-new-badge">NEW</span>}
+            {producto.precios && <span className="product-sale-badge">-{DESCUENTO}%</span>}
             <img src={producto.imagenes[0]} alt={producto.nombre} />
             <p>{producto.nombre}</p>
             <Precios precios={producto.precios} />
@@ -250,6 +252,7 @@ export function ProductGallery({
                   className={`product-detail-main-image ${imagenAmpliada ? "zoomed" : ""}`}
                   onClick={() => setImagenAmpliada((actual) => !actual)}
                 >
+                  {productoActivo.precios && <span className="product-sale-badge">-{DESCUENTO}%</span>}
                   <img
                     key={`${productoActivo.nombre}-${productoActivo.color}-${fotoActual}`}
                     src={productoActivo.imagenes[fotoActual]}

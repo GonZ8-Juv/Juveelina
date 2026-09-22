@@ -11,7 +11,7 @@ export function correoClienteHtml(pedido, id, config) {
   const filas = pedido.items.map((item) => `<tr><td style="padding:20px 0;border-bottom:1px solid #e5e5e5;vertical-align:top;">
     <strong style="font-size:15px;">${escapar(item.nombre)}</strong><br>
     <span style="color:#666;font-size:13px;">${escapar(item.color)}${item.talle ? ` · Talle ${escapar(item.talle)}` : ''}<br>Cantidad: ${item.cantidad}</span>
-    </td><td align="right" style="padding:20px 0 20px 12px;border-bottom:1px solid #e5e5e5;vertical-align:top;font-size:14px;">${escapar(formatoPrecio(item.precio))}<br><span style="font-size:12px;color:#666;">por unidad</span></td></tr>`).join('');
+    </td><td align="right" style="padding:20px 0 20px 12px;border-bottom:1px solid #e5e5e5;vertical-align:top;font-size:14px;"><strong style="color:#d00000;">${escapar(formatoPrecio(item.precio))}</strong>${item.precioOriginal ? `<br><del style="color:#666;">${escapar(formatoPrecio(item.precioOriginal))}</del> <span style="font-size:12px;">(-${escapar(item.descuento)}%)</span>` : ''}<br><span style="font-size:12px;color:#666;">por unidad</span></td></tr>`).join('');
   const importe = (label, value, bold = false) => `<tr><td style="padding:8px 0;${bold ? 'font-weight:700;font-size:18px;' : ''}">${label}</td><td align="right" style="padding:8px 0;${bold ? 'font-weight:700;font-size:18px;' : ''}">${escapar(value)}</td></tr>`;
   return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recibimos tu solicitud · Juveelina</title></head>
   <body style="margin:0;padding:0;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif;">
