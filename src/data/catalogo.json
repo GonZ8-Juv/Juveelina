@@ -339,7 +339,7 @@
     {
       "nombre": "Print.R.O.U",
       "color": "Natural",
-      "material": "Yute y lona",
+      "material": "Cuero",
       "imagenes": [
         "Carprint.webp"
       ],
@@ -349,25 +349,13 @@
     {
       "nombre": "Print.Uy",
       "color": "Natural",
-      "material": "Lona",
+      "material": "Cuero",
       "imagenes": [
         "Print.Uy.webp",
         "Print.Uy 2.webp"
       ],
       "nuevo": true,
       "id": "JUV-021",
-      "talles": []
-    }
-  ],
-  "Neceser": [
-    {
-      "nombre": "Neceser Soy Celeste",
-      "color": "Natural",
-      "material": "Lona y yute",
-      "imagenes": [
-        "SoyCel.webp"
-      ],
-      "id": "JUV-022",
       "talles": []
     }
   ],
@@ -438,7 +426,7 @@
       "talles": []
     }
   ],
-  "Materas Criollas": [
+  "Materas criollas": [
     {
       "nombre": "Matera Criolla Marrón",
       "color": "Marrón",

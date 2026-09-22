@@ -75,18 +75,50 @@
     "transferencia": 2300,
     "mercadopago": 2600
   },
-  "JUV-020": null,
-  "JUV-021": null,
-  "JUV-022": null,
-  "JUV-023": null,
-  "JUV-024": null,
-  "JUV-025": null,
-  "JUV-026": null,
-  "JUV-027": null,
-  "JUV-028": null,
-  "JUV-029": null,
-  "JUV-030": null,
-  "JUV-031": null,
+  "JUV-020": {
+    "transferencia": 1850,
+    "mercadopago": 1850
+  },
+  "JUV-021": {
+    "transferencia": 1850,
+    "mercadopago": 1850
+  },
+  "JUV-023": {
+    "transferencia": 1350,
+    "mercadopago": 1350
+  },
+  "JUV-024": {
+    "transferencia": 1350,
+    "mercadopago": 1350
+  },
+  "JUV-025": {
+    "transferencia": 1350,
+    "mercadopago": 1350
+  },
+  "JUV-026": {
+    "transferencia": 1350,
+    "mercadopago": 1350
+  },
+  "JUV-027": {
+    "transferencia": 1350,
+    "mercadopago": 1350
+  },
+  "JUV-028": {
+    "transferencia": 1350,
+    "mercadopago": 1350
+  },
+  "JUV-029": {
+    "transferencia": 3750,
+    "mercadopago": 3750
+  },
+  "JUV-030": {
+    "transferencia": 3750,
+    "mercadopago": 3750
+  },
+  "JUV-031": {
+    "transferencia": 3750,
+    "mercadopago": 3750
+  },
   "JUV-032": {
     "transferencia": 2100,
     "mercadopago": 2400

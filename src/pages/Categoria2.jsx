@@ -25,8 +25,7 @@ const categoriasPorSeccion = {
   accesorios: [
     { nombre: "Carteras", url: "/accesorios/carteras" },
     { nombre: "TOTES", url: "/accesorios/bags" },
-    { nombre: "Materas Criollas", url: "/accesorios/materas-criollas" },
-    { nombre: "Neceser", url: "/accesorios/neceser" },
+    { nombre: "Materas criollas", url: "/accesorios/materas-criollas" },
   ],
 };
 
@@ -41,8 +40,7 @@ const seccionPorCategoria = {
   Hombres: "vestimenta",
   Carteras: "accesorios",
   TOTES: "accesorios",
-  "Materas Criollas": "accesorios",
-  Neceser: "accesorios",
+  "Materas criollas": "accesorios",
 };
 
 const tallesDisponibles = ["S", "M", "L", "XL", "XXL"];
@@ -392,7 +390,7 @@ function Categoria({ titulo, onAddToCart }) {
             className={categoria.nombre === titulo ? "active-category" : ""}
           >
             <span>{categoria.nombre}</span>
-            {["Campera-Jean", "Cardigans UruWhy", "Materas Criollas"].includes(categoria.nombre) && (
+            {["Campera-Jean", "Cardigans UruWhy", "Materas criollas"].includes(categoria.nombre) && (
               <span className="category-new-badge">NEW</span>
             )}
           </Link>

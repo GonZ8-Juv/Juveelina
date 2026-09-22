@@ -30,6 +30,7 @@ import Terminos from "./pages/Terminos.jsx";
 
 import Carrito from "./components/Carrito.jsx";
 import { cargarCarrito } from "./data/carrito.js";
+import { DESCUENTO } from "./data/importes.js";
 import "./index.css";
 
 const heroes = [
@@ -40,9 +41,10 @@ const heroes = [
   { image: heroBanner, duration: 12000 },
 ];
 const newArrivals = [
+  { sale: true, title: "En toda la página", url: "/#prendas", duration: 9000 },
   {
     image: materasGrupo,
-    title: "Materas Criollas",
+    title: "Materas criollas",
     url: "/accesorios/materas-criollas",
   },
   {
@@ -92,12 +94,10 @@ const searchItems = [
   { nombre: "Print.Uy", detalle: "Accesorios · Carteras", url: "/accesorios/carteras" },
   { nombre: "TOTES", detalle: "Accesorios", url: "/accesorios/bags" },
   { nombre: "Tote bag", detalle: "Accesorios · TOTES", url: "/accesorios/bags" },
-  { nombre: "Materas Criollas", detalle: "Accesorios", url: "/accesorios/materas-criollas" },
-  { nombre: "Matera Criolla Marrón", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
-  { nombre: "Matera Criolla Blanca", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
-  { nombre: "Matera Criolla Negra", detalle: "Accesorios · Materas Criollas", url: "/accesorios/materas-criollas" },
-  { nombre: "Neceser", detalle: "Accesorios", url: "/accesorios/neceser" },
-  { nombre: "Neceser Soy Celeste", detalle: "Accesorios · Neceser", url: "/accesorios/neceser" },
+  { nombre: "Materas criollas", detalle: "Accesorios", url: "/accesorios/materas-criollas" },
+  { nombre: "Matera Criolla Marrón", detalle: "Accesorios · Materas criollas", url: "/accesorios/materas-criollas" },
+  { nombre: "Matera Criolla Blanca", detalle: "Accesorios · Materas criollas", url: "/accesorios/materas-criollas" },
+  { nombre: "Matera Criolla Negra", detalle: "Accesorios · Materas criollas", url: "/accesorios/materas-criollas" },
   { nombre: "Guríses", detalle: "Vestimenta", url: "/vestimenta/gurises" },
   { nombre: "Buzo Vilaró guríses blanco", detalle: "Vestimenta · Guríses", url: "/vestimenta/gurises" },
   { nombre: "Buzo Vilaró guríses negro", detalle: "Vestimenta · Guríses", url: "/vestimenta/gurises" },
@@ -122,9 +122,18 @@ const topbarMessages = [
 ];
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
+    if (pathname === "/" && hash === "#prendas") {
+      const frame = window.requestAnimationFrame(() => {
+        const prendas = document.getElementById("prendas");
+        if (!prendas) return;
+        const navbarHeight = document.querySelector(".navbar")?.getBoundingClientRect().height || 0;
+        window.scrollTo({ top: Math.max(0, prendas.getBoundingClientRect().top + window.scrollY - navbarHeight - 16), behavior: "smooth" });
+      });
+      return () => window.cancelAnimationFrame(frame);
+    }
     const isProductPage =
       pathname.startsWith("/colecciones/") ||
       pathname.startsWith("/vestimenta/") ||
@@ -140,7 +149,7 @@ function ScrollToTop() {
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [pathname]);
+  }, [pathname, hash, key]);
 
   return null;
 }
@@ -209,12 +218,12 @@ function App() {
   useEffect(() => {
     if (!newArrivalsOpen) return undefined;
 
-    const imageInterval = setInterval(() => {
+    const imageInterval = setTimeout(() => {
       setCurrentNewArrival((prev) => (prev + 1) % newArrivals.length);
-    }, 3000);
+    }, newArrivals[currentNewArrival].duration || 3000);
 
-    return () => clearInterval(imageInterval);
-  }, [newArrivalsOpen]);
+    return () => clearTimeout(imageInterval);
+  }, [newArrivalsOpen, currentNewArrival]);
 
   useEffect(() => {
     const heroTimer = setTimeout(() => {
@@ -261,17 +270,24 @@ function App() {
             >
               ×
             </button>
-            <div className="new-arrivals-banner">NUEVOS INGRESOS!</div>
+            <div className="new-arrivals-banner">{activeNewArrival.sale ? "JUVEELINA" : "NUEVOS INGRESOS!"}</div>
             <Link
               to={activeNewArrival.url}
               className="new-arrivals-image-link"
               onClick={() => setNewArrivalsOpen(false)}
             >
-              <img
+              {activeNewArrival.sale ? (
+                <div className="mega-sale-poster" key="sale">
+                  <span className="mega-sale-title">MEGA<br />SALE</span>
+                  <strong className="mega-sale-discount">-{DESCUENTO}%</strong>
+                  <span className="mega-sale-caption">DE DESCUENTO<br />EN TODA LA PÁGINA</span>
+                  <small>Prendas y accesorios · Envío no incluido</small>
+                </div>
+              ) : <img
                 key={currentNewArrival}
                 src={activeNewArrival.image}
                 alt={activeNewArrival.title}
-              />
+              />}
             </Link>
             <div className="new-arrivals-content">
               <h2>{activeNewArrival.title}</h2>
@@ -280,7 +296,7 @@ function App() {
                 className="new-arrivals-button"
                 onClick={() => setNewArrivalsOpen(false)}
               >
-                Ver más
+                {activeNewArrival.sale ? "Ver descuentos" : "Ver más"}
               </Link>
             </div>
           </section>
@@ -332,10 +348,9 @@ function App() {
         <Link to="/accesorios/carteras">Carteras</Link>
         <Link to="/accesorios/bags">TOTES</Link>
         <Link to="/accesorios/materas-criollas" className="dropdown-new-link">
-          <span>Materas Criollas</span>
+          <span>Materas criollas</span>
           <span className="dropdown-new-badge">NEW</span>
         </Link>
-        <Link to="/accesorios/neceser">Neceser</Link>
       </div>
     </div>
     </div>
@@ -414,7 +429,10 @@ function App() {
   </div>
 )}
 
-     {/* HERO */}
+<div className="juvelina-days-banner">
+  <strong>JUVEELINA DAYS</strong>
+  <span>{DESCUENTO}% OFF</span>
+</div>
 {/* HERO */}
 <div className="hero">
   {heroes.map((img, index) => (
@@ -455,8 +473,7 @@ function App() {
                 <Route path="/accesorios/carteras" element={<Categoria titulo="Carteras" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/bags" element={<Categoria titulo="TOTES" onAddToCart={addToCart} />} />
                 <Route path="/accesorios/materas-uy" element={<Navigate to="/accesorios/materas-criollas" replace />} />
-                <Route path="/accesorios/materas-criollas" element={<Categoria titulo="Materas Criollas" onAddToCart={addToCart} />} />
-                <Route path="/accesorios/neceser" element={<Categoria titulo="Neceser" onAddToCart={addToCart} />} />
+                <Route path="/accesorios/materas-criollas" element={<Categoria titulo="Materas criollas" onAddToCart={addToCart} />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/nosotros" element={<Nosotros />} />
                 <Route path="/como-comprar" element={<ComoComprar />} />

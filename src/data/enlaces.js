@@ -6,7 +6,7 @@ const rutas = {
   Sweaters: '/colecciones/sweaters', Guríses: '/vestimenta/gurises',
   Mujeres: '/vestimenta/mujeres', Hombres: '/vestimenta/hombres',
   Carteras: '/accesorios/carteras', TOTES: '/accesorios/bags',
-  'Materas Criollas': '/accesorios/materas-criollas', Neceser: '/accesorios/neceser',
+  'Materas criollas': '/accesorios/materas-criollas',
 };
 
 export function enlaceProducto(id) {

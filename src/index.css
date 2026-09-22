@@ -68,6 +68,29 @@ h2 {
   transform: scale(1.05);
 }
 
+.juvelina-days-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 16px;
+  background: #000;
+  color: #fff;
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  font-size: clamp(18px, 3vw, 23px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: .5px;
+  text-align: center;
+}
+
+.juvelina-days-banner strong,
+.juvelina-days-banner span {
+  white-space: nowrap;
+}
+
 .hero {
   width: 100%;
   height: 500px;
@@ -642,6 +665,19 @@ h2 {
   cursor: pointer;
 }
 
+.dropdown > span {
+  display: inline-block;
+  color: #666;
+  font-weight: 800;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown:hover > span,
+.dropdown:focus-within > span {
+  color: #000;
+  transform: scale(1.07);
+}
+
 .dropdown {
   padding: 12px 0;
 }
@@ -656,9 +692,10 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-radius: 14px;
+  border: 0;
+  border-radius: 0;
   min-width: 150px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  box-shadow: none;
   z-index: 2000;
   opacity: 0;
   pointer-events: none;
@@ -675,14 +712,21 @@ h2 {
     justify-content: space-between;
     gap: 10px;
     text-decoration: none;
-    color: #2b2b2b;
+    color: #666;
     padding: 8px 12px;
-  border-radius: 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-weight: 800;
+  transition: color 0.2s ease, transform 0.2s ease;
   font-size: 14px;
 }
 
-  .dropdown-menu a:hover {
-    background: #f1e7df;
+  .dropdown-menu a:hover,
+  .dropdown-menu a:focus-visible {
+    background: transparent;
+    color: #000;
+    transform: scale(1.05);
   }
 
   .dropdown-new-badge {
@@ -700,7 +744,8 @@ h2 {
     line-height: 1;
   }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, 0);
@@ -770,17 +815,21 @@ h2 {
   animation: sectionRiseIn 0.55s ease;
 }
 
-.featured-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #f5f5f5;
+.featured-card {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
 }
 
 .featured-card img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .home-store {
@@ -1750,18 +1799,15 @@ h2 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #222;
+  color: #666;
   text-decoration: none;
   padding: 10px 16px;
-  border: 1px solid #ddd;
-  border-radius: 999px;
-  background: white;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   font-size: 15px;
-  transition:
-    border-color 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+  font-weight: 700;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .category-new-badge {
@@ -1779,12 +1825,24 @@ h2 {
   line-height: 1;
 }
 
-.category-tabs a:hover,
 .category-tabs a.active-category {
-  border-color: #a67c52;
-  background: #f4eee9;
-  color: #a67c52;
-  transform: translateY(-1px);
+  color: #000;
+  font-weight: 800;
+}
+
+.category-tabs a:hover,
+.category-tabs a:focus-visible {
+  color: #000;
+  transform: scale(1.07);
+}
+
+.category-tabs a:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-tabs a, .dropdown > span, .dropdown-menu a { transition: none; }
 }
 
 @media (max-width: 768px) {
@@ -1883,7 +1941,7 @@ html, body {
 
   .featured-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
   }
 }
@@ -2322,3 +2380,23 @@ html, body {
     transition-duration: 0.01ms !important;
   }
 }
+
+.mega-sale-poster {
+  aspect-ratio: 4 / 5;
+  box-sizing: border-box;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #050505;
+  color: #fff;
+  text-align: center;
+  animation: new-arrivals-fade .45s ease;
+}
+.new-arrivals-image-link:has(.mega-sale-poster) { text-decoration: none; }
+.mega-sale-title { font-size: clamp(52px, 15vw, 80px); font-weight: 900; line-height: .85; letter-spacing: -3px; }
+.mega-sale-discount { color: #ff4242; font-size: clamp(48px, 13vw, 72px); line-height: 1; font-weight: 900; }
+.mega-sale-caption { font-size: 17px; font-weight: 700; line-height: 1.4; letter-spacing: 1px; }
+.mega-sale-poster small { color: #ccc; font-size: 11px; }

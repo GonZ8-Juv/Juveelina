@@ -22,7 +22,7 @@ test('los importes del navegador no reemplazan el catálogo del servidor', () =>
   assert.equal(pedido.estado, 'pendiente_confirmacion');
 });
 
-test('aplica el precio del medio elegido y los accesorios quedan a confirmar', () => {
+test('aplica el precio del medio elegido y suma accesorios con descuento', () => {
   const transferencia = validarPedido(body({ metodoPago: 'transferencia' }));
   const mercadoPago = validarPedido(body());
   assert.equal(transferencia.subtotal, 5100);
@@ -31,14 +31,14 @@ test('aplica el precio del medio elegido y los accesorios quedan a confirmar', (
   assert.throws(() => validarPedido(body({ metodoPago: '__proto__' })));
   assert.throws(() => validarPedido(body({ metodoPago: undefined })));
   const mixto = validarPedido(body({ metodoPago: 'transferencia', items: [{ productoId: 'JUV-001', talle: 'M', cantidad: 1 }, { productoId: 'JUV-030', cantidad: 1 }] }));
-  assert.equal(mixto.subtotal, 2550);
-  assert.equal(mixto.pendiente, true);
+  assert.equal(mixto.subtotal, 5737.5);
+  assert.equal(mixto.pendiente, false);
   const correo = crearCorreo(transferencia, 'prueba', 'cliente', mailConfig);
   assert.match(correo.text, /datos bancarios para realizar la transferencia/);
   assert.doesNotMatch(correo.text, /enlace de Mercado Pago/);
 });
 
-test('envío fijo por pedido, retiro gratis y total pendiente si falta un precio', () => {
+test('envío fijo por pedido y retiro gratis, también para accesorios', () => {
   for (const [metodoPago, total] of [['transferencia', 5300], ['mercadopago', 5640]]) {
     const pedido = validarPedido(body({ metodoPago, entrega: 'envio', direccion: 'Dirección de prueba', envio: 1, total: 1 }));
     assert.equal(pedido.envio, 200);
@@ -55,8 +55,8 @@ test('envío fijo por pedido, retiro gratis y total pendiente si falta un precio
   assert.equal(retiro.total, 5440);
   const pendiente = validarPedido(body({ entrega: 'envio', direccion: 'Dirección de prueba', items: [{ productoId: 'JUV-030', cantidad: 1 }] }));
   assert.equal(pendiente.envio, 200);
-  assert.equal(pendiente.total, null);
-  assert.match(crearCorreo(pendiente, 'prueba', 'cliente', mailConfig).text, /Total a confirmar por productos/);
+  assert.equal(pendiente.total, 3387.5);
+  assert.match(crearCorreo(pendiente, 'prueba', 'cliente', mailConfig).text, /Total:.*3[.,]387,50/);
 });
 
 test('tarifas por tipo de prenda coinciden con la lista del negocio', () => {

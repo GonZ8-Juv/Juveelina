@@ -46,7 +46,6 @@ import imagen44 from "../assets/hombre/Solyoru.webp";
 import imagen45 from "../assets/Carprint.webp";
 import imagen46 from "../assets/Print.Uy.webp";
 import imagen47 from "../assets/Print.Uy 2.webp";
-import imagen48 from "../assets/SoyCel.webp";
 import imagen49 from "../assets/Bag Sol.uy.webp";
 import imagen50 from "../assets/Bag sol.uy2.webp";
 import imagen51 from "../assets/Bag Mix.Uy.webp";
@@ -141,7 +140,6 @@ export default {
   "Carprint.webp": imagen45,
   "Print.Uy.webp": imagen46,
   "Print.Uy 2.webp": imagen47,
-  "SoyCel.webp": imagen48,
   "Bag Sol.uy.webp": imagen49,
   "Bag sol.uy2.webp": imagen50,
   "Bag Mix.Uy.webp": imagen51,
