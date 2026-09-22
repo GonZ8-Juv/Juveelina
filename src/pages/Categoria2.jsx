@@ -179,10 +179,10 @@ export function ProductGallery({
             {producto.precios && <span className="product-sale-badge">-{DESCUENTO}%</span>}
             <img src={producto.imagenes[0]} alt={producto.nombre} />
             <p>{producto.nombre}</p>
-            <Precios precios={producto.precios} />
             <span>
               {producto.color} · {producto.material}
             </span>
+            <Precios precios={producto.precios} />
           </div>
         ))}
       </div>
