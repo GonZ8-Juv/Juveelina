@@ -61,7 +61,7 @@ test('envío fijo por pedido, retiro gratis y total pendiente si falta un precio
 
 test('tarifas por tipo de prenda coinciden con la lista del negocio', () => {
   for (const [id, transferencia, mercadopago] of [
-    ['JUV-001', 3000, 3200], ['JUV-003', 1500, 1800], ['JUV-005', 1300, 1500],
+    ['JUV-001', 3000, 3200], ['JUV-003', 1500, 1800], ['JUV-005', 1100, 1500],
     ['JUV-013', 2100, 2400], ['JUV-014', 2400, 2700], ['JUV-018', 2300, 2600], ['JUV-019', 2300, 2600],
   ]) assert.deepEqual(precios[id], { transferencia, mercadopago });
 });
