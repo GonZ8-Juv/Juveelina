@@ -122,7 +122,7 @@ const topbarMessages = [
 ];
 
 function ScrollToTop() {
-  const { pathname, hash, key } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (pathname === "/" && hash === "#prendas") {
@@ -149,7 +149,7 @@ function ScrollToTop() {
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [pathname, hash, key]);
+  }, [pathname, hash]);
 
   return null;
 }
@@ -454,7 +454,7 @@ function App() {
 
 
             {/* Mostrar pag */}
-            <main className="page-shell" key={location.pathname + location.search}>
+            <main className="page-shell" key={location.pathname}>
               <Routes location={location}>
                 <Route path="/" element={<Home onAddToCart={addToCart} />} />
 

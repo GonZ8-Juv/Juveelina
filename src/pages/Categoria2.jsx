@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { enlaceProducto } from "../data/enlaces.js";
 import { DESCUENTO } from "../data/importes.js";
 import { FaInstagram, FaShareAlt, FaWhatsapp } from "react-icons/fa";
@@ -108,21 +108,19 @@ export function ProductGallery({
   categoriaPredeterminada,
   className = "",
 }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const productoActivo = productos.find((producto) => producto.id === searchParams.get('producto')) || null;
   const setProductoActivo = (producto) => {
-    setSearchParams((actual) => {
-      const siguiente = new URLSearchParams(actual);
-      if (producto) siguiente.set('producto', producto.id);
-      else siguiente.delete('producto');
-      return siguiente;
-    }, { replace: !producto });
+    const siguiente = new URLSearchParams(searchParams);
+    if (producto) siguiente.set('producto', producto.id);
+    else siguiente.delete('producto');
+    navigate({ pathname: location.pathname, search: siguiente.toString(), hash: location.hash }, { replace: !producto });
   };
-  const [productoCargando, setProductoCargando] = useState(null);
   const [fotoActual, setFotoActual] = useState(0);
   const [imagenAmpliada, setImagenAmpliada] = useState(false);
   const [talleSeleccionado, setTalleSeleccionado] = useState(() => productoActivo?.talles?.[0] || "M");
-  const productOpenTimer = useRef(null);
   const modalContentRef = useRef(null);
 
   const usaTalles = categoriaPredeterminada !== "accesorios";
@@ -133,12 +131,6 @@ export function ProductGallery({
   const productShareUrl = productoActivo
     ? new URL(enlaceProducto(productoActivo.id), window.location.origin).href
     : "https://www.juveelina.com";
-
-  useEffect(() => {
-    return () => {
-      if (productOpenTimer.current) clearTimeout(productOpenTimer.current);
-    };
-  }, []);
 
   useEffect(() => {
     if (!productoActivo) return undefined;
@@ -164,15 +156,10 @@ export function ProductGallery({
             key={`${producto.nombre}-${producto.color}-${producto.imagenes[0]}-${index}`}
             style={{ "--product-index": index }}
             onClick={() => {
-              if (productOpenTimer.current) clearTimeout(productOpenTimer.current);
-              setProductoCargando(producto);
               setFotoActual(0);
               setImagenAmpliada(false);
               setTalleSeleccionado((producto.talles || tallesDisponibles)[0]);
-              productOpenTimer.current = setTimeout(() => {
-                setProductoActivo(producto);
-                setProductoCargando(null);
-              }, 430);
+              setProductoActivo(producto);
             }}
           >
             {producto.nuevo && <span className="product-new-badge">NEW</span>}
@@ -186,12 +173,6 @@ export function ProductGallery({
           </div>
         ))}
       </div>
-
-      {productoCargando && (
-        <div className="product-loading-cloud" aria-label="Abriendo producto">
-          <span className="page-loading-spinner" />
-        </div>
-      )}
 
       {productoActivo && (
         <div
