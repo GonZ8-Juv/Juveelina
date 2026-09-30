@@ -371,7 +371,7 @@ function Categoria({ titulo, onAddToCart }) {
             className={categoria.nombre === titulo ? "active-category" : ""}
           >
             <span>{categoria.nombre}</span>
-            {["Campera-Jean", "Cardigans UruWhy", "Materas criollas"].includes(categoria.nombre) && (
+            {categoria.nombre === "Materas criollas" && (
               <span className="category-new-badge">NEW</span>
             )}
           </Link>
