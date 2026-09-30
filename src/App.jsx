@@ -322,12 +322,10 @@ function App() {
       <Link to="/colecciones/remeras">Remeras</Link>
       <Link to="/colecciones/campera-jean" className="dropdown-new-link">
         <span>Campera-Jean</span>
-        <span className="dropdown-new-badge">NEW</span>
       </Link>
       <Link to="/colecciones/buzos-uy">Buzos Uy</Link>
       <Link to="/colecciones/cardigans-uruwhy" className="dropdown-new-link">
         <span>Cardigans UruWhy</span>
-        <span className="dropdown-new-badge">NEW</span>
       </Link>
       <Link to="/colecciones/sweaters">Sweaters</Link>
       </div>

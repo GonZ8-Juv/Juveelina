@@ -10,7 +10,7 @@
         "Camp jean/file_00000000df44820eaf6969701c5e76de.webp",
         "Camp jean/file_000000000854820eab84663894029171.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-001",
       "talles": [
         "S",
@@ -29,7 +29,7 @@
         "Camp jean/file_000000005fb081f58106cf4e7e5730db.webp",
         "Camp jean/file_0000000020dc820ea802c0c8828e5148.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-002",
       "talles": [
         "S",
@@ -231,6 +231,392 @@
         "XL",
         "XXL"
       ]
+    },
+    {
+      "nombre": "Buzo Uy patriota",
+      "color": "Celeste",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "buzos/file_000000003cd4820eaeeab14a78ce37d5.webp",
+        "buzos/file_00000000634c820e81305fff2e303ec9.webp",
+        "buzos/file_000000007ca0820e8d02764f0c16b0de.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-054",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Uy patria",
+      "color": "Beige",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "buzos/IMG-20260523-WA0064.jpg",
+        "buzos/IMG-20260523-WA0066.jpg"
+      ],
+      "nuevo": true,
+      "id": "JUV-055",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Uy Sol",
+      "color": "Verde",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "buzos/file_000000000310820ea0d8751f81af5792.webp",
+        "buzos/file_0000000047b0820e9393cc0027806bef.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-056",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Azul",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/escazul.webp"
+      ],
+      "id": "JUV-036",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/escgris.webp",
+        "mujer/espaldagris.webp"
+      ],
+      "id": "JUV-037",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/escudoblanco.webp"
+      ],
+      "id": "JUV-038",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/marronesc.webp",
+        "mujer/espaldamarron.webp"
+      ],
+      "id": "JUV-039",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/solgris2.webp"
+      ],
+      "id": "JUV-040",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/solmarron.webp",
+        "mujer/espaldamarron.webp"
+      ],
+      "id": "JUV-041",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "mujer/solnegro2.webp",
+        "mujer/espaldanegro.webp"
+      ],
+      "id": "JUV-042",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Horse",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/Horse.webp",
+        "hombre/Horse back.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-043",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/Blancosol.webp"
+      ],
+      "id": "JUV-044",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/blancoesc.webp"
+      ],
+      "id": "JUV-045",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/blancosoln.webp",
+        "hombre/blancoespalda.webp"
+      ],
+      "id": "JUV-046",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/grissol.webp"
+      ],
+      "id": "JUV-047",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/grisesc.webp"
+      ],
+      "id": "JUV-048",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/marronsol.webp",
+        "hombre/marronespalda.webp"
+      ],
+      "id": "JUV-049",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/marronsolb.webp"
+      ],
+      "id": "JUV-050",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/negrosol.webp"
+      ],
+      "id": "JUV-051",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo patriota",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/NegroEsc.webp"
+      ],
+      "id": "JUV-052",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Vilaró",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "hombre/solamnegro.webp",
+        "hombre/negroespalda.webp"
+      ],
+      "id": "JUV-053",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Oriental uy",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/Buzouy.webp",
+        "hombre/Buzouyesp.webp"
+      ],
+      "id": "JUV-018",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Golden.uy",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/solyoruesp.webp",
+        "hombre/Solyoru.webp"
+      ],
+      "id": "JUV-019",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
     }
   ],
   "Cardigans UruWhy": [
@@ -243,7 +629,7 @@
         "CardigansUruWhy/cardigan-beige-detalle.webp",
         "CardigansUruWhy/cardigan-beige-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -259,7 +645,7 @@
         "CardigansUruWhy/cardigan-gris-detalle.webp",
         "CardigansUruWhy/cardigan-gris-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -275,7 +661,7 @@
         "CardigansUruWhy/cardigan-rosa-frente.webp",
         "CardigansUruWhy/cardigan-rosa-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -291,7 +677,7 @@
         "CardigansUruWhy/cardigan-azul-entero.webp",
         "CardigansUruWhy/cardigan-azul-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -534,6 +920,24 @@
   ],
   "Mujeres": [
     {
+      "nombre": "Buzo Uy Sol",
+      "color": "Verde",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "buzos/file_000000000310820ea0d8751f81af5792.webp",
+        "buzos/file_0000000047b0820e9393cc0027806bef.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-056",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
       "nombre": "Campera de Jean",
       "color": "Jean claro",
       "material": "Jean",
@@ -543,7 +947,7 @@
         "Camp jean/file_00000000df44820eaf6969701c5e76de.webp",
         "Camp jean/file_000000000854820eab84663894029171.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-001",
       "talles": [
         "S",
@@ -562,7 +966,7 @@
         "Camp jean/file_000000005fb081f58106cf4e7e5730db.webp",
         "Camp jean/file_0000000020dc820ea802c0c8828e5148.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-002",
       "talles": [
         "S",
@@ -697,7 +1101,7 @@
         "CardigansUruWhy/cardigan-beige-detalle.webp",
         "CardigansUruWhy/cardigan-beige-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -713,7 +1117,7 @@
         "CardigansUruWhy/cardigan-gris-detalle.webp",
         "CardigansUruWhy/cardigan-gris-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -729,7 +1133,7 @@
         "CardigansUruWhy/cardigan-rosa-frente.webp",
         "CardigansUruWhy/cardigan-rosa-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -745,7 +1149,7 @@
         "CardigansUruWhy/cardigan-azul-entero.webp",
         "CardigansUruWhy/cardigan-azul-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "talles": [
         "S/M",
         "L/XL"
@@ -787,9 +1191,63 @@
         "XL",
         "XXL"
       ]
+    },
+    {
+      "nombre": "Buzo Uy medio sol",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "BuzosUy/buzo-medio-sol-frente.webp",
+        "BuzosUy/buzo-medio-sol-espalda.webp"
+      ],
+      "id": "JUV-013",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
     }
   ],
   "Hombres": [
+    {
+      "nombre": "Buzo Uy patria",
+      "color": "Beige",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "buzos/IMG-20260523-WA0064.jpg",
+        "buzos/IMG-20260523-WA0066.jpg"
+      ],
+      "nuevo": true,
+      "id": "JUV-055",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Uy patriota",
+      "color": "Celeste",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "buzos/file_000000003cd4820eaeeab14a78ce37d5.webp",
+        "buzos/file_00000000634c820e81305fff2e303ec9.webp",
+        "buzos/file_000000007ca0820e8d02764f0c16b0de.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-054",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
     {
       "nombre": "Buzo Horse",
       "color": "Natural",
@@ -980,6 +1438,23 @@
         "hombre/Buzouyesp.webp"
       ],
       "id": "JUV-018",
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    {
+      "nombre": "Buzo Golden.uy",
+      "color": "Natural",
+      "material": "Algodón frizado",
+      "imagenes": [
+        "hombre/solyoruesp.webp",
+        "hombre/Solyoru.webp"
+      ],
+      "id": "JUV-019",
       "talles": [
         "S",
         "M",

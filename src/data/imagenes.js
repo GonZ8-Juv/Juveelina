@@ -1,3 +1,10 @@
+import buzoNuevo0 from "../assets/buzos/file_000000003cd4820eaeeab14a78ce37d5.webp";
+import buzoNuevo1 from "../assets/buzos/file_00000000634c820e81305fff2e303ec9.webp";
+import buzoNuevo2 from "../assets/buzos/file_000000007ca0820e8d02764f0c16b0de.webp";
+import buzoNuevo3 from "../assets/buzos/IMG-20260523-WA0064.jpg";
+import buzoNuevo4 from "../assets/buzos/IMG-20260523-WA0066.jpg";
+import buzoNuevo5 from "../assets/buzos/file_000000000310820ea0d8751f81af5792.webp";
+import buzoNuevo6 from "../assets/buzos/file_0000000047b0820e9393cc0027806bef.webp";
 import imagen0 from "../assets/Camp jean/file_00000000cfcc820e81728114c2d3bb03.webp";
 import imagen1 from "../assets/Camp jean/file_000000002734820e9319131635ebc65a.webp";
 import imagen2 from "../assets/Camp jean/file_00000000df44820eaf6969701c5e76de.webp";
@@ -184,4 +191,11 @@ export default {
   "hombre/NegroEsc.webp": imagen90,
   "hombre/solamnegro.webp": imagen91,
   "hombre/negroespalda.webp": imagen92,
+  "buzos/file_000000003cd4820eaeeab14a78ce37d5.webp": buzoNuevo0,
+  "buzos/file_00000000634c820e81305fff2e303ec9.webp": buzoNuevo1,
+  "buzos/file_000000007ca0820e8d02764f0c16b0de.webp": buzoNuevo2,
+  "buzos/IMG-20260523-WA0064.jpg": buzoNuevo3,
+  "buzos/IMG-20260523-WA0066.jpg": buzoNuevo4,
+  "buzos/file_000000000310820ea0d8751f81af5792.webp": buzoNuevo5,
+  "buzos/file_0000000047b0820e9393cc0027806bef.webp": buzoNuevo6,
 };
