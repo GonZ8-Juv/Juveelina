@@ -43,6 +43,12 @@ const seccionPorCategoria = {
   "Materas criollas": "accesorios",
 };
 
+const tonosColor = {
+  Beige: "#dcc8a5", Gris: "#969696", Rosa: "#e8a8b9", Azul: "#244a80",
+  Negro: "#171717", Blanco: "#fff", Marrón: "#805336", Natural: "#e7dbc5",
+  Celeste: "#99c9e8", Verde: "#315843", "Jean claro": "#9dbed5", "Jean oscuro": "#345475",
+};
+
 const tallesDisponibles = ["S", "M", "L", "XL", "XXL"];
 
 const getProductDescription = (producto, categoriaPredeterminada) => {
@@ -118,6 +124,15 @@ export function ProductGallery({
     else siguiente.delete('producto');
     navigate({ pathname: location.pathname, search: siguiente.toString(), hash: location.hash }, { replace: !producto });
   };
+  const publicoProducto = (producto) => ["Guríses", "Mujeres", "Hombres"].find(
+    (categoria) => productosPorCategoria[categoria]?.some((item) => item.id === producto.id)
+  );
+  const variantesColor = productoActivo
+    ? productos.filter((producto, index, lista) =>
+      producto.nombre === productoActivo.nombre &&
+      publicoProducto(producto) === publicoProducto(productoActivo) &&
+      lista.findIndex((otro) => otro.nombre === producto.nombre && otro.color === producto.color && publicoProducto(otro) === publicoProducto(producto)) === index)
+    : [];
   const [fotoActual, setFotoActual] = useState(0);
   const [imagenAmpliada, setImagenAmpliada] = useState(false);
   const [talleSeleccionado, setTalleSeleccionado] = useState(() => productoActivo?.talles?.[0] || "M");
@@ -234,7 +249,7 @@ export function ProductGallery({
                   {productoActivo.precios && <span className="product-sale-badge">-{DESCUENTO}%</span>}
                   <img
                     key={`${productoActivo.nombre}-${productoActivo.color}-${fotoActual}`}
-                    src={productoActivo.imagenes[fotoActual]}
+                    src={productoActivo.imagenes[fotoActual] || productoActivo.imagenes[0]}
                     alt={productoActivo.nombre}
                   />
                   <figcaption>
@@ -265,6 +280,43 @@ export function ProductGallery({
                     <span>{productoActivo.material}</span>
                   </p>
                 </div>
+
+                {variantesColor.length > 1 && (
+                  <div className="product-color-selector">
+                    <span>Seleccionar color</span>
+                    <details className="product-color-dropdown" key={productoActivo.id}>
+                      <summary aria-label={`Seleccionar color: ${productoActivo.color}`}>
+                        <span>{productoActivo.color}</span>
+                        <i className="product-color-dot" aria-hidden="true" style={{ backgroundColor: tonosColor[productoActivo.color] || "#ddd" }} />
+                        <span className="product-color-arrow" aria-hidden="true">⌄</span>
+                      </summary>
+                      <div className="product-color-options">
+                        {variantesColor.map((variante) => (
+                          <button
+                            type="button"
+                            key={variante.id}
+                            aria-pressed={variante.color === productoActivo.color}
+                            onClick={(event) => {
+                              const dropdown = event.currentTarget.closest("details");
+                              dropdown.open = false;
+                              dropdown.querySelector("summary").focus();
+                              if (variante.color === productoActivo.color) return;
+                              setFotoActual(0);
+                              setImagenAmpliada(false);
+                              if (!variante.talles?.includes(talleSeleccionado)) {
+                                setTalleSeleccionado(variante.talles?.[0] || "M");
+                              }
+                              setProductoActivo(variante);
+                            }}
+                          >
+                            <span>{variante.color}</span>
+                            <i className="product-color-dot" aria-hidden="true" style={{ backgroundColor: tonosColor[variante.color] || "#ddd" }} />
+                          </button>
+                        ))}
+                      </div>
+                    </details>
+                  </div>
+                )}
 
                 {usaTalles && (
                   <div className="size-selector product-detail-sizes">

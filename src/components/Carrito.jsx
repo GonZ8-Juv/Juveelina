@@ -1,3 +1,5 @@
+import { normalizarCorreo, errorCorreo, sugerirCorreo } from '../data/correo.js';
+import { normalizarNombre, errorNombre } from '../data/nombre.js';
 import { useEffect, useRef, useState } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import { productosPorId } from '../data/catalogo.js';
@@ -8,6 +10,7 @@ const inicial = { nombre: '', correo: '', telefono: '', entrega: 'envio', metodo
 
 export default function Carrito({ visible, onClose, items, setItems }) {
   const [form, setForm] = useState(inicial);
+  const sugerenciaCorreo = sugerirCorreo(form.correo);
   const [disponible, setDisponible] = useState(null);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
@@ -35,17 +38,35 @@ export default function Carrito({ visible, onClose, items, setItems }) {
   }, [visible]);
 
   function cambiar(event) {
-    setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+    const { name, value } = event.target;
+    const valor = name === 'telefono' ? value.replace(/[^0-9]/g, '').slice(0, 9) : value;
+    setForm((prev) => ({ ...prev, [name]: valor }));
     setError('');
   }
 
   async function enviar(event) {
     event.preventDefault();
     if (submitLock.current || !disponible || invalido || !items.length) return;
+    const nombre = normalizarNombre(form.nombre);
+    const mensajeNombre = errorNombre(nombre);
+    if (mensajeNombre) {
+      setError(mensajeNombre);
+      return;
+    }
+    if (!/^09[0-9]{7}$/.test(form.telefono)) {
+      setError('Ingresá un celular de Uruguay de 9 dígitos que empiece con 09.');
+      return;
+    }
+    const correo = normalizarCorreo(form.correo);
+    const mensajeCorreo = errorCorreo(correo);
+    if (mensajeCorreo) {
+      setError(mensajeCorreo);
+      return;
+    }
     submitLock.current = true;
     setEnviando(true);
     setError('');
-    const payload = { ...form, direccion: form.entrega === 'envio' ? form.direccion : '', items: productos.map(({ productoId, talle, cantidad }) => ({ productoId, talle, cantidad })) };
+    const payload = { ...form, nombre, correo, direccion: form.entrega === 'envio' ? form.direccion : '', items: productos.map(({ productoId, talle, cantidad }) => ({ productoId, talle, cantidad })) };
     const serialized = JSON.stringify(payload);
     if (intento.current?.serialized !== serialized) intento.current = { serialized, requestId: crypto.randomUUID() };
     try {
@@ -58,7 +79,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'No pudimos registrar la solicitud.');
       if (!data.id || data.estado !== 'pendiente_confirmacion') throw new Error('No pudimos confirmar la recepción. Intentá nuevamente.');
-      setPedido({ id: data.id, correo: form.correo, metodoPago: form.metodoPago });
+      setPedido({ id: data.id, correo, metodoPago: form.metodoPago });
       setItems([]);
       setForm(inicial);
       intento.current = null;
@@ -136,9 +157,10 @@ export default function Carrito({ visible, onClose, items, setItems }) {
               <fieldset disabled={enviando}>
                 <legend>Tus datos</legend>
                 <label>Medio de pago<select name="metodoPago" value={form.metodoPago} onChange={cambiar}><option value="mercadopago">Mercado Pago</option><option value="transferencia">Transferencia bancaria</option></select></label>
-                <label>Nombre y apellido<input autoComplete="name" name="nombre" value={form.nombre} onChange={cambiar} maxLength={100} required /></label>
-                <label>Correo electrónico<input type="email" autoComplete="email" name="correo" value={form.correo} onChange={cambiar} maxLength={254} required /></label>
-                <label>Teléfono<input type="tel" autoComplete="tel" name="telefono" value={form.telefono} onChange={cambiar} maxLength={40} required /></label>
+                <label>Nombre y apellido<input autoComplete="name" name="nombre" value={form.nombre} onChange={cambiar} onBlur={() => setForm((prev) => ({ ...prev, nombre: normalizarNombre(prev.nombre) }))} maxLength={100} required /></label>
+                <label>Correo electrónico<input type="email" autoComplete="email" name="correo" value={form.correo} onChange={cambiar} onBlur={() => setForm((prev) => ({ ...prev, correo: normalizarCorreo(prev.correo) }))} maxLength={254} required /></label>
+                {sugerenciaCorreo && <p className="order-email-suggestion">¿Quisiste escribir <button type="button" onClick={() => { setForm((prev) => ({ ...prev, correo: sugerenciaCorreo })); setError(''); }}>{sugerenciaCorreo}</button>?</p>}
+                <label>Teléfono<input type="tel" autoComplete="tel" name="telefono" value={form.telefono} onChange={cambiar} inputMode="numeric" pattern="09[0-9]{7}" minLength={9} maxLength={9} placeholder="Ej: 098789012" title="Ingresá un celular de Uruguay de 9 dígitos que empiece con 09, sin espacios ni guiones." required /></label>
                 <label>Entrega<select name="entrega" value={form.entrega} onChange={cambiar}><option value="envio">Envío a domicilio</option><option value="retiro">Retiro en Punta Carretas</option></select></label>
                 {form.entrega === 'envio' && <label>Dirección, localidad y departamento<textarea name="direccion" autoComplete="street-address" value={form.direccion} onChange={cambiar} maxLength={400} rows={3} required /></label>}
                 <label>Observaciones (opcional)<textarea name="notas" value={form.notas} onChange={cambiar} maxLength={1000} rows={3} /></label>

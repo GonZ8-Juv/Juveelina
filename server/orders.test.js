@@ -1,3 +1,4 @@
+import { sugerirCorreo } from '../src/data/correo.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -157,4 +158,37 @@ test('API: deshabilitada sin correo, origen validado, registro real y repetició
     assert.equal(db.prepare('SELECT COUNT(*) AS n FROM orders').get().n, 1);
     assert.equal((await post('https://tienda.example', body({ correo: 'no-email' }))).status, 400);
   } finally { await new Promise((resolve) => server.close(resolve)); db.close(); }
+});
+
+test('teléfono exige celular local de nueve dígitos con prefijo 09', () => {
+  assert.equal(validarPedido(body({ telefono: '098789012' })).telefono, '098789012');
+  for (const telefono of ['', '09878902', '0987890123', '09878a012', '098-789012', '+59898789012', '098 78901', '081234567', '123456789', '000000000', '21234567', '41234567', '+59899123456']) {
+    assert.throws(() => validarPedido(body({ telefono })));
+  }
+});
+
+test('nombre admite letras internacionales y limpia espacios sin aceptar números ni símbolos', () => {
+  for (const nombre of ["María Muñoz", "Güemes", "O'Connor", "O’Connor", "Jean-Baptiste", "李明", "Jose\u0301 Pérez", "Ana María López", 'A'.repeat(100)]) {
+    assert.equal(validarPedido(body({ nombre: `  ${nombre}  ` })).nombre, nombre.normalize('NFC'));
+  }
+  for (const nombre of ['', '   ', 'A', 'A'.repeat(101), 'Juan123', '---', "''", 'Juan@', 'Juan!', 'Juan#', 'Juan$', 'Juan%', 'Juan^', 'Juan&', 'Juan*', 'Juan\nPérez', null, 123]) {
+    assert.throws(() => validarPedido(body({ nombre })), undefined, String(nombre));
+  }
+});
+
+test('correo rechaza errores de formato y limpia espacios exteriores', () => {
+  for (const correo of ['', ' ', 'juan.perezgmail.com', 'juan@gmail', '@gmail.com', 'juan@', 'juan perez@gmail.com', 'juan..perez@gmail.com', 'juan@perez@gmail.com', '"juan"@gmail.com', 'juan(perez)@gmail.com', 'juan/perez@gmail.com', '.juan@gmail.com', 'juan.@gmail.com', 'juan@gmail..com', 'juan@-gmail.com', 'juan@gmail.com.', null]) {
+    assert.throws(() => validarPedido(body({ correo })), undefined, String(correo));
+  }
+  for (const correo of ['juan.perez@gmail.com', 'juan+pedidos@correo.com.uy', "o'connor@example.com"]) {
+    assert.equal(validarPedido(body({ correo: `  ${correo.toUpperCase()}  ` })).correo, correo);
+  }
+});
+test('sugiere dominios comunes sin corregirlos automáticamente', () => {
+  for (const [mal, bien] of [['gamil.com', 'gmail.com'], ['hotmal.com', 'hotmail.com'], ['yahhoo.com', 'yahoo.com']]) {
+    assert.equal(sugerirCorreo(`juan@${mal}`), `juan@${bien}`);
+    assert.equal(validarPedido(body({ correo: `juan@${mal}` })).correo, `juan@${mal}`);
+  }
+  assert.equal(sugerirCorreo('juan@empresa.com.uy'), '');
+  assert.equal(sugerirCorreo('juan..perez@gamil.com'), '');
 });

@@ -35,3 +35,9 @@
 .sale-price { color: #d00000; }
 .original-price { color: #555; font-size: .85rem; font-weight: 400; }
 .category-product .product-sale-badge, .product-detail-main-image .product-sale-badge { position: absolute; top: 10px; left: 0; z-index: 3; padding: 4px 9px; background: #000; color: #fff; font-size: 14px; font-weight: 700; line-height: 1.2; }
+
+input[name="telefono"]::placeholder { color: #888; opacity: 0.65; }
+input[name="telefono"]:focus::placeholder { opacity: 0; }
+
+.order-email-suggestion { font-size: 13px; margin: 0; }
+.order-email-suggestion button { border: 0; background: none; color: inherit; text-decoration: underline; font: inherit; cursor: pointer; padding: 0; overflow-wrap: anywhere; }

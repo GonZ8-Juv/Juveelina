@@ -1,10 +1,11 @@
+import { normalizarCorreo, errorCorreo } from '../src/data/correo.js';
+import { normalizarNombre, errorNombre } from '../src/data/nombre.js';
 import catalogo from '../src/data/catalogo.json' with { type: 'json' };
 import { correoClienteHtml } from './correo-html.js';
 import precios from '../src/data/precios.json' with { type: 'json' };
 import { formatoPrecio, resumenPedido, precioPorMedio, precioOriginalPorMedio, DESCUENTO, mediosPago } from '../src/data/importes.js';
 
 const productos = new Map(Object.values(catalogo).flat().map((p) => [p.id, p]));
-const emailValido = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+$/i;
 export class OrderError extends Error {
   constructor(message, status = 400) { super(message); this.status = status; }
 }
@@ -17,10 +18,14 @@ function campo(value, max, requerido = true) {
 
 export function validarPedido(body) {
   if (!body || body.website || !/^[a-f0-9-]{36}$/i.test(body.requestId || '')) throw new OrderError('Solicitud no válida.');
-  const nombre = campo(body.nombre, 100);
-  const correo = campo(body.correo, 254).toLowerCase();
-  if (!emailValido.test(correo)) throw new OrderError('Ingresá un correo válido.');
+  const nombre = normalizarNombre(body.nombre);
+  const mensajeNombre = errorNombre(body.nombre);
+  if (mensajeNombre) throw new OrderError(mensajeNombre);
+  const correo = normalizarCorreo(body.correo);
+  const mensajeCorreo = errorCorreo(body.correo);
+  if (mensajeCorreo) throw new OrderError(mensajeCorreo);
   const telefono = campo(body.telefono, 40);
+  if (!/^09[0-9]{7}$/.test(telefono)) throw new OrderError('Ingresá un celular de Uruguay de 9 dígitos que empiece con 09, sin espacios ni guiones.');
   if (!Object.hasOwn(mediosPago, body.metodoPago)) throw new OrderError('Elegí transferencia bancaria o Mercado Pago.');
   if (!['envio', 'retiro'].includes(body.entrega)) throw new OrderError('Elegí envío o retiro.');
   const direccion = body.entrega === 'envio' ? campo(body.direccion, 400) : '';
