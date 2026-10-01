@@ -1,3 +1,4 @@
+import { departamentos, barriosMontevideo, errorEntrega } from '../data/entrega.js';
 import { normalizarCorreo, errorCorreo, sugerirCorreo } from '../data/correo.js';
 import { normalizarNombre, errorNombre } from '../data/nombre.js';
 import { useEffect, useRef, useState } from 'react';
@@ -6,7 +7,7 @@ import { productosPorId } from '../data/catalogo.js';
 import { formatoPrecio, resumenPedido, precioPorMedio, precioOriginalPorMedio, DESCUENTO, mediosPago } from '../data/importes.js';
 import './Carrito.css';
 
-const inicial = { nombre: '', correo: '', telefono: '', entrega: 'envio', metodoPago: 'mercadopago', direccion: '', notas: '', website: '' };
+const inicial = { nombre: '', correo: '', telefono: '', entrega: 'envio', metodoPago: 'mercadopago', direccion: '', departamento: '', barrio: '', calle: '', numero: '', apartamento: '', notas: '', website: '' };
 
 export default function Carrito({ visible, onClose, items, setItems }) {
   const [form, setForm] = useState(inicial);
@@ -40,7 +41,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
   function cambiar(event) {
     const { name, value } = event.target;
     const valor = name === 'telefono' ? value.replace(/[^0-9]/g, '').slice(0, 9) : value;
-    setForm((prev) => ({ ...prev, [name]: valor }));
+    setForm((prev) => ({ ...prev, [name]: valor, ...(name === 'departamento' ? { barrio: '' } : {}) }));
     setError('');
   }
 
@@ -63,6 +64,8 @@ export default function Carrito({ visible, onClose, items, setItems }) {
       setError(mensajeCorreo);
       return;
     }
+    const mensajeEntrega = errorEntrega(form);
+    if (mensajeEntrega) { setError(mensajeEntrega); return; }
     submitLock.current = true;
     setEnviando(true);
     setError('');
@@ -162,7 +165,15 @@ export default function Carrito({ visible, onClose, items, setItems }) {
                 {sugerenciaCorreo && <p className="order-email-suggestion">¿Quisiste escribir <button type="button" onClick={() => { setForm((prev) => ({ ...prev, correo: sugerenciaCorreo })); setError(''); }}>{sugerenciaCorreo}</button>?</p>}
                 <label>Teléfono<input type="tel" autoComplete="tel" name="telefono" value={form.telefono} onChange={cambiar} inputMode="numeric" pattern="09[0-9]{7}" minLength={9} maxLength={9} placeholder="Ej: 098789012" title="Ingresá un celular de Uruguay de 9 dígitos que empiece con 09, sin espacios ni guiones." required /></label>
                 <label>Entrega<select name="entrega" value={form.entrega} onChange={cambiar}><option value="envio">Envío a domicilio</option><option value="retiro">Retiro en Punta Carretas</option></select></label>
-                {form.entrega === 'envio' && <label>Dirección, localidad y departamento<textarea name="direccion" autoComplete="street-address" value={form.direccion} onChange={cambiar} maxLength={400} rows={3} required /></label>}
+                {form.entrega === 'envio' && <>
+                  <label>Departamento<select name="departamento" autoComplete="address-level1" value={form.departamento} onChange={cambiar} required><option value="">Seleccioná un departamento</option>{departamentos.map((nombre) => <option key={nombre} value={nombre}>{nombre}</option>)}</select></label>
+                  {form.departamento === 'Montevideo'
+                    ? <label>Barrio<select name="barrio" value={form.barrio} onChange={cambiar} required><option value="">Seleccioná un barrio</option>{barriosMontevideo.map((nombre) => <option key={nombre} value={nombre}>{nombre}</option>)}</select></label>
+                    : <label>Localidad o barrio<input name="barrio" autoComplete="address-level2" value={form.barrio} onChange={cambiar} maxLength={100} disabled={!form.departamento} required /></label>}
+                  <label>Dirección · calle<input name="calle" autoComplete="address-line1" value={form.calle} onChange={cambiar} placeholder="Ej: Av. 18 de Julio" maxLength={150} required /></label>
+                  <label>Número de puerta<input name="numero" inputMode="numeric" pattern="[0-9]{1,6}" value={form.numero} onChange={cambiar} placeholder="Ej: 1234" maxLength={6} required /></label>
+                  <label>Apartamento o complemento (opcional)<input name="apartamento" autoComplete="address-line2" value={form.apartamento} onChange={cambiar} maxLength={80} /></label>
+                </>}
                 <label>Observaciones (opcional)<textarea name="notas" value={form.notas} onChange={cambiar} maxLength={1000} rows={3} /></label>
                 <label className="order-honeypot" aria-hidden="true">Sitio web<input name="website" value={form.website} onChange={cambiar} autoComplete="off" tabIndex={-1} /></label>
                 <p className="order-privacy">Usaremos estos datos para gestionar tu solicitud y coordinar el pago y la entrega.</p>

@@ -1,3 +1,4 @@
+import { errorEntrega, direccionEntrega } from '../src/data/entrega.js';
 import { normalizarCorreo, errorCorreo } from '../src/data/correo.js';
 import { normalizarNombre, errorNombre } from '../src/data/nombre.js';
 import catalogo from '../src/data/catalogo.json' with { type: 'json' };
@@ -28,7 +29,9 @@ export function validarPedido(body) {
   if (!/^09[0-9]{7}$/.test(telefono)) throw new OrderError('Ingresá un celular de Uruguay de 9 dígitos que empiece con 09, sin espacios ni guiones.');
   if (!Object.hasOwn(mediosPago, body.metodoPago)) throw new OrderError('Elegí transferencia bancaria o Mercado Pago.');
   if (!['envio', 'retiro'].includes(body.entrega)) throw new OrderError('Elegí envío o retiro.');
-  const direccion = body.entrega === 'envio' ? campo(body.direccion, 400) : '';
+  const mensajeEntrega = errorEntrega(body);
+  if (mensajeEntrega) throw new OrderError(mensajeEntrega);
+  const direccion = body.entrega === 'envio' ? direccionEntrega(body) : '';
   const notas = campo(body.notas ?? '', 1000, false);
   if (!Array.isArray(body.items) || !body.items.length || body.items.length > 30) throw new OrderError('El pedido debe tener entre 1 y 30 productos.');
   const items = body.items.map((item) => {

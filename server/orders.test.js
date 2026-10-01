@@ -11,7 +11,7 @@ import precios from '../src/data/precios.json' with { type: 'json' };
 import { resumenImportes } from '../src/data/importes.js';
 
 function body(overrides = {}) {
-  return { requestId: randomUUID(), nombre: 'Cliente de prueba', correo: 'cliente@example.com', telefono: '099000000', entrega: 'retiro', metodoPago: 'mercadopago', notas: '', items: [{ productoId: 'JUV-001', talle: 'M', cantidad: 2 }], ...overrides };
+  return { departamento: 'Montevideo', barrio: 'Centro', calle: '18 de Julio', numero: '1234', requestId: randomUUID(), nombre: 'Cliente de prueba', correo: 'cliente@example.com', telefono: '099000000', entrega: 'retiro', metodoPago: 'mercadopago', notas: '', items: [{ productoId: 'JUV-001', talle: 'M', cantidad: 2 }], ...overrides };
 }
 const mailConfig = { from: 'tienda@example.com', to: 'pedidos@example.com' };
 
@@ -76,7 +76,7 @@ test('rechaza productos, talles, cantidades, correo y dirección inválidos', ()
   for (const item of [{ productoId: 'fake', talle: 'M', cantidad: 1 }, { productoId: 'JUV-001', talle: 'FAKE', cantidad: 1 }, { productoId: 'JUV-001', talle: 'M', cantidad: -1 }]) assert.throws(() => validarPedido(body({ items: [item] })));
   assert.throws(() => validarPedido(body({ correo: 'a@example.com\r\nBcc: b@example.com' })));
   assert.throws(() => validarPedido(body({ correo: 'a,b@example.com' })));
-  assert.throws(() => validarPedido(body({ entrega: 'envio', direccion: '' })));
+  assert.throws(() => validarPedido(body({ entrega: 'envio', calle: '' })));
   assert.throws(() => validarPedido(body({ website: 'spam' })));
   assert.throws(() => validarPedido(body({ items: [] })));
 });
@@ -191,4 +191,15 @@ test('sugiere dominios comunes sin corregirlos automáticamente', () => {
   }
   assert.equal(sugerirCorreo('juan@empresa.com.uy'), '');
   assert.equal(sugerirCorreo('juan..perez@gamil.com'), '');
+});
+
+test('entrega valida departamento, barrio y domicilio y los incluye en el correo', () => {
+  const pedido = validarPedido(body({ entrega: 'envio', apartamento: 'Apto 201' }));
+  assert.equal(pedido.direccion, '18 de Julio 1234, Apto 201\nCentro, Montevideo');
+  assert.match(crearCorreo(pedido, 'prueba', 'tienda', mailConfig).text, /Centro, Montevideo/);
+  for (const cambio of [{ departamento: '' }, { departamento: 'Fake' }, { barrio: '' }, { barrio: 'Fake' }, { calle: ' ' }, { numero: '' }, { numero: 'abc' }, { numero: '0' }]) {
+    assert.throws(() => validarPedido(body({ entrega: 'envio', ...cambio })));
+  }
+  assert.match(validarPedido(body({ entrega: 'envio', departamento: 'Canelones', barrio: 'Las Piedras' })).direccion, /Las Piedras, Canelones/);
+  assert.equal(validarPedido(body({ entrega: 'retiro', departamento: '', barrio: '', calle: '', numero: '' })).direccion, '');
 });
