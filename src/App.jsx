@@ -6,7 +6,6 @@ import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
 
 import hero1 from "./assets/Fondo1.webp";
-import hero2 from "./assets/fondo2.webp";
 import hero3 from "./assets/fondo3.webp";
 import hero4 from "./assets/fondo4.webp";
 import hero5 from "./assets/Fondo5.webp";
@@ -39,7 +38,6 @@ import "./index.css";
 const heroes = [
   { image: hero1, duration: 13000 },
   { image: hero4, duration: 7000 },
-  { image: hero2, duration: 7000 },
   { image: hero3, duration: 7000 },
   { image: heroBanner, duration: 7000 },
   { image: hero5, duration: 7000 },
