@@ -1,7 +1,7 @@
 import { imagenPequena, imagenMediana } from "./data/imagenes-responsive.js";
 import banderaUy from "./assets/uy.webp";
 import promoWeb from "./assets/popup-promo-mobile.webp";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
 
@@ -37,12 +37,12 @@ import { cargarCarrito } from "./data/carrito.js";
 import "./index.css";
 
 const heroes = [
-  { image: hero1, duration: 18000 },
-  { image: hero4, duration: 12000 },
-  { image: hero2, duration: 12000 },
-  { image: hero3, duration: 12000 },
-  { image: heroBanner, duration: 12000 },
-  { image: hero5, duration: 12000 },
+  { image: hero1, duration: 13000 },
+  { image: hero4, duration: 7000 },
+  { image: hero2, duration: 7000 },
+  { image: hero3, duration: 7000 },
+  { image: heroBanner, duration: 7000 },
+  { image: hero5, duration: 7000 },
 ];
 const newArrivals = [
   { image: promoWeb, title: "10% de descuento solicitando por la web", url: "/#prendas", duration: 7000, promo: true },
@@ -161,6 +161,20 @@ function ScrollToTop() {
 function App() {
   const location = useLocation();
   const [currentHero, setCurrentHero] = useState(0);
+  const [previousHero, setPreviousHero] = useState(null);
+  const heroRequest = useRef(0);
+  const cambiarHero = useCallback(async (index) => {
+    const request = ++heroRequest.current;
+    const image = new Image();
+    image.src = window.matchMedia('(max-width: 768px)').matches ? imagenMediana(heroes[index].image) : heroes[index].image;
+    try {
+      await image.decode();
+      if (request !== heroRequest.current) return;
+      setPreviousHero(currentHero);
+      setCurrentHero(index);
+    } catch { /* Conserva el banner visible si la siguiente imagen falla. */ }
+  }, [currentHero]);
+
   const [currentMessage, setCurrentMessage] = useState(0);
   const [pageLoading, setPageLoading] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -304,8 +318,12 @@ function App() {
   }, [popupVisible, currentNewArrival]);
 
   useEffect(() => {
+    const nextImage = new Image();
+    const nextIndex = (currentHero + 1) % heroes.length;
+    nextImage.src = window.matchMedia('(max-width: 768px)').matches ? imagenMediana(heroes[nextIndex].image) : heroes[nextIndex].image;
+    nextImage.decode().catch(() => {});
     const heroTimer = setTimeout(() => {
-      setCurrentHero((prev) => (prev + 1) % heroes.length);
+      cambiarHero(nextIndex);
     }, heroes[currentHero].duration);
 
     const textInterval = setInterval(() => {
@@ -316,15 +334,10 @@ function App() {
       clearTimeout(heroTimer);
       clearInterval(textInterval);
     };
-  }, [currentHero]);
+  }, [currentHero, cambiarHero]);
 
-  const prevHero = () => {
-    setCurrentHero((prev) => (prev === 0 ? heroes.length - 1 : prev - 1));
-  };
-
-  const nextHero = () => {
-    setCurrentHero((prev) => (prev + 1) % heroes.length);
-  };
+  const prevHero = () => cambiarHero((currentHero + heroes.length - 1) % heroes.length);
+  const nextHero = () => cambiarHero((currentHero + 1) % heroes.length);
 
   return (
     <div>
@@ -528,8 +541,8 @@ function App() {
   {heroes.map((img, index) => (
     <div
       key={index}
-      className={`hero-fade ${index === currentHero ? "active" : ""}`}
-      style={{ "--hero-desktop": index === currentHero ? `url(${img.image})` : "none", "--hero-mobile": index === currentHero ? `url(${imagenMediana(img.image)})` : "none" }}
+      className={`hero-fade ${index === currentHero ? "active" : index === previousHero ? "previous" : ""}`}
+      style={{ "--hero-desktop": (index === currentHero || index === previousHero) ? `url(${img.image})` : "none", "--hero-mobile": (index === currentHero || index === previousHero) ? `url(${imagenMediana(img.image)})` : "none" }}
     />
   ))}
 

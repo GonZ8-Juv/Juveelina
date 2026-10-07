@@ -2519,3 +2519,10 @@ html, body { touch-action: pan-x pan-y; }
 /* Mantiene el scroll en la ventana para que la navegación sticky funcione también en PC. */
 html, body, #root { overflow-x: clip; }
 .navbar { position: sticky; top: 0; }
+
+.hero-fade { z-index: 0; transition: none; }
+.hero-fade.previous { opacity: 1; }
+.hero-fade.active { z-index: 1; animation: heroCrossfade .6s ease both; }
+.hero-content, .hero > .prev, .hero > .next { z-index: 2; }
+@keyframes heroCrossfade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .hero-fade.active { animation: none; } }
