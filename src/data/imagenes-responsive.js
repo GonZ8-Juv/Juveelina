@@ -2,9 +2,6 @@ import original1 from "../assets/popup-promo-mobile.webp";
 import small1_0 from "../assets/responsive/0fcee0ca8cba-360.webp";
 import original2 from "../assets/Fondo1.webp";
 import small2_0 from "../assets/responsive/8b0e8dbd03c3-360.webp";
-import original3 from "../assets/fondo2.webp";
-import small3_0 from "../assets/responsive/a4a5ab08a86d-360.webp";
-import small3_1 from "../assets/responsive/a4a5ab08a86d-720.webp";
 import original4 from "../assets/fondo3.webp";
 import small4_0 from "../assets/responsive/f3483126fe1a-360.webp";
 import small4_1 from "../assets/responsive/f3483126fe1a-720.webp";
@@ -288,7 +285,6 @@ import small133_0 from "../assets/responsive/a4266be49c5c-360.webp";
 const versiones = new Map([
   [original1, [small1_0, original1]],
   [original2, [small2_0, original2]],
-  [original3, [small3_0, small3_1]],
   [original4, [small4_0, small4_1]],
   [original5, [small5_0, small5_1]],
   [original6, [small6_0, small6_1]],
