@@ -4,14 +4,14 @@ const escapar = (valor) => String(valor ?? '').replace(/[&<>"']/g, (c) => ({ '&'
 const multilinea = (valor) => escapar(valor).replace(/\r?\n/g, '<br>');
 
 export function correoClienteHtml(pedido, id, config) {
-  const { subtotal, pendiente, envio, total } = resumenPedido(pedido.items, pedido.entrega);
+  const { subtotal, pendiente, descuentoWeb, envio, total } = resumenPedido(pedido.items, pedido.entrega);
   const origen = config.origin || 'https://www.juveelina.com';
   const imagen = new URL('/mail/jmarr-2x.png', origen).href;
   const metodo = pedido.metodoPago || 'mercadopago';
   const filas = pedido.items.map((item) => `<tr><td style="padding:20px 0;border-bottom:1px solid #e5e5e5;vertical-align:top;">
     <strong style="font-size:15px;">${escapar(item.nombre)}</strong><br>
     <span style="color:#666;font-size:13px;">${escapar(item.color)}${item.talle ? ` · Talle ${escapar(item.talle)}` : ''}<br>Cantidad: ${item.cantidad}</span>
-    </td><td align="right" style="padding:20px 0 20px 12px;border-bottom:1px solid #e5e5e5;vertical-align:top;font-size:14px;"><strong style="color:#d00000;">${escapar(formatoPrecio(item.precio))}</strong>${item.precioOriginal ? `<br><del style="color:#666;">${escapar(formatoPrecio(item.precioOriginal))}</del> <span style="font-size:12px;">(-${escapar(item.descuento)}%)</span>` : ''}<br><span style="font-size:12px;color:#666;">por unidad</span></td></tr>`).join('');
+    </td><td align="right" style="padding:20px 0 20px 12px;border-bottom:1px solid #e5e5e5;vertical-align:top;font-size:14px;"><strong style="color:#111;">${escapar(formatoPrecio(item.precio))}</strong>${item.descuento > 0 && item.precioOriginal ? `<br><del style="color:#666;">${escapar(formatoPrecio(item.precioOriginal))}</del> <span style="font-size:12px;">(-${escapar(item.descuento)}%)</span>` : ''}<br><span style="font-size:12px;color:#666;">por unidad</span></td></tr>`).join('');
   const importe = (label, value, bold = false) => `<tr><td style="padding:8px 0;${bold ? 'font-weight:700;font-size:18px;' : ''}">${label}</td><td align="right" style="padding:8px 0;${bold ? 'font-weight:700;font-size:18px;' : ''}">${escapar(value)}</td></tr>`;
   return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recibimos tu solicitud · Juveelina</title></head>
   <body style="margin:0;padding:0;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif;">
@@ -22,7 +22,7 @@ export function correoClienteHtml(pedido, id, config) {
   <p style="font-size:11px;letter-spacing:3px;margin:20px 0 0;">JUVEELINA</p>
   </td></tr><tr><td style="padding:24px;">
   <h1 style="font-size:28px;line-height:1.25;font-weight:700;margin:0 0 16px;overflow-wrap:anywhere;">Hola ${escapar(pedido.nombre)},</h1>
-  <p style="font-size:15px;line-height:1.7;margin:0 0 32px;">¡Gracias por elegir Juveelina!</p>
+  <p style="font-size:15px;line-height:1.7;margin:0 0 32px;">¡Gracias por elegir Juveelina! Por solicitar desde nuestra página, tenés un 10% de descuento en los productos de tu pedido. El envío no está incluido en el descuento.</p>
   <h2 style="font-size:18px;line-height:1.4;margin:0 0 12px;">RECIBIMOS TU SOLICITUD</h2>
   <p style="font-size:12px;line-height:1.6;color:#666;margin:0 0 24px;word-break:break-all;">Solicitud ${escapar(id)}</p>
   <p style="font-size:14px;line-height:1.7;margin:0 0 32px;">Vamos a confirmar disponibilidad y el importe final. Después te enviaremos por correo ${metodo === 'transferencia' ? 'los datos bancarios para realizar la transferencia' : 'un enlace de Mercado Pago para completar el pago'}.</p>
@@ -30,6 +30,7 @@ export function correoClienteHtml(pedido, id, config) {
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="table-layout:fixed;">${filas}</table>
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px;margin-top:20px;">
   ${importe(pendiente ? 'Subtotal con precio informado' : 'Subtotal de productos', subtotal ? formatoPrecio(subtotal) : 'A confirmar')}
+  ${importe('Descuento por solicitar en la web (10%)', '-' + formatoPrecio(descuentoWeb))}
   ${importe(pedido.entrega === 'envio' ? 'Envío a domicilio' : 'Retiro en Punta Carretas', envio ? formatoPrecio(envio) : 'Sin costo')}
   ${importe('Total', total === null ? 'A confirmar' : formatoPrecio(total), true)}
   </table>

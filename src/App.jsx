@@ -1,3 +1,5 @@
+import banderaUy from "./assets/uy.webp";
+import promoWeb from "./assets/popup-descuento-web-10.webp";
 import { useState, useEffect } from "react";
 import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
@@ -6,12 +8,13 @@ import hero1 from "./assets/Fondo1.webp";
 import hero2 from "./assets/fondo2.webp";
 import hero3 from "./assets/fondo3.webp";
 import hero4 from "./assets/fondo4.webp";
+import hero5 from "./assets/Fondo5.webp";
 import heroBanner from "./assets/Banner.webp";
 
 import visa from "./assets/visa.png";
 import master from "./assets/master.png";
 import oca from "./assets/oca.png";
-import jmarr from "./assets/jmarr-2x.png";
+import jmarr from "./assets/jmarr-2x.webp";
 
 import cardigansApilados from "./assets/Cardigans apilados.webp";
 import cardiganBeigeDetalle from "./assets/CardigansUruWhy/cardigan-beige-detalle.webp";
@@ -30,7 +33,6 @@ import Terminos from "./pages/Terminos.jsx";
 
 import Carrito from "./components/Carrito.jsx";
 import { cargarCarrito } from "./data/carrito.js";
-import { DESCUENTO } from "./data/importes.js";
 import "./index.css";
 
 const heroes = [
@@ -39,9 +41,10 @@ const heroes = [
   { image: hero2, duration: 12000 },
   { image: hero3, duration: 12000 },
   { image: heroBanner, duration: 12000 },
+  { image: hero5, duration: 12000 },
 ];
 const newArrivals = [
-  { sale: true, title: "En toda la página", url: "/#prendas", duration: 9000 },
+  { image: promoWeb, title: "10% de descuento solicitando por la web", url: "/#prendas", duration: 7000, promo: true },
   {
     image: materasGrupo,
     title: "Materas criollas",
@@ -270,24 +273,13 @@ function App() {
             >
               ×
             </button>
-            <div className="new-arrivals-banner">{activeNewArrival.sale ? "JUVEELINA" : "NUEVOS INGRESOS!"}</div>
+            <div className="new-arrivals-banner">{activeNewArrival.promo ? "BENEFICIO WEB" : "NUEVOS INGRESOS!"}</div>
             <Link
               to={activeNewArrival.url}
               className="new-arrivals-image-link"
               onClick={() => setNewArrivalsOpen(false)}
             >
-              {activeNewArrival.sale ? (
-                <div className="mega-sale-poster" key="sale">
-                  <span className="mega-sale-title">MEGA<br />SALE</span>
-                  <strong className="mega-sale-discount">-{DESCUENTO}%</strong>
-                  <span className="mega-sale-caption">DE DESCUENTO<br />EN TODA LA PÁGINA</span>
-                  <small>Prendas y accesorios · Envío no incluido</small>
-                </div>
-              ) : <img
-                key={currentNewArrival}
-                src={activeNewArrival.image}
-                alt={activeNewArrival.title}
-              />}
+              <img key={currentNewArrival} src={activeNewArrival.image} alt={activeNewArrival.title} />
             </Link>
             <div className="new-arrivals-content">
               <h2>{activeNewArrival.title}</h2>
@@ -296,7 +288,7 @@ function App() {
                 className="new-arrivals-button"
                 onClick={() => setNewArrivalsOpen(false)}
               >
-                {activeNewArrival.sale ? "Ver descuentos" : "Ver más"}
+                Ver más
               </Link>
             </div>
           </section>
@@ -331,14 +323,9 @@ function App() {
       </div>
     </div>
 
-    <div className="dropdown">
-      <span>Vestimenta</span>
-      <div className="dropdown-menu">
-          <Link to="/vestimenta/gurises">Guríses</Link>
-        <Link to="/vestimenta/mujeres">Mujeres</Link>
-        <Link to="/vestimenta/hombres">Hombres</Link>
-      </div>
-    </div>
+    <Link className="nav-direct-link" to="/vestimenta/hombres">Hombres</Link>
+    <Link className="nav-direct-link" to="/vestimenta/mujeres">Mujeres</Link>
+    <Link className="nav-direct-link" to="/vestimenta/gurises">Gurises</Link>
 
     <div className="dropdown">
       <span>Accesorios</span>
@@ -357,6 +344,7 @@ function App() {
     <button type="button" aria-label="Buscar" onClick={() => setSearchOpen(true)}>
       <FaSearch />
     </button>
+    <img className="navbar-country-flag" src={banderaUy} alt="Uruguay" width="28" height="20" />
     <a href="mailto:juveelinauy2@gmail.com" aria-label="Enviar mail">
       <MdEmail />
     </a>
@@ -427,10 +415,6 @@ function App() {
   </div>
 )}
 
-<div className="juvelina-days-banner">
-  <strong>JUVEELINA DAYS</strong>
-  <span>{DESCUENTO}% OFF</span>
-</div>
 {/* HERO */}
 <div className="hero">
   {heroes.map((img, index) => (

@@ -49,14 +49,14 @@ export function validarPedido(body) {
 export function crearCorreo(pedido, id, recipient, config) {
   const metodoPago = pedido.metodoPago || 'mercadopago';
   const instrucciones = metodoPago === 'transferencia' ? 'los datos bancarios para realizar la transferencia' : 'un enlace de Mercado Pago para completar el pago';
-  const detalle = pedido.items.map((item) => `• ${item.cantidad} × ${item.nombre} · ${item.color}${item.talle ? ` · Talle ${item.talle}` : ''} (${item.productoId}) — ${formatoPrecio(item.precio)} por unidad${item.precioOriginal ? ` (antes ${formatoPrecio(item.precioOriginal)}, -${item.descuento}%)` : ''}`).join('\n');
+  const detalle = pedido.items.map((item) => `• ${item.cantidad} × ${item.nombre} · ${item.color}${item.talle ? ` · Talle ${item.talle}` : ''} (${item.productoId}) — ${formatoPrecio(item.precio)} por unidad${item.descuento > 0 && item.precioOriginal ? ` (antes ${formatoPrecio(item.precioOriginal)}, -${item.descuento}%)` : ''}`).join('\n');
   const importe = pedido.pendiente
     ? `Hay productos con precio a confirmar.${pedido.subtotal ? ` Subtotal de productos con precio: ${formatoPrecio(pedido.subtotal)}.` : ''}`
     : `Subtotal de productos: ${formatoPrecio(pedido.subtotal)}.`;
-  const { envio, total } = resumenPedido(pedido.items, pedido.entrega);
+  const { envio, total, descuentoWeb } = resumenPedido(pedido.items, pedido.entrega);
   const entrega = (pedido.entrega === 'envio' ? `Envío a: ${pedido.direccion}. Costo de envío: ${formatoPrecio(envio)}.` : 'Retiro en Punta Carretas, sin costo, a coordinar.')
     + '\n' + (total === null ? 'Total a confirmar por productos sin precio informado.' : `Total: ${formatoPrecio(total)}.`);
-  const resumen = `Solicitud ${id}\nMedio de pago: ${mediosPago[metodoPago]}\nMoneda: pesos uruguayos (UYU)\n\n${detalle}\n\n${importe}\n${entrega}\n${pedido.notas ? `Observaciones: ${pedido.notas}\n` : ''}`;
+  const resumen = `Solicitud ${id}\nMedio de pago: ${mediosPago[metodoPago]}\nMoneda: pesos uruguayos (UYU)\n\n${detalle}\n\n${importe}\nBeneficio web: 10% de descuento en productos (envío no incluido): -${formatoPrecio(descuentoWeb)}.\n${entrega}\n${pedido.notas ? `Observaciones: ${pedido.notas}\n` : ''}`;
   const cliente = recipient === 'cliente';
   return {
     from: config.from,

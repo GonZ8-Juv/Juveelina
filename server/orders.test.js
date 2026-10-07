@@ -17,22 +17,22 @@ const mailConfig = { from: 'tienda@example.com', to: 'pedidos@example.com' };
 
 test('los importes del navegador no reemplazan el catálogo del servidor', () => {
   const pedido = validarPedido(body({ items: [{ productoId: 'JUV-001', talle: 'M', cantidad: 2, precio: 1, nombre: 'Manipulado' }], subtotal: 1 }));
-  assert.equal(pedido.items[0].precio, 2720);
-  assert.equal(pedido.items[0].precioOriginal, 3200);
+  assert.equal(pedido.items[0].precio, 2800);
+  assert.equal(pedido.items[0].precioOriginal, 2800);
   assert.equal(pedido.items[0].nombre, 'Campera de Jean');
   assert.equal(pedido.estado, 'pendiente_confirmacion');
 });
 
-test('aplica el precio del medio elegido y suma accesorios con descuento', () => {
+test('aplica el precio del medio elegido y suma accesorios sin descuento', () => {
   const transferencia = validarPedido(body({ metodoPago: 'transferencia' }));
   const mercadoPago = validarPedido(body());
-  assert.equal(transferencia.subtotal, 5100);
-  assert.equal(mercadoPago.subtotal, 5440);
+  assert.equal(transferencia.subtotal, 5000);
+  assert.equal(mercadoPago.subtotal, 5600);
   assert.equal(transferencia.metodoPago, 'transferencia');
   assert.throws(() => validarPedido(body({ metodoPago: '__proto__' })));
   assert.throws(() => validarPedido(body({ metodoPago: undefined })));
   const mixto = validarPedido(body({ metodoPago: 'transferencia', items: [{ productoId: 'JUV-001', talle: 'M', cantidad: 1 }, { productoId: 'JUV-030', cantidad: 1 }] }));
-  assert.equal(mixto.subtotal, 5737.5);
+  assert.equal(mixto.subtotal, 6090);
   assert.equal(mixto.pendiente, false);
   const correo = crearCorreo(transferencia, 'prueba', 'cliente', mailConfig);
   assert.match(correo.text, /datos bancarios para realizar la transferencia/);
@@ -40,30 +40,30 @@ test('aplica el precio del medio elegido y suma accesorios con descuento', () =>
 });
 
 test('envío fijo por pedido y retiro gratis, también para accesorios', () => {
-  for (const [metodoPago, total] of [['transferencia', 5300], ['mercadopago', 5640]]) {
+  for (const [metodoPago, total] of [['transferencia', 4700], ['mercadopago', 5240]]) {
     const pedido = validarPedido(body({ metodoPago, entrega: 'envio', direccion: 'Dirección de prueba', envio: 1, total: 1 }));
     assert.equal(pedido.envio, 200);
     assert.equal(pedido.total, total);
     for (const recipient of ['cliente', 'tienda']) {
       const correo = crearCorreo(pedido, 'prueba', recipient, mailConfig);
       assert.match(correo.text, /Costo de envío:.*200/);
-      assert.match(correo.text, new RegExp(`Total:.*5[.,]${total === 5300 ? '300' : '640'}`));
+      assert.match(correo.text, new RegExp(total === 4700 ? 'Total:.*4[.,]700' : 'Total:.*5[.,]240'));
       assert.doesNotMatch(correo.text, /envío a confirmar/);
     }
   }
   const retiro = validarPedido(body());
   assert.equal(retiro.envio, 0);
-  assert.equal(retiro.total, 5440);
+  assert.equal(retiro.total, 5040);
   const pendiente = validarPedido(body({ entrega: 'envio', direccion: 'Dirección de prueba', items: [{ productoId: 'JUV-030', cantidad: 1 }] }));
   assert.equal(pendiente.envio, 200);
-  assert.equal(pendiente.total, 3387.5);
-  assert.match(crearCorreo(pendiente, 'prueba', 'cliente', mailConfig).text, /Total:.*3[.,]387,50/);
+  assert.equal(pendiente.total, 3620);
+  assert.match(crearCorreo(pendiente, 'prueba', 'cliente', mailConfig).text, /Total:.*3[.,]620,00/);
 });
 
 test('tarifas por tipo de prenda coinciden con la lista del negocio', () => {
   for (const [id, transferencia, mercadopago] of [
-    ['JUV-001', 3000, 3200], ['JUV-003', 1500, 1800], ['JUV-005', 1100, 1500],
-    ['JUV-013', 2100, 2400], ['JUV-014', 2400, 2700], ['JUV-018', 2300, 2600], ['JUV-019', 2300, 2600],
+    ['JUV-001', 2500, 2800], ['JUV-003', 1500, 1800], ['JUV-005', 1300, 1500],
+    ['JUV-013', 2100, 2400], ['JUV-014', 2400, 2700], ['JUV-018', 2200, 2500], ['JUV-019', 2200, 2500],
   ]) assert.deepEqual(precios[id], { transferencia, mercadopago });
 });
 

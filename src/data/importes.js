@@ -1,5 +1,6 @@
+export const DESCUENTO_WEB = 10;
 export const COSTO_ENVIO = 200;
-export const DESCUENTO = 15;
+export const DESCUENTO = 0;
 export const tienePrecio = (precio) => Number.isFinite(precio) && precio > 0;
 export const mediosPago = { transferencia: 'Transferencia bancaria', mercadopago: 'Mercado Pago' };
 export const precioOriginalPorMedio = (precios, medio) => tienePrecio(precios?.[medio]) ? precios[medio] : null;
@@ -19,5 +20,6 @@ export function resumenImportes(items) {
 export function resumenPedido(items, entrega) {
   const resumen = resumenImportes(items);
   const envio = entrega === 'envio' ? COSTO_ENVIO : 0;
-  return { ...resumen, envio, total: resumen.pendiente ? null : resumen.subtotal + envio };
+  const descuentoWeb = Math.round(resumen.subtotal * DESCUENTO_WEB) / 100;
+  return { ...resumen, descuentoWeb, envio, total: resumen.pendiente ? null : Math.round((resumen.subtotal - descuentoWeb + envio) * 100) / 100 };
 }

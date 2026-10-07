@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { enlaceProducto } from "../data/enlaces.js";
-import { DESCUENTO } from "../data/importes.js";
 import { FaInstagram, FaShareAlt, FaWhatsapp } from "react-icons/fa";
 
 import { productosPorCategoria } from "../data/catalogo.js";
@@ -46,7 +45,7 @@ const seccionPorCategoria = {
 const tonosColor = {
   Beige: "#dcc8a5", Gris: "#969696", Rosa: "#e8a8b9", Azul: "#244a80",
   Negro: "#171717", Blanco: "#fff", Marrón: "#805336", Natural: "#e7dbc5",
-  Celeste: "#99c9e8", Verde: "#315843", "Jean claro": "#9dbed5", "Jean oscuro": "#345475",
+  "Azul marino": "#182b49", Rojo: "#b9212c", Celeste: "#99c9e8", Verde: "#315843", "Jean claro": "#9dbed5", "Jean oscuro": "#345475",
 };
 
 const tallesDisponibles = ["S", "M", "L", "XL", "XXL"];
@@ -108,16 +107,22 @@ export const productosTienda = categoriasDeRopa
   })
   .sort((a, b) => Number(Boolean(b.nuevo)) - Number(Boolean(a.nuevo)));
 
+const esRemera = (producto) => /^(Básica|Camiseta|Sensación)/i.test(producto.nombre);
+const todasLasRemeras = [...new Map(Object.values(productosPorCategoria).flat()
+  .filter(esRemera).map((producto) => [producto.id, producto])).values()];
+
 export function ProductGallery({
   productos,
   onAddToCart,
+  productosVisibles = productos,
   categoriaPredeterminada,
   className = "",
 }) {
   const [searchParams] = useSearchParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const productoActivo = productos.find((producto) => producto.id === searchParams.get('producto')) || null;
+  const productosDisponibles = productos.some(esRemera) ? [...productos, ...todasLasRemeras] : productos;
+  const productoActivo = productosDisponibles.find((producto) => producto.id === searchParams.get('producto')) || null;
   const setProductoActivo = (producto) => {
     const siguiente = new URLSearchParams(searchParams);
     if (producto) siguiente.set('producto', producto.id);
@@ -127,12 +132,11 @@ export function ProductGallery({
   const publicoProducto = (producto) => ["Guríses", "Mujeres", "Hombres"].find(
     (categoria) => productosPorCategoria[categoria]?.some((item) => item.id === producto.id)
   );
-  const variantesColor = productoActivo
-    ? productos.filter((producto, index, lista) =>
-      producto.nombre === productoActivo.nombre &&
-      publicoProducto(producto) === publicoProducto(productoActivo) &&
-      lista.findIndex((otro) => otro.nombre === producto.nombre && otro.color === producto.color && publicoProducto(otro) === publicoProducto(producto)) === index)
-    : [];
+  const candidatosColor = productoActivo && esRemera(productoActivo)
+    ? [...todasLasRemeras].sort((a, b) => Number(b.nombre === productoActivo.nombre) - Number(a.nombre === productoActivo.nombre))
+    : productos.filter((producto) => productoActivo && producto.nombre === productoActivo.nombre && publicoProducto(producto) === publicoProducto(productoActivo));
+  const variantesColor = candidatosColor.filter((producto, index, lista) =>
+    lista.findIndex((otro) => otro.color === producto.color) === index);
   const [fotoActual, setFotoActual] = useState(0);
   const [imagenAmpliada, setImagenAmpliada] = useState(false);
   const [talleSeleccionado, setTalleSeleccionado] = useState(() => productoActivo?.talles?.[0] || "M");
@@ -165,7 +169,7 @@ export function ProductGallery({
   return (
     <>
       <div className={`category-products ${className}`.trim()}>
-        {productos.map((producto, index) => (
+        {[...productosVisibles].sort((a, b) => Number(Boolean(b.nuevo)) - Number(Boolean(a.nuevo))).map((producto, index) => (
           <div
             className="category-product"
             key={`${producto.nombre}-${producto.color}-${producto.imagenes[0]}-${index}`}
@@ -178,8 +182,7 @@ export function ProductGallery({
             }}
           >
             {producto.nuevo && <span className="product-new-badge">NEW</span>}
-            {producto.precios && <span className="product-sale-badge">-{DESCUENTO}%</span>}
-            <img src={producto.imagenes[0]} alt={producto.nombre} />
+            <img src={producto.imagenes[0]} alt={producto.nombre} loading="lazy" decoding="async" />
             <p>{producto.nombre}</p>
             <span>
               {producto.color} · {producto.material}
@@ -246,7 +249,6 @@ export function ProductGallery({
                   className={`product-detail-main-image ${imagenAmpliada ? "zoomed" : ""}`}
                   onClick={() => setImagenAmpliada((actual) => !actual)}
                 >
-                  {productoActivo.precios && <span className="product-sale-badge">-{DESCUENTO}%</span>}
                   <img
                     key={`${productoActivo.nombre}-${productoActivo.color}-${fotoActual}`}
                     src={productoActivo.imagenes[fotoActual] || productoActivo.imagenes[0]}
@@ -336,6 +338,14 @@ export function ProductGallery({
                   </div>
                 )}
 
+                {productoActivo.detalles?.length > 0 && (
+                  <details className="product-extra-details" key={`detalles-${productoActivo.id}`}>
+                    <summary>Detalles</summary>
+                    <h3>Detalle de producto</h3>
+                    <ul>{productoActivo.detalles.map((detalle) => <li key={detalle}>{detalle}</li>)}</ul>
+                  </details>
+                )}
+
                 <button
                   type="button"
                   className="add-cart-button product-detail-cart"
@@ -355,6 +365,8 @@ export function ProductGallery({
                 >
                   Agregar al carrito
                 </button>
+
+
 
                 <div className="product-detail-description">
                   <h3>Descripción</h3>

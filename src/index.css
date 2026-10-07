@@ -2412,3 +2412,22 @@ html, body {
 .product-color-options button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 12px; border: 0; background: #fff; color: #111; font: inherit; text-align: left; cursor: pointer; }
 .product-color-options button:hover, .product-color-options button[aria-pressed="true"] { background: #f0eeeb; }
 .product-color-dropdown summary:focus-visible, .product-color-options button:focus-visible { outline: 2px solid #111; outline-offset: -2px; }
+
+.nav-links .nav-direct-link { display: inline-flex; align-items: center; padding: 12px 0; color: #666; font-size: inherit; font-weight: 800; transition: color .2s ease, transform .2s ease; }
+.nav-links .nav-direct-link:hover, .nav-links .nav-direct-link:focus-visible { color: #000; transform: scale(1.07); }
+.navbar-country-flag { width: 28px; height: 20px; object-fit: contain; flex-shrink: 0; }
+
+.featured-card { display: block; color: #fff; text-decoration: none; }
+.featured-card::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.72)); pointer-events: none; }
+.featured-card-caption { position: absolute; z-index: 1; bottom: 0; left: 0; right: 0; padding: clamp(10px, 2vw, 28px); }
+.featured-card-caption h2 { color: #fff; font-size: clamp(14px, 2.4vw, 34px); line-height: 1.15; margin: 0 0 12px; font-weight: 600; }
+.featured-card-caption span { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-size: clamp(11px, 1.2vw, 15px); }
+.featured-card:hover .featured-card-caption span { text-decoration-thickness: 2px; }
+.featured-card:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+
+.product-extra-details { margin: 8px 0 20px; border-top: 1px solid #e5e0db; border-bottom: 1px solid #e5e0db; padding: 16px 0; }
+.product-extra-details summary { display: list-item; list-style: disclosure-closed inside; cursor: pointer; font-size: 16px; font-weight: 700; padding: 8px 0; color: #111; }
+.product-extra-details[open] summary { list-style-type: disclosure-open; }
+.product-extra-details summary:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
+.product-extra-details h3 { margin: 18px 0 10px; font-size: 15px; }
+.product-extra-details ul { padding-left: 20px; margin: 0; line-height: 1.8; }

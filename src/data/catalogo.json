@@ -49,7 +49,7 @@
         "RemerasSensacionUy/remera-sensacion-blanca-detalle.webp",
         "RemerasSensacionUy/remera-sensacion-blanca-frente.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-003",
       "talles": [
         "S",
@@ -67,7 +67,7 @@
         "RemerasSensacionUy/remera-sensacion-negra-frente.webp",
         "RemerasSensacionUy/remera-sensacion-negra-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-004",
       "talles": [
         "S",
@@ -212,6 +212,158 @@
         "XL",
         "XXL"
       ]
+    },
+    {
+      "id": "JUV-057",
+      "nombre": "Básica Sol",
+      "color": "Azul marino",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem azul marino.webp",
+        "Remeras/Rem azul marino 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-058",
+      "nombre": "Básica Escudo",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem blanca.webp",
+        "Remeras/Rem blanca 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-059",
+      "nombre": "Básica Sol",
+      "color": "Celeste",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem celeste 1.webp",
+        "Remeras/Rem celeste 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-060",
+      "nombre": "Básica Sol",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem gris.webp",
+        "Remeras/Rem gris 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
+    },
+    {
+      "id": "JUV-061",
+      "nombre": "Básica Sol",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem marron.webp",
+        "Remeras/Rem marron 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
+    },
+    {
+      "id": "JUV-062",
+      "nombre": "Básica Escudo",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem negra .webp",
+        "Remeras/Rem negra 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-063",
+      "nombre": "Básica Escudo",
+      "color": "Rojo",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem roja.webp",
+        "Remeras/Rem roja 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
+    },
+    {
+      "id": "JUV-064",
+      "nombre": "Básica Escudo",
+      "color": "Verde",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem verde.webp",
+        "Remeras/Rem verde 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
     }
   ],
   "Buzos Uy": [
@@ -625,9 +777,8 @@
       "color": "Beige",
       "material": "Tejido",
       "imagenes": [
-        "CardigansUruWhy/cardigan-beige-principal.webp",
-        "CardigansUruWhy/cardigan-beige-detalle.webp",
-        "CardigansUruWhy/cardigan-beige-espalda.webp"
+        "CardigansUruWhy/Cardigan-Beige-Mate.webp",
+        "CardigansUruWhy/Cardigan-Beige-back.webp"
       ],
       "nuevo": false,
       "talles": [
@@ -673,6 +824,37 @@
       "color": "Azul",
       "material": "Tejido",
       "imagenes": [
+        "CardigansUruWhy/cardigan azul.webp",
+        "CardigansUruWhy/cardigan azul 2.webp"
+      ],
+      "nuevo": false,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-017"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Beige",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-beige-principal.webp",
+        "CardigansUruWhy/cardigan-beige-detalle.webp",
+        "CardigansUruWhy/cardigan-beige-espalda.webp"
+      ],
+      "nuevo": false,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-065"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Azul",
+      "material": "Tejido",
+      "imagenes": [
         "CardigansUruWhy/cardigan-azul-principal.webp",
         "CardigansUruWhy/cardigan-azul-entero.webp",
         "CardigansUruWhy/cardigan-azul-espalda.webp"
@@ -682,7 +864,7 @@
         "S/M",
         "L/XL"
       ],
-      "id": "JUV-017"
+      "id": "JUV-066"
     }
   ],
   "Sweaters": [
@@ -743,6 +925,26 @@
       "nuevo": true,
       "id": "JUV-021",
       "talles": []
+    },
+    {
+      "nombre": "Cartera Juveelina",
+      "color": "Marrón",
+      "material": "100% cuero",
+      "imagenes": [
+        "Bolsos/Cartera 2.jpeg",
+        "Bolsos/Cartera.webp"
+      ],
+      "nuevo": true,
+      "id": "JUV-067",
+      "talles": [],
+      "detalles": [
+        "100% cuero",
+        "Hecha a mano",
+        "Asas cómodas para llevar al hombro",
+        "Amplio espacio interior",
+        "Capacidad para laptop y objetos de uso diario",
+        "Diseño artesanal, resistente y versátil"
+      ]
     }
   ],
   "TOTES": [
@@ -1097,9 +1299,8 @@
       "color": "Beige",
       "material": "Tejido",
       "imagenes": [
-        "CardigansUruWhy/cardigan-beige-principal.webp",
-        "CardigansUruWhy/cardigan-beige-detalle.webp",
-        "CardigansUruWhy/cardigan-beige-espalda.webp"
+        "CardigansUruWhy/Cardigan-Beige-Mate.webp",
+        "CardigansUruWhy/Cardigan-Beige-back.webp"
       ],
       "nuevo": false,
       "talles": [
@@ -1145,9 +1346,8 @@
       "color": "Azul",
       "material": "Tejido",
       "imagenes": [
-        "CardigansUruWhy/cardigan-azul-principal.webp",
-        "CardigansUruWhy/cardigan-azul-entero.webp",
-        "CardigansUruWhy/cardigan-azul-espalda.webp"
+        "CardigansUruWhy/cardigan azul.webp",
+        "CardigansUruWhy/cardigan azul 2.webp"
       ],
       "nuevo": false,
       "talles": [
@@ -1164,7 +1364,7 @@
         "RemerasSensacionUy/remera-sensacion-blanca-frente.webp",
         "RemerasSensacionUy/remera-sensacion-blanca-detalle.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-003",
       "talles": [
         "S",
@@ -1182,7 +1382,7 @@
         "RemerasSensacionUy/remera-sensacion-negra-frente.webp",
         "RemerasSensacionUy/remera-sensacion-negra-espalda.webp"
       ],
-      "nuevo": true,
+      "nuevo": false,
       "id": "JUV-004",
       "talles": [
         "S",
@@ -1208,6 +1408,133 @@
         "XL",
         "XXL"
       ]
+    },
+    {
+      "id": "JUV-059",
+      "nombre": "Básica Sol",
+      "color": "Celeste",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem celeste 1.webp",
+        "Remeras/Rem celeste 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-061",
+      "nombre": "Básica Sol",
+      "color": "Marrón",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem marron.webp",
+        "Remeras/Rem marron 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
+    },
+    {
+      "id": "JUV-062",
+      "nombre": "Básica Escudo",
+      "color": "Negro",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem negra .webp",
+        "Remeras/Rem negra 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-063",
+      "nombre": "Básica Escudo",
+      "color": "Rojo",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem roja.webp",
+        "Remeras/Rem roja 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
+    },
+    {
+      "id": "JUV-064",
+      "nombre": "Básica Escudo",
+      "color": "Verde",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem verde.webp",
+        "Remeras/Rem verde 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Beige",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-beige-principal.webp",
+        "CardigansUruWhy/cardigan-beige-detalle.webp",
+        "CardigansUruWhy/cardigan-beige-espalda.webp"
+      ],
+      "nuevo": false,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-065"
+    },
+    {
+      "nombre": "Cardigan UruWhy",
+      "color": "Azul",
+      "material": "Tejido",
+      "imagenes": [
+        "CardigansUruWhy/cardigan-azul-principal.webp",
+        "CardigansUruWhy/cardigan-azul-entero.webp",
+        "CardigansUruWhy/cardigan-azul-espalda.webp"
+      ],
+      "nuevo": false,
+      "talles": [
+        "S/M",
+        "L/XL"
+      ],
+      "id": "JUV-066"
     }
   ],
   "Hombres": [
@@ -1462,6 +1789,63 @@
         "XL",
         "XXL"
       ]
+    },
+    {
+      "id": "JUV-057",
+      "nombre": "Básica Sol",
+      "color": "Azul marino",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem azul marino.webp",
+        "Remeras/Rem azul marino 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-058",
+      "nombre": "Básica Escudo",
+      "color": "Blanco",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem blanca.webp",
+        "Remeras/Rem blanca 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": true
+    },
+    {
+      "id": "JUV-060",
+      "nombre": "Básica Sol",
+      "color": "Gris",
+      "material": "Algodón",
+      "imagenes": [
+        "Remeras/Rem gris.webp",
+        "Remeras/Rem gris 2.webp"
+      ],
+      "talles": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "nuevo": true,
+      "mostrarInicio": false
     }
   ]
 }

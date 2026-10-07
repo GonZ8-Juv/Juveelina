@@ -4,7 +4,7 @@ import { normalizarNombre, errorNombre } from '../data/nombre.js';
 import { useEffect, useRef, useState } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import { productosPorId } from '../data/catalogo.js';
-import { formatoPrecio, resumenPedido, precioPorMedio, precioOriginalPorMedio, DESCUENTO, mediosPago } from '../data/importes.js';
+import { formatoPrecio, resumenPedido, precioPorMedio, mediosPago } from '../data/importes.js';
 import './Carrito.css';
 
 const inicial = { nombre: '', correo: '', telefono: '', entrega: 'envio', metodoPago: 'mercadopago', direccion: '', departamento: '', barrio: '', calle: '', numero: '', apartamento: '', notas: '', website: '' };
@@ -22,7 +22,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
   const panelRef = useRef(null);
   const productos = items.map((item) => ({ ...item, ...productosPorId[item.productoId], precio: precioPorMedio(productosPorId[item.productoId]?.precios, form.metodoPago), id: item.id, cantidad: item.cantidad, talle: item.talle, productoId: item.productoId }));
   const invalido = productos.some((p) => !productosPorId[p.productoId] || (p.talles.length > 0 && !p.talles.includes(p.talle)));
-  const { subtotal, pendiente, envio, total } = resumenPedido(productos, form.entrega);
+  const { subtotal, pendiente, descuentoWeb, envio, total } = resumenPedido(productos, form.entrega);
 
   useEffect(() => {
     if (!visible) return;
@@ -137,7 +137,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
                   <div>
                     <h3>{item.nombre}</h3>
                     <p>{item.color}{item.talle ? ` · Talle ${item.talle}` : ''}</p>
-                    <p className="product-price"><strong className="sale-price">{formatoPrecio(item.precio)}</strong> {item.precio && <><del className="original-price">{formatoPrecio(precioOriginalPorMedio(item.precios, form.metodoPago))}</del> <small>(-{DESCUENTO}%)</small></>} <small>por unidad</small></p>
+                    <p className="product-price"><strong>{formatoPrecio(item.precio)}</strong> <small>por unidad</small></p>
                     {!productosPorId[item.productoId] && <p className="order-error">Volvé a agregar este producto desde el catálogo.</p>}
                     <label className="order-quantity">Cantidad
                       <select aria-label={`Cantidad de ${item.nombre} ${item.color} ${item.talle || ''}`} value={item.cantidad} disabled={enviando} onChange={(e) => setItems((prev) => prev.map((p) => p.id === item.id ? { ...p, cantidad: Number(e.target.value) } : p))}>
@@ -153,6 +153,8 @@ export default function Carrito({ visible, onClose, items, setItems }) {
               <p><span>{pendiente ? 'Subtotal con precio informado' : 'Subtotal de productos'}</span><strong>{subtotal ? formatoPrecio(subtotal) : 'A confirmar'}</strong></p>
               <p>Precios en pesos uruguayos · {mediosPago[form.metodoPago]}</p>
               {pendiente && <p>Hay productos con precio a confirmar. Te enviaremos el importe final antes de pagar.</p>}
+              <p className="order-amount"><span>Descuento por solicitar en la web (10%)</span><strong>−{formatoPrecio(descuentoWeb)}</strong></p>
+              <p>¡Tenés un 10% de descuento en tus productos por enviar tu solicitud desde la página! No incluye el envío.</p>
               <p className="order-amount"><span>{form.entrega === 'envio' ? 'Envío a domicilio' : 'Retiro en Punta Carretas'}</span><strong>{envio ? formatoPrecio(envio) : 'Sin costo'}</strong></p>
               <p className="order-amount"><span>Total</span><strong>{pendiente ? 'A confirmar' : formatoPrecio(total)}</strong></p>
             </div>

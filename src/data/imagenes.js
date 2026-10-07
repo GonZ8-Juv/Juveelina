@@ -1,3 +1,25 @@
+import carteraNueva0 from "../assets/Bolsos/Cartera 2.jpeg";
+import carteraNueva1 from "../assets/Bolsos/Cartera.webp";
+import nuevaOctubre0 from "../assets/CardigansUruWhy/Cardigan-Beige-Mate.webp";
+import nuevaOctubre1 from "../assets/CardigansUruWhy/Cardigan-Beige-back.webp";
+import nuevaOctubre2 from "../assets/CardigansUruWhy/cardigan azul.webp";
+import nuevaOctubre3 from "../assets/CardigansUruWhy/cardigan azul 2.webp";
+import nuevaOctubre4 from "../assets/Remeras/Rem azul marino.webp";
+import nuevaOctubre5 from "../assets/Remeras/Rem azul marino 2.webp";
+import nuevaOctubre6 from "../assets/Remeras/Rem blanca.webp";
+import nuevaOctubre7 from "../assets/Remeras/Rem blanca 2.webp";
+import nuevaOctubre8 from "../assets/Remeras/Rem celeste 1.webp";
+import nuevaOctubre9 from "../assets/Remeras/Rem celeste 2.webp";
+import nuevaOctubre10 from "../assets/Remeras/Rem gris.webp";
+import nuevaOctubre11 from "../assets/Remeras/Rem gris 2.webp";
+import nuevaOctubre12 from "../assets/Remeras/Rem marron.webp";
+import nuevaOctubre13 from "../assets/Remeras/Rem marron 2.webp";
+import nuevaOctubre14 from "../assets/Remeras/Rem negra .webp";
+import nuevaOctubre15 from "../assets/Remeras/Rem negra 2.webp";
+import nuevaOctubre16 from "../assets/Remeras/Rem roja.webp";
+import nuevaOctubre17 from "../assets/Remeras/Rem roja 2.webp";
+import nuevaOctubre18 from "../assets/Remeras/Rem verde.webp";
+import nuevaOctubre19 from "../assets/Remeras/Rem verde 2.webp";
 import buzoNuevo0 from "../assets/buzos/file_000000003cd4820eaeeab14a78ce37d5.webp";
 import buzoNuevo1 from "../assets/buzos/file_00000000634c820e81305fff2e303ec9.webp";
 import buzoNuevo2 from "../assets/buzos/file_000000007ca0820e8d02764f0c16b0de.webp";
@@ -198,4 +220,26 @@ export default {
   "buzos/IMG-20260523-WA0066.jpg": buzoNuevo4,
   "buzos/file_000000000310820ea0d8751f81af5792.webp": buzoNuevo5,
   "buzos/file_0000000047b0820e9393cc0027806bef.webp": buzoNuevo6,
+  "CardigansUruWhy/Cardigan-Beige-Mate.webp": nuevaOctubre0,
+  "CardigansUruWhy/Cardigan-Beige-back.webp": nuevaOctubre1,
+  "CardigansUruWhy/cardigan azul.webp": nuevaOctubre2,
+  "CardigansUruWhy/cardigan azul 2.webp": nuevaOctubre3,
+  "Remeras/Rem azul marino.webp": nuevaOctubre4,
+  "Remeras/Rem azul marino 2.webp": nuevaOctubre5,
+  "Remeras/Rem blanca.webp": nuevaOctubre6,
+  "Remeras/Rem blanca 2.webp": nuevaOctubre7,
+  "Remeras/Rem celeste 1.webp": nuevaOctubre8,
+  "Remeras/Rem celeste 2.webp": nuevaOctubre9,
+  "Remeras/Rem gris.webp": nuevaOctubre10,
+  "Remeras/Rem gris 2.webp": nuevaOctubre11,
+  "Remeras/Rem marron.webp": nuevaOctubre12,
+  "Remeras/Rem marron 2.webp": nuevaOctubre13,
+  "Remeras/Rem negra .webp": nuevaOctubre14,
+  "Remeras/Rem negra 2.webp": nuevaOctubre15,
+  "Remeras/Rem roja.webp": nuevaOctubre16,
+  "Remeras/Rem roja 2.webp": nuevaOctubre17,
+  "Remeras/Rem verde.webp": nuevaOctubre18,
+  "Remeras/Rem verde 2.webp": nuevaOctubre19,
+  "Bolsos/Cartera 2.jpeg": carteraNueva0,
+  "Bolsos/Cartera.webp": carteraNueva1,
 };
