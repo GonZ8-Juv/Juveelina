@@ -1,3 +1,4 @@
+import { imagenPequena } from "../data/imagenes-responsive.js";
 import { departamentos, barriosMontevideo, errorEntrega } from '../data/entrega.js';
 import { normalizarCorreo, errorCorreo, sugerirCorreo } from '../data/correo.js';
 import { normalizarNombre, errorNombre } from '../data/nombre.js';
@@ -133,7 +134,7 @@ export default function Carrito({ visible, onClose, items, setItems }) {
             <div className="cart-items">
               {productos.map((item) => (
                 <article className="cart-item" key={item.id}>
-                  <img src={item.imagenes?.[0] || item.imagen} alt={item.nombre} />
+                  <img src={imagenPequena(item.imagenes?.[0] || item.imagen)} loading="lazy" alt={item.nombre} />
                   <div>
                     <h3>{item.nombre}</h3>
                     <p>{item.color}{item.talle ? ` · Talle ${item.talle}` : ''}</p>

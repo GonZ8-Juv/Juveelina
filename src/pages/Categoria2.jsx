@@ -1,3 +1,4 @@
+import { imagenPequena, imagenMediana, fuentesImagen } from "../data/imagenes-responsive.js";
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
@@ -182,7 +183,7 @@ export function ProductGallery({
             }}
           >
             {producto.nuevo && <span className="product-new-badge">NEW</span>}
-            <img src={producto.imagenes[0]} alt={producto.nombre} loading="lazy" decoding="async" />
+            <img src={imagenPequena(producto.imagenes[0])} srcSet={fuentesImagen(producto.imagenes[0])} sizes="(max-width: 768px) 50vw, 25vw" alt={producto.nombre} loading="lazy" decoding="async" />
             <p>{producto.nombre}</p>
             <span>
               {producto.color} · {producto.material}
@@ -240,7 +241,7 @@ export function ProductGallery({
                       className={fotoActual === index ? "active-thumb" : ""}
                       aria-label={`Ver foto ${index + 1}`}
                     >
-                      <img src={img} alt={`${productoActivo.nombre} ${index + 1}`} />
+                      <img src={imagenPequena(img)} loading="lazy" alt={`${productoActivo.nombre} ${index + 1}`} />
                     </button>
                   ))}
                 </div>
@@ -251,7 +252,7 @@ export function ProductGallery({
                 >
                   <img
                     key={`${productoActivo.nombre}-${productoActivo.color}-${fotoActual}`}
-                    src={productoActivo.imagenes[fotoActual] || productoActivo.imagenes[0]}
+                    src={imagenAmpliada ? (productoActivo.imagenes[fotoActual] || productoActivo.imagenes[0]) : imagenMediana(productoActivo.imagenes[fotoActual] || productoActivo.imagenes[0])}
                     alt={productoActivo.nombre}
                   />
                   <figcaption>

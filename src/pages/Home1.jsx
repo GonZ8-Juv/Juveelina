@@ -1,3 +1,4 @@
+import { imagenPequena, fuentesImagen } from "../data/imagenes-responsive.js";
 import { Link } from "react-router-dom";
 import cardiganGris from "../assets/CardigansUruWhy/cardigan-gris-principal.webp";
 import buzo from "../assets/Carprint.webp";
@@ -13,15 +14,15 @@ function Home({ onAddToCart }) {
     <>
       <section className="home-featured" aria-label="Explorar colecciones">
         <Link className="featured-card" to="/colecciones/cardigans-uruwhy">
-          <img src={cardiganGris} alt="Cardigan UruWhy gris" />
+          <img src={imagenPequena(cardiganGris)} srcSet={fuentesImagen(cardiganGris)} sizes="33vw" loading="lazy" decoding="async" alt="Cardigan UruWhy gris" />
           <div className="featured-card-caption"><h2>Cardigans UruWhy</h2><span>Ver colección</span></div>
         </Link>
         <Link className="featured-card" to="/accesorios/carteras">
-          <img src={buzo} alt="Carteras Juveelina" />
+          <img src={imagenPequena(buzo)} srcSet={fuentesImagen(buzo)} sizes="33vw" loading="lazy" decoding="async" alt="Carteras Juveelina" />
           <div className="featured-card-caption"><h2>Carteras</h2><span>Ver colección</span></div>
         </Link>
         <Link className="featured-card" to="/colecciones/campera-jean">
-          <img src={camperaJean} alt="Campera de jean clara" />
+          <img src={imagenPequena(camperaJean)} srcSet={fuentesImagen(camperaJean)} sizes="33vw" loading="lazy" decoding="async" alt="Campera de jean clara" />
           <div className="featured-card-caption"><h2>Camperas de jean</h2><span>Ver colección</span></div>
         </Link>
       </section>

@@ -409,8 +409,8 @@ h2 {
 
 .cart-count {
   position: absolute;
-  top: -8px;
-  right: -10px;
+  top: -4px;
+  right: -6px;
   min-width: 18px;
   height: 18px;
   border-radius: 999px;
@@ -2494,3 +2494,28 @@ html, body { touch-action: pan-x pan-y; }
   .new-arrivals-content { flex-basis: 116px; padding: 10px 14px; }
   .new-arrivals-content h2 { font-size: 18px; }
 }
+
+.hero-fade { background-image: var(--hero-desktop); }
+@media (max-width: 768px) { .hero-fade { background-image: var(--hero-mobile); } }
+
+/* Evita que overflow:hidden cree un contenedor que anule el sticky móvil. */
+@media (max-width: 768px) {
+  html, body, #root { overflow-x: clip; }
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+    padding: calc(6px + env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) 6px max(10px, env(safe-area-inset-left));
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, .06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-icons .cart-count { top: 3px; right: -1px; min-width: 16px; height: 16px; font-size: 10px; padding: 0 3px; }
+}
+
+/* Mantiene el scroll en la ventana para que la navegación sticky funcione también en PC. */
+html, body, #root { overflow-x: clip; }
+.navbar { position: sticky; top: 0; }

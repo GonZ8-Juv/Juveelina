@@ -1,5 +1,6 @@
+import { imagenPequena, imagenMediana } from "./data/imagenes-responsive.js";
 import banderaUy from "./assets/uy.webp";
-import promoWeb from "./assets/popup-descuento-web-10.webp";
+import promoWeb from "./assets/popup-promo-mobile.webp";
 import { useState, useEffect, useRef } from "react";
 import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
@@ -176,7 +177,16 @@ function App() {
         `${item.nombre} ${item.detalle}`.toLowerCase().includes(normalizedSearch)
       )
     : searchItems.slice(0, 5);
+  const [popupReady, setPopupReady] = useState(false);
   const activeNewArrival = newArrivals[currentNewArrival];
+  useEffect(() => {
+    let cancelled = false;
+    const image = new Image();
+    image.fetchPriority = "high";
+    image.src = imagenMediana(newArrivals[0].image);
+    image.decode().then(() => { if (!cancelled) setPopupReady(true); }).catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
   useEffect(() => {
     const bloquearPellizco = (event) => {
       if (event.touches?.length > 1) event.preventDefault();
@@ -195,7 +205,7 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
   const popupRef = useRef(null);
-  const popupVisible = newArrivalsOpen && !new URLSearchParams(location.search).has('producto');
+  const popupVisible = popupReady && newArrivalsOpen && !new URLSearchParams(location.search).has('producto');
 
   useEffect(() => {
     if (!popupVisible && !mobileMenuOpen) return;
@@ -276,14 +286,22 @@ function App() {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (!newArrivalsOpen) return undefined;
-
-    const imageInterval = setTimeout(() => {
-      setCurrentNewArrival((prev) => (prev + 1) % newArrivals.length);
+    if (!popupVisible) return undefined;
+    let cancelled = false;
+    const nextIndex = (currentNewArrival + 1) % newArrivals.length;
+    const nextImage = new Image();
+    nextImage.src = imagenMediana(newArrivals[nextIndex].image);
+    const ready = nextImage.decode();
+    // Keep the current photo visible until the next one has decoded.
+    ready.catch(() => {});
+    const timer = setTimeout(async () => {
+      try {
+        await ready;
+        if (!cancelled) setCurrentNewArrival(nextIndex);
+      } catch { /* Retain the current slide when the next image cannot load. */ }
     }, newArrivals[currentNewArrival].duration || 3000);
-
-    return () => clearTimeout(imageInterval);
-  }, [newArrivalsOpen, currentNewArrival]);
+    return () => { cancelled = true; clearTimeout(timer); };
+  }, [popupVisible, currentNewArrival]);
 
   useEffect(() => {
     const heroTimer = setTimeout(() => {
@@ -336,7 +354,7 @@ function App() {
               className="new-arrivals-image-link"
               onClick={() => setNewArrivalsOpen(false)}
             >
-              <img key={currentNewArrival} src={activeNewArrival.image} alt={activeNewArrival.title} />
+              <img fetchPriority="high" src={imagenMediana(activeNewArrival.image)} alt={activeNewArrival.title} />
             </Link>
             <div className="new-arrivals-content">
               <h2>{activeNewArrival.title}</h2>
@@ -511,7 +529,7 @@ function App() {
     <div
       key={index}
       className={`hero-fade ${index === currentHero ? "active" : ""}`}
-      style={{ backgroundImage: `url(${img.image})` }}
+      style={{ "--hero-desktop": index === currentHero ? `url(${img.image})` : "none", "--hero-mobile": index === currentHero ? `url(${imagenMediana(img.image)})` : "none" }}
     />
   ))}
 
@@ -607,9 +625,9 @@ function App() {
 
 <section className="footer-brand">
   <div className="footer-brand-mark">
-    <img src={jmarr} alt="" />
+    <img src={imagenPequena(jmarr)} loading="lazy" alt="" />
     <strong>JUVEELINA</strong>
-    <img src={jmarr} alt="" className="footer-brand-mark-reverse" />
+    <img src={imagenPequena(jmarr)} loading="lazy" alt="" className="footer-brand-mark-reverse" />
   </div>
   <span>JUVEELINA 2026</span>
 </section>
