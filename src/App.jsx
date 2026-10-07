@@ -1,6 +1,6 @@
 import banderaUy from "./assets/uy.webp";
 import promoWeb from "./assets/popup-descuento-web-10.webp";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 
 
@@ -177,6 +177,63 @@ function App() {
       )
     : searchItems.slice(0, 5);
   const activeNewArrival = newArrivals[currentNewArrival];
+  useEffect(() => {
+    const bloquearPellizco = (event) => {
+      if (event.touches?.length > 1) event.preventDefault();
+    };
+    const bloquearGesto = (event) => event.preventDefault();
+    document.addEventListener('touchmove', bloquearPellizco, { passive: false });
+    document.addEventListener('gesturestart', bloquearGesto, { passive: false });
+    document.addEventListener('gesturechange', bloquearGesto, { passive: false });
+    return () => {
+      document.removeEventListener('touchmove', bloquearPellizco);
+      document.removeEventListener('gesturestart', bloquearGesto);
+      document.removeEventListener('gesturechange', bloquearGesto);
+    };
+  }, []);
+
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef(null);
+  const popupRef = useRef(null);
+  const popupVisible = newArrivalsOpen && !new URLSearchParams(location.search).has('producto');
+
+  useEffect(() => {
+    if (!popupVisible && !mobileMenuOpen) return;
+    const dialogRef = popupVisible ? popupRef : mobileMenuRef;
+    const body = document.body;
+    const root = document.documentElement;
+    const y = window.scrollY;
+    const previousFocus = document.activeElement;
+    const saved = { position: body.style.position, top: body.style.top, width: body.style.width, overflow: body.style.overflow };
+    const rootOverflow = root.style.overflow;
+    body.style.position = 'fixed';
+    body.style.top = `-${y}px`;
+    body.style.width = '100%';
+    body.style.overflow = 'hidden';
+    root.style.overflow = 'hidden';
+    dialogRef.current?.querySelector('button')?.focus({ preventScroll: true });
+    const onKey = (event) => {
+      if (event.key === 'Escape') { setNewArrivalsOpen(false); setMobileMenuOpen(false); }
+      if (event.key !== 'Tab') return;
+      const controls = dialogRef.current?.querySelectorAll('button, a[href], summary');
+      if (!controls?.length) return;
+      const first = controls[0], last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      Object.assign(body.style, saved);
+      root.style.overflow = rootOverflow;
+      const behavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      window.scrollTo({ top: y, behavior: 'instant' });
+      root.style.scrollBehavior = behavior;
+      previousFocus?.focus?.({ preventScroll: true });
+    };
+  }, [popupVisible, mobileMenuOpen]);
+
 
   const closeSearch = () => {
     setSearchOpen(false);
@@ -262,9 +319,9 @@ function App() {
         </div>
       )}
 
-      {newArrivalsOpen && !new URLSearchParams(location.search).has('producto') && (
+      {popupVisible && (
         <div className="new-arrivals-backdrop" onClick={() => setNewArrivalsOpen(false)}>
-          <section className="new-arrivals-popup" onClick={(e) => e.stopPropagation()}>
+          <section ref={popupRef} role="dialog" aria-modal="true" aria-label="Novedades y beneficios Juveelina" className="new-arrivals-popup" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               className="new-arrivals-close"
@@ -305,6 +362,7 @@ function App() {
       {/* NAVBAR */}
       <nav className="navbar">
   <div className="navbar-left">
+  <button className="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(true)}><span /><span /><span /></button>
   <Link to="/" className="logo">JUVEELINA</Link>
 
   <div className="nav-links">
@@ -356,6 +414,38 @@ function App() {
   
   </div>
 </nav>
+
+{mobileMenuOpen && (
+  <div className="mobile-menu-backdrop" onClick={() => setMobileMenuOpen(false)}>
+    <section id="mobile-navigation" ref={mobileMenuRef} className="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Menú principal" onClick={(event) => event.stopPropagation()}>
+      <header><strong>JUVEELINA</strong><button type="button" aria-label="Cerrar menú" onClick={() => setMobileMenuOpen(false)}>×</button></header>
+      <nav aria-label="Categorías" onClick={(event) => { if (event.target.closest('a')) setMobileMenuOpen(false); }}>
+        <Link to="/vestimenta/hombres">Hombres</Link>
+        <Link to="/vestimenta/mujeres">Mujeres</Link>
+        <Link to="/vestimenta/gurises">Gurises</Link>
+        <details><summary>Colecciones</summary><div>
+          <Link to="/colecciones/remeras">Remeras</Link>
+          <Link to="/colecciones/campera-jean">Campera-Jean</Link>
+          <Link to="/colecciones/buzos-uy">Buzos Uy</Link>
+          <Link to="/colecciones/cardigans-uruwhy">Cardigans UruWhy</Link>
+          <Link to="/colecciones/sweaters">Sweaters</Link>
+        </div></details>
+        <details><summary>Accesorios</summary><div>
+          <Link to="/accesorios/carteras">Carteras</Link>
+          <Link to="/accesorios/bags">TOTES</Link>
+          <Link to="/accesorios/materas-criollas">Materas criollas</Link>
+        </div></details>
+        <div className="mobile-menu-help">
+          <Link to="/como-comprar">Cómo comprar</Link>
+          <Link to="/nosotros">Quiénes somos</Link>
+          <Link to="/contacto">Contacto</Link>
+          <Link to="/terminos-y-condiciones">Términos y condiciones</Link>
+        </div>
+      </nav>
+      <p className="mobile-menu-country"><img src={banderaUy} alt="" width="24" height="18" /> Uruguay</p>
+    </section>
+  </div>
+)}
 
 {searchOpen && (
   <div className="search-backdrop" onClick={closeSearch}>

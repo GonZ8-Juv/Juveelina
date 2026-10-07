@@ -2431,3 +2431,66 @@ html, body {
 .product-extra-details summary:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
 .product-extra-details h3 { margin: 18px 0 10px; font-size: 15px; }
 .product-extra-details ul { padding-left: 20px; margin: 0; line-height: 1.8; }
+
+/* El fondo permanece inmóvil y la ficha se adapta al área visible del celular. */
+.new-arrivals-backdrop { height: 100dvh; box-sizing: border-box; overflow: hidden; overscroll-behavior: none; padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); -webkit-backdrop-filter: blur(8px); animation: none; }
+.new-arrivals-popup { max-height: 100%; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.new-arrivals-close { width: 44px; height: 44px; top: 4px; right: 4px; }
+.new-arrivals-image-link img { height: auto; max-height: 55dvh; aspect-ratio: auto; object-fit: contain; }
+@media (max-width: 600px) {
+  .new-arrivals-backdrop { background: rgba(20,16,12,.65); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .new-arrivals-popup { width: min(360px, 100%); animation: none; }
+  .new-arrivals-banner { font-size: 16px; min-height: 48px; box-sizing: border-box; padding: 14px 48px; }
+  .new-arrivals-content { padding: 12px 16px 16px; }
+  .new-arrivals-content h2 { font-size: 18px; margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .new-arrivals-popup, .new-arrivals-image-link img { animation: none; } }
+
+/* Desplazamiento táctil sin zoom de página; las fotos conservan su ampliación propia. */
+html, body { touch-action: pan-x pan-y; }
+@media (max-width: 768px) {
+  input, select, textarea { font-size: 16px; }
+  .product-detail-main-image { touch-action: manipulation; }
+}
+
+.mobile-menu-toggle { display: none; }
+.mobile-menu-backdrop { position: fixed; inset: 0; height: 100dvh; z-index: 8500; background: #0008; overscroll-behavior: none; }
+.mobile-menu-panel { width: min(88vw, 380px); height: 100%; overflow-y: auto; overscroll-behavior: contain; padding: max(20px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom)); background: #fff; color: #222; }
+.mobile-menu-panel header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.mobile-menu-panel header strong { letter-spacing: 2px; }
+.mobile-menu-panel header button { width: 44px; height: 44px; border: 0; background: none; font-size: 30px; cursor: pointer; }
+.mobile-menu-panel nav > a, .mobile-menu-panel summary { display: flex; align-items: center; justify-content: space-between; min-height: 54px; color: #222; text-decoration: none; font-size: 19px; font-weight: 700; cursor: pointer; }
+.mobile-menu-panel summary { list-style: none; }
+.mobile-menu-panel summary::-webkit-details-marker { display: none; }
+.mobile-menu-panel summary::after { content: '›'; }
+.mobile-menu-panel details[open] > summary::after { transform: rotate(90deg); }
+.mobile-menu-panel details div a, .mobile-menu-help a { display: block; padding: 12px 0; color: #555; text-decoration: none; }
+.mobile-menu-panel details div { padding-left: 16px; }
+.mobile-menu-help { border-top: 1px solid #eee; margin-top: 24px; padding-top: 12px; }
+.mobile-menu-country { display: flex; align-items: center; gap: 8px; margin-top: 24px; font-size: 14px; }
+@media (max-width: 768px) {
+  .navbar { flex-wrap: nowrap; gap: 6px; padding: 8px 10px; }
+  .navbar-left { width: auto; flex: 1; flex-wrap: nowrap; justify-content: flex-start; gap: 7px; min-width: 0; }
+  .navbar .logo { width: auto; font-size: clamp(16px, 4.5vw, 23px); letter-spacing: 1px; text-align: left; }
+  .navbar .nav-links { display: none; }
+  .mobile-menu-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 38px; height: 44px; flex-shrink: 0; border: 0; background: none; padding: 8px; cursor: pointer; }
+  .mobile-menu-toggle span { height: 2px; width: 22px; background: #222; }
+  .navbar-icons { width: auto; gap: 4px; }
+  .navbar-icons button, .navbar-icons a { width: 32px; min-height: 44px; font-size: 18px; padding: 4px; }
+  .navbar-country-flag { width: 20px; height: 16px; }
+}
+
+/* Misma composición para todas las diapositivas del pop-up. */
+.new-arrivals-popup { display: flex; flex-direction: column; width: min(420px, 100%); height: min(720px, calc(100dvh - 32px)); overflow: hidden; }
+.new-arrivals-banner { flex: 0 0 52px; display: flex; align-items: center; justify-content: center; padding: 8px 48px; font-size: 20px; }
+.new-arrivals-image-link { position: relative; flex: 1 1 0; min-height: 0; width: 100%; overflow: hidden; }
+.new-arrivals-image-link img { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; aspect-ratio: auto; object-fit: cover; object-position: center; }
+.new-arrivals-content { flex: 0 0 128px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 18px; }
+.new-arrivals-content h2 { font-size: 20px; line-height: 1.2; margin: 0 0 12px; }
+.new-arrivals-button { flex-shrink: 0; }
+@media (max-width: 600px) {
+  .new-arrivals-popup { width: min(360px, 100%); height: min(660px, calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom))); }
+  .new-arrivals-banner { flex-basis: 48px; font-size: 16px; }
+  .new-arrivals-content { flex-basis: 116px; padding: 10px 14px; }
+  .new-arrivals-content h2 { font-size: 18px; }
+}
